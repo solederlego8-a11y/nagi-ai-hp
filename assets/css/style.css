@@ -657,3 +657,11 @@ section.alt { background: var(--color-paper-alt); }
   }
   body.nav-open .nav-cta { display: none; }
 }
+
+/* post additions (2026-09-18) */
+.post-tldr{background:#f4f6f8;border-left:4px solid #2a5d8f;padding:14px 18px;margin:0 0 28px;font-size:15px;}
+.post-tldr ul{margin:8px 0 0;padding-left:20px;}
+.post-tablewrap{overflow-x:auto;margin:0 0 24px;}
+.post-table{width:100%;border-collapse:collapse;font-size:14px;min-width:480px;}
+.post-table th,.post-table td{padding:8px 10px;border:1px solid #d9dee3;text-align:left;vertical-align:top;line-height:1.7;}
+.post-table thead th{background:#eef2f5;font-weight:700;}
