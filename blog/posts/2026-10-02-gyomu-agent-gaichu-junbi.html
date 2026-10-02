@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務エージェント開発を外注する前に決める8項目｜見積もり依頼シートの書き方｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeで業務を自動化する業務エージェントの開発を外注する前に、社内で決めるべき8項目を解説。そのまま使える見積もり依頼シート、見積もりが膨らむ要因、納品後の保守で決めておくことをまとめました。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-gyomu-agent-gaichu-junbi.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="業務エージェント開発を外注する前に決める8項目｜見積もり依頼シートの書き方｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeで業務を自動化する業務エージェントの開発を外注する前に、社内で決めるべき8項目を解説。そのまま使える見積もり依頼シート、見積もりが膨らむ要因、納品後の保守で決めておくことをまとめました。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-gyomu-agent-gaichu-junbi.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "業務エージェント開発を外注する前に決める8項目｜見積もり依頼シートの書き方",
+  "datePublished": "2026-10-02",
+  "dateModified": "2026-10-02",
+  "description": "Claude Codeで業務を自動化する業務エージェントの開発を外注する前に、社内で決めるべき8項目を解説。そのまま使える見積もり依頼シート、見積もりが膨らむ要因、納品後の保守で決めておくことをまとめました。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-gyomu-agent-gaichu-junbi.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "8項目がすべて決まらないと依頼できませんか", "acceptedAnswer": {"@type": "Answer", "text": "依頼はできます。決まっていない項目は「未定」「確認中」と書いて渡してください。ただし、目的・入力・出力の3つが決まっていないと、見積もりの幅が大きくなります。最低限この3つは社内で決めてから依頼するのがおすすめです。"}}, {"@type": "Question", "name": "社内のシステムと連携しないと意味がありませんか", "acceptedAnswer": {"@type": "Answer", "text": "最初はファイルの受け渡しで十分なことが多いです。例えば、システムから出力したExcelを入力にし、結果を一覧表で出すだけでも、確認作業の時間は減らせます。効果が確認できてから、システム連携を次の段階として依頼すると、初回の費用とリスクを抑えられます。"}}, {"@type": "Question", "name": "自社で作るか、外注するかはどう判断しますか", "acceptedAnswer": {"@type": "Answer", "text": "社内にClaude Codeを使いこなせる人がいて、その人の時間を確保できるなら、自社で作る選択肢があります。人や時間が足りない、早く効果を出したい、連携が複雑、という場合は外注が向いています。外注する場合も、仕組みの中身を理解する担当者を社内に置いておくと、納品後の運用が安定します。"}}, {"@type": "Question", "name": "個人情報を含む業務は外注できますか", "acceptedAnswer": {"@type": "Answer", "text": "できる場合もありますが、社内規程、顧客との契約、利用するAIサービスの規約を確認したうえで判断する必要があります。最初の対象業務には、個人情報を含まない業務を選ぶほうが、承認も開発も早く進みます。"}}, {"@type": "Question", "name": "依頼から稼働までどのくらいかかりますか", "acceptedAnswer": {"@type": "Answer", "text": "業務の範囲、例外の数、連携先の数によって大きく変わるため、一律には言えません。依頼の時点で8項目が整理されているほど、要件の確認にかかる時間が短くなり、稼働までの期間も読みやすくなります。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../case.html">導入事例</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.02</span><span class="tag">開発の外注</span></div>
+    <h1>業務エージェント開発を外注する前に決める8項目｜見積もり依頼シートの書き方</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>請求書のチェック、議事録からのCRM入力、問い合わせの一次対応——。Claude Codeを使って特定の業務を自動化する仕組み（ここでは「業務エージェント」と呼びます）を外部に作ってもらうことを検討する会社が増えています。</p>
+<p>ところが、いざ見積もりを依頼すると「要件が決まっていないので見積もれない」と言われたり、各社の見積もりの金額が大きく違って比較できなかったりします。原因の多くは、依頼する側が業務の中身を言葉にできていないことです。</p>
+<p>この記事では、業務エージェントの開発を外注する前に社内で決めておく8つの項目と、それをまとめた見積もり依頼シートの書き方、見積もりが膨らみやすい要因、納品後の運用で決めておくことを整理します。</p>
+<div class="post-tldr"><strong>要点</strong><ul><li>依頼前に決めるのは「目的」「現状の手順と時間」「入力」「出力」「判断基準と例外」「連携先と権限」「人の確認」「成功の基準と保守」の8項目</li><li>8項目を1枚の見積もり依頼シートにまとめ、全社に同じシートで依頼すると見積もりを比較できる</li><li>見積もりが膨らむのは「例外の多さ」「連携先の多さ」「判断基準のあいまいさ」。依頼前に減らせるものは減らす</li><li>業務は変わり続けるため、納品後に誰が直すかを依頼の時点で決めておく</li></ul></div>
+
+<h2>そもそも外注に向いている業務か</h2>
+<p>8項目に入る前に、その業務が自動化の外注に向いているかを確認します。次の条件を多く満たすほど、外注の効果が出やすく、見積もりも安定します。</p>
+<ul>
+<li>毎日または毎週、一定の件数が発生する</li>
+<li>手順がおおむね決まっていて、担当者が変わっても同じ結果になる</li>
+<li>入力のデータが電子化されている（紙やFAXが中心ではない）</li>
+<li>結果が正しいかどうかを担当者が判断できる</li>
+<li>例外の処理が全体の一部にとどまる</li>
+</ul>
+<p>手順が人によって違う、判断が担当者の経験に強く依存している、という業務は、外注の前に社内で手順を揃える必要があります。この段階を飛ばすと、開発の途中で要件が何度も変わり、費用と期間が膨らみます。手順の言語化の方法は「<a href="2026-08-01-claude-code-onboarding.html">Claude Code導入初期に必ずつまずく3つの壁と越え方</a>」の業務マニュアルの項も参考にしてください。</p>
+
+<h2>依頼前に決める8つの項目</h2>
+<h3>1. 目的：何のために自動化するのか</h3>
+<p>「作業時間を減らす」「ミスを減らす」「処理の待ち時間を短くする」など、目的によって作るべき仕組みが変わります。時間を減らしたいのか、ミスを減らしたいのかで、人の確認をどこに入れるかの設計が変わるためです。目的は1つか2つに絞ります。</p>
+<h3>2. 現状の手順と所要時間</h3>
+<p>今の業務を、担当者の作業の順番で書き出します。各手順に、1件あたりの時間と、1か月あたりの件数を添えます。この記録は、見積もりの根拠になるだけでなく、納品後に効果を測るときの基準値にもなります。測り方は「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」で解説しています。</p>
+<h3>3. 入力：どこにある、どんなデータを使うか</h3>
+<ul>
+<li>データの置き場所（共有フォルダ、クラウドストレージ、メール、社内システム）</li>
+<li>形式（PDF、Excel、CSV、画像、メール本文）</li>
+<li>量（1か月あたりの件数、1件あたりのページ数など）</li>
+<li>書式のばらつき（取引先ごとに請求書の様式が違う、など）</li>
+</ul>
+<p>書式のばらつきは見積もりに大きく影響します。様式が何種類あるかを数えておくと、開発会社が難しさを判断しやすくなります。</p>
+<h3>4. 出力：何を、どこに、どの形で出すか</h3>
+<p>出力の形式（一覧表、文書の下書き、システムへの入力）、置き場所や送り先、列の名前や文体まで具体的に決めます。今の業務で使っている出力の見本があれば、それを渡すのが最も確実です。</p>
+<h3>5. 判断基準と例外</h3>
+<p>担当者が業務の中で判断している箇所を、「○○なら△△」の形で書き出します。例えば「金額が発注一覧と1円でも違えば要確認」「取引先が一覧にない場合は担当者に回す」などです。例外については、どのくらいの頻度で起きるかも添えます。まれな例外は自動化の対象から外し、人が処理すると決めるだけで、開発の範囲を小さくできます。</p>
+<h3>6. 連携先のシステムと権限</h3>
+<p>読み書きする社内システム、クラウドサービス、データベースを一覧にします。それぞれについて、APIが使えるか、アクセス用のアカウントや権限を誰が発行できるかを確認します。連携先の数は、見積もりを大きく左右する要素です。情報システム部門の承認が必要な場合は、依頼の前に相談しておきます。</p>
+<h3>7. 人の確認ポイントと責任</h3>
+<p>自動化しても、結果を業務に使う前に人が確認する工程は残すのが基本です。どの段階で、誰が、何を基準に確認するかを決めます。「全件を目視する」のか「要確認と判定されたものだけを見る」のかで、削減できる時間も変わります。業務の責任はこれまでどおり担当部署にあることも、社内で確認しておきます。</p>
+<h3>8. 成功の基準と納品後の保守</h3>
+<p>何をもって「うまくいった」と判断するかを、数字で決めます。例えば「1件あたりの処理時間が基準値から半分以下になる」「要確認の判定漏れがない」などです。あわせて、納品後に業務の手順や書式が変わったとき、誰が仕組みを直すのか（自社か、開発会社か）、その費用はどうするかを決めておきます。</p>
+
+<h2>8項目を社内で埋める進め方</h2>
+<p>8項目は、推進担当が1人で書こうとすると現場の実態とずれます。次の分担で、1〜2週間かけて埋めるのが現実的です。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>主に書く人</th><th>確認する人</th></tr></thead><tbody>
+<tr><td>1. 目的、8. 成功の基準</td><td>部門長</td><td>推進担当</td></tr>
+<tr><td>2. 現状、3. 入力、4. 出力、5. 判断基準と例外</td><td>対象業務の担当者</td><td>部門長</td></tr>
+<tr><td>6. 連携先と権限</td><td>情報システム部門</td><td>推進担当</td></tr>
+<tr><td>7. 人の確認、8. 保守</td><td>推進担当と部門長</td><td>情報システム部門</td></tr>
+</tbody></table></div>
+<p>担当者には、1週間ほど実際の業務の手順と時間をメモしてもらい、それをもとに2〜5を書くと、抜けや思い込みが減ります。判断基準は、担当者が「なんとなく」判断している箇所ほど言葉にしにくいため、実際の書類を見ながら一緒に書き出すのが効果的です。</p>
+
+<h2>見積もり依頼シートの書き方</h2>
+<p>8項目を1枚にまとめたものが見積もり依頼シートです。候補の会社すべてに同じシートを渡すと、見積もりの前提が揃い、比較できるようになります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>記入する内容</th><th>記入の例（形式の例示）</th></tr></thead><tbody>
+<tr><td>業務名・部署</td><td>対象業務と担当部署</td><td>請求書と発注書の突き合わせ（経理部）</td></tr>
+<tr><td>目的</td><td>自動化で達成したいこと</td><td>月末の確認作業の時間を減らし、締め日の残業をなくす</td></tr>
+<tr><td>現状</td><td>手順、1件あたりの時間、月の件数</td><td>手順は別紙。1件○分、月○件</td></tr>
+<tr><td>入力</td><td>置き場所、形式、量、書式の種類</td><td>共有フォルダのPDF、月○件、様式○種類／発注一覧はExcel</td></tr>
+<tr><td>出力</td><td>形式、置き場所、見本</td><td>取引先・請求番号・金額・判定・理由の一覧（見本添付）</td></tr>
+<tr><td>判断基準</td><td>「○○なら△△」の一覧</td><td>金額不一致は要確認、一覧にない取引先は担当者へ</td></tr>
+<tr><td>例外と頻度</td><td>例外の種類、月あたりの件数、自動化の対象外にするもの</td><td>手書きの請求書（月○件）は対象外</td></tr>
+<tr><td>連携先</td><td>システム名、API の有無、権限の発行者</td><td>会計システム（APIの有無は確認中）</td></tr>
+<tr><td>人の確認</td><td>確認する人、タイミング、基準</td><td>要確認と判定されたものを担当者が確認</td></tr>
+<tr><td>成功の基準</td><td>数字で決めた目標</td><td>1件あたりの時間を基準値の半分以下</td></tr>
+<tr><td>保守</td><td>納品後に直す担当、期待する期間</td><td>軽微な修正は自社、仕様変更は開発会社に相談</td></tr>
+<tr><td>希望時期・予算感</td><td>稼働希望日、予算の上限（あれば）</td><td>○月から試行</td></tr>
+</tbody></table></div>
+<p>「記入の例」の列は書き方の例示で、特定の企業の事例ではありません。すべてを埋められなくても構いません。「確認中」「未定」と書いておけば、開発会社がその点を質問してくれます。空欄のまま依頼するより、分からないことを分からないと書くほうが、見積もりの精度は上がります。</p>
+
+<h2>サンプルデータの準備</h2>
+<p>見積もりや試作の段階で、実際のデータを見せてほしいと言われることがあります。その場合に備えて、次の準備をしておきます。</p>
+<ul>
+<li>個人情報や取引先名など、外部に出せない部分を伏せた（マスキングした）サンプルを数件用意する</li>
+<li>書式の種類ごとに1件ずつ、例外のパターンも含めて用意する</li>
+<li>データを渡す前に、秘密保持契約の締結と、受け渡しの方法・削除の方法を決める</li>
+</ul>
+<p>実データを社外に出す前の確認は、情報システム部門・法務部門と一緒に行います。確認すべき項目は「<a href="2026-07-18-ai-governance-checklist.html">全社展開の前に机上に置くべきガバナンスチェックリスト</a>」を参照してください。</p>
+
+<h2>見積もりが膨らみやすい要因</h2>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>要因</th><th>なぜ膨らむか</th><th>依頼前にできること</th></tr></thead><tbody>
+<tr><td>例外が多い</td><td>例外ごとに処理を作り、検証する必要がある</td><td>頻度の低い例外は自動化の対象外にして人が処理する</td></tr>
+<tr><td>連携先が多い</td><td>システムごとに接続と権限の設定、検証が必要になる</td><td>最初は入力と出力をファイルでやり取りし、連携は次の段階にする</td></tr>
+<tr><td>判断基準があいまい</td><td>開発の途中で基準の確認と作り直しが発生する</td><td>担当者と一緒に基準を「○○なら△△」で書き切る</td></tr>
+<tr><td>書式がばらばら</td><td>様式ごとの読み取りと検証が必要になる</td><td>様式の数を数え、多いものから段階的に対象にする</td></tr>
+<tr><td>関係者が多い</td><td>確認と合意に時間がかかる</td><td>判断する人を1人決めておく</td></tr>
+</tbody></table></div>
+<p>最初から業務のすべてを自動化しようとせず、件数の多い部分から段階的に対象にすると、初回の費用を抑えながら効果を確かめられます。法人導入全体の費用の考え方は「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">Claude Codeの法人導入にかかる費用の内訳</a>」にまとめています。</p>
+
+<h2>納品後の運用で決めておくこと</h2>
+<p>業務エージェントは、作って終わりではありません。業務の手順、書式、連携先のシステム、そしてAIツールそのものが変わるたびに、調整が必要になります。依頼の時点で、次の点を決めておきます。</p>
+<ul>
+<li><strong>業務マニュアルの持ち主</strong>：仕組みが前提にしている手順と判断基準を、社内の誰が管理するか</li>
+<li><strong>軽微な修正の担当</strong>：判断基準の数値を変える、出力の列を追加する、などを自社でできるようにするか</li>
+<li><strong>不具合の連絡先と対応時間</strong>：動かなくなったときに誰に連絡し、どのくらいで対応してもらえるか</li>
+<li><strong>効果の確認の時期</strong>：稼働後いつ、基準値と比べて効果を確認するか</li>
+</ul>
+<p>自社で直せる範囲を広げておくほど、業務の変化に素早く対応でき、保守の費用も抑えられます。開発と合わせて、社内の担当者が仕組みを理解し、更新できるようになる支援があるかも、依頼先を選ぶ基準になります。依頼先の比べ方は「<a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">Claude Codeの導入支援会社の選び方</a>」を参照してください。</p>
+
+<div class="post-tldr"><strong>見積もり依頼シートの作成から相談できます</strong><p style="margin:8px 0 12px;">凪AIの業務エージェント開発は、成果物単位で業務エージェント（Skill）を納品するメニューです。「8項目のうち半分しか埋まらない」という段階でも、残りを一緒に整理するところからご相談いただけます。</p><a href="../../contact.html#form" class="btn btn-primary">業務エージェント開発を無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 8項目がすべて決まらないと依頼できませんか</h3>
+<p>依頼はできます。決まっていない項目は「未定」「確認中」と書いて渡してください。ただし、目的・入力・出力の3つが決まっていないと、見積もりの幅が大きくなります。最低限この3つは社内で決めてから依頼するのがおすすめです。</p>
+<h3>Q. 社内のシステムと連携しないと意味がありませんか</h3>
+<p>最初はファイルの受け渡しで十分なことが多いです。例えば、システムから出力したExcelを入力にし、結果を一覧表で出すだけでも、確認作業の時間は減らせます。効果が確認できてから、システム連携を次の段階として依頼すると、初回の費用とリスクを抑えられます。</p>
+<h3>Q. 自社で作るか、外注するかはどう判断しますか</h3>
+<p>社内にClaude Codeを使いこなせる人がいて、その人の時間を確保できるなら、自社で作る選択肢があります。人や時間が足りない、早く効果を出したい、連携が複雑、という場合は外注が向いています。外注する場合も、仕組みの中身を理解する担当者を社内に置いておくと、納品後の運用が安定します。</p>
+<h3>Q. 個人情報を含む業務は外注できますか</h3>
+<p>できる場合もありますが、社内規程、顧客との契約、利用するAIサービスの規約を確認したうえで判断する必要があります。最初の対象業務には、個人情報を含まない業務を選ぶほうが、承認も開発も早く進みます。</p>
+<h3>Q. 依頼から稼働までどのくらいかかりますか</h3>
+<p>業務の範囲、例外の数、連携先の数によって大きく変わるため、一律には言えません。依頼の時点で8項目が整理されているほど、要件の確認にかかる時間が短くなり、稼働までの期間も読みやすくなります。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>依頼前に、目的・現状・入力・出力・判断基準と例外・連携先・人の確認・成功の基準と保守の8項目を決める</li>
+<li>8項目を見積もり依頼シートにまとめ、全社に同じシートで依頼する</li>
+<li>例外・連携先・あいまいな基準は見積もりを膨らませる。段階的に対象を広げる</li>
+<li>納品後に誰が直すかを、依頼の時点で決めておく</li>
+</ul>
+<p>凪AIの<a href="../../service.html#agent">業務エージェント開発</a>では、見積もり依頼シートの整理から納品後の運用の設計まで支援しています。お気軽にご相談ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../case.html">導入事例</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
