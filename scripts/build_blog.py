@@ -37,12 +37,11 @@ SITEMAP = ROOT / "sitemap.xml"
 
 BASE_URL = "https://solederlego8-a11y.github.io/nagi-ai-hp/"
 
-STATIC_PAGES = ["", "company.html", "service.html", "case.html", "contact.html"]
+STATIC_PAGES = ["", "company.html", "service.html", "contact.html"]
 
 NAV_LINKS = [
     ("company.html", "会社概要"),
     ("service.html", "サービス"),
-    ("case.html", "導入事例"),
     ("blog/index.html", "ブログ"),
     ("contact.html", "お問い合わせ"),
 ]
@@ -185,7 +184,6 @@ def page_shell(prefix, title, description, active_href, body_html, canonical_pat
         <h4>会社情報</h4>
         <ul>
           <li><a href="{prefix}company.html">会社概要</a></li>
-          <li><a href="{prefix}case.html">導入事例</a></li>
           <li><a href="{prefix}blog/index.html">ブログ</a></li>
           <li><a href="{prefix}contact.html">お問い合わせ</a></li>
         </ul>
