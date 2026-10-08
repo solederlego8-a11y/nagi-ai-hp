@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Codeを既存のChatGPT・Copilot契約と併用するか乗り換えるか｜法人の判断基準と使い分け表｜凪AI ブログ</title>
+<meta name="description" content="ChatGPTやCopilotの法人契約がある会社が、Claude Codeを併用するか乗り換えるかを判断する軸、役割分担表の作り方、乗り換え時の確認事項を整理します。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-chatgpt-copilot-heiyo.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Codeを既存のChatGPT・Copilot契約と併用するか乗り換えるか｜法人の判断基準と使い分け表｜凪AI ブログ">
+<meta property="og:description" content="ChatGPTやCopilotの法人契約がある会社が、Claude Codeを併用するか乗り換えるかを判断する軸、役割分担表の作り方、乗り換え時の確認事項を整理します。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-chatgpt-copilot-heiyo.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Codeを既存のChatGPT・Copilot契約と併用するか乗り換えるか｜法人の判断基準と使い分け表",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "description": "ChatGPTやCopilotの法人契約がある会社が、Claude Codeを併用するか乗り換えるかを判断する軸、役割分担表の作り方、乗り換え時の確認事項を整理します。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-chatgpt-copilot-heiyo.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "ChatGPTの契約があるのに、Claude Codeを追加する意味はありますか", "acceptedAnswer": {"@type": "Answer", "text": "チャットでの相談や文章作成が中心なら、追加の必要は小さいかもしれません。一方、複数のファイルにまたがる作業や、定型手順の自動化のように、AIに作業を進めさせたい業務が特定できているなら、追加を検討する価値があります。まず、その業務の候補が実在するかを確認してください。"}}, {"@type": "Question", "name": "併用すると費用が二重になりませんか", "acceptedAnswer": {"@type": "Answer", "text": "併用すれば、その分の費用は上乗せになります。そのため、試行の範囲を絞り、効果の測定方法を決めたうえで、契約更新時に整理する前提で始めるのが現実的です。費用の内訳は公式の料金ページで取得日を記録して見積もります。"}}, {"@type": "Question", "name": "社員が自分でツールを選んで使っているのですが、どう統制すればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "禁止だけでは個人アカウントでの利用が見えなくなります。会社契約のツールを一覧にして、業務ごとの使い分け表を配り、入力してよい情報の基準を共通にすることが第一歩です。そのうえで、会社契約のアカウント以外で業務情報を扱わないルールを周知します。"}}, {"@type": "Question", "name": "Microsoft 365を使っている会社は、どう考えればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "すでにOffice製品の中でAI機能を使っている場合は、相談型・補助型の業務は現行のままで足りている可能性があります。この場合、Claude Codeは実行型の業務に限って追加する形から検討します。各社のプランや機能は更新が早いので、公式情報で確認してください。"}}, {"@type": "Question", "name": "乗り換えの検討に、どのくらいの期間を見ておけばよいですか", "acceptedAnswer": {"@type": "Answer", "text": "決まった期間はなく、契約の更新日から逆算して決めます。試行の期間、評価、社内決裁にそれぞれ何週間かかるかを積み上げ、更新の通知期限に間に合うように開始日を置きます。対象業務が月次の場合は、評価に必要な回数を確保するために、試行を長めに取る必要があります。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.09</span><span class="tag">ツール選定</span></div>
+    <h1>Claude Codeを既存のChatGPT・Copilot契約と併用するか乗り換えるか｜法人の判断基準と使い分け表</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>すでにChatGPTやMicrosoft Copilot、GitHub Copilotなどの法人契約がある会社で、Claude Codeの導入が話題に上ると、必ず出てくる質問があります。「今の契約を切って乗り換えるべきか、それとも併用するのか」「二重にお金がかかるのではないか」「現場が混乱しないか」。</p>
+<p>この記事では、既存のAIサービスを使っている会社がClaude Codeを追加・乗り換えするかどうかを判断するための軸と、併用する場合の役割分担の決め方、乗り換える場合に確認しておくことをまとめます。各サービスの機能や料金は更新が早いため、ここでは製品ごとの優劣を断定せず、「自社の状況でどう判断するか」の考え方に絞って解説します。</p>
+<div class="post-tldr"><strong>要点</strong><ul><li>「乗り換えか併用か」は製品の優劣ではなく、業務の種類・契約の縛り・管理の手間で決める</li><li>Claude Codeは、ファイルの編集やコマンドの実行まで含めて作業を任せる使い方に向く。チャットでの相談や文章のたたき台とは役割が違う</li><li>併用するなら、「業務ごとにどれを使うか」を1枚の表にして決め、入力してよい情報の基準は全ツール共通にする</li><li>乗り換える場合は、契約期間、既存の資産（プロンプト集・連携）、利用者の習熟、データの扱いの4点を先に確認する</li></ul></div>
+
+<h2>まず「何を比べるか」を決める</h2>
+<p>ChatGPTとClaude Codeを同じ土俵で比べようとすると、議論がかみ合いません。ChatGPTのようなチャット型のサービスは、質問や文章作成、要約といった対話での利用が中心です。一方、Claude Codeは、利用者のPC上のファイルを読み、編集し、コマンドを実行しながら作業を進める、作業の担い手として使うツールです。Anthropicの公式ドキュメントでも、ファイルの編集やコマンドの実行の前に利用者へ確認する権限の仕組みが、設計の中心として説明されています。</p>
+<p>そのため、比べる対象は製品名ではなく、「その業務で、人は何をしていて、AIに何を任せたいのか」です。次の3つのタイプに分けると整理しやすくなります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>タイプ</th><th>人とAIの関わり方</th><th>典型的な業務</th></tr></thead><tbody>
+<tr><td>相談型</td><td>人が質問し、AIが答える。成果物は人が持ち帰って整える</td><td>調べもの、文章のたたき台、アイデア出し、要約</td></tr>
+<tr><td>補助型</td><td>人が作業している最中に、AIが候補を出す</td><td>エディタ内のコード補完、メール文面の候補、表計算の関数案</td></tr>
+<tr><td>実行型</td><td>人が目的を伝え、AIが複数のファイルを読み、編集や実行まで進める</td><td>複数ファイルの一括修正、定型レポートの作成、データ変換、定型業務の自動化</td></tr>
+</tbody></table></div>
+<p>Claude Codeは主に「実行型」に向きます。相談型や補助型の業務は、すでに契約しているサービスで足りていることが多く、そこを無理に置き換える必要は必ずしもありません。まずは、自社の業務がどのタイプに集中しているかを見ます。</p>
+
+<h2>「併用」「乗り換え」「見送り」を選ぶ基準</h2>
+<p>判断を3つの選択肢に整理します。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>選択</th><th>向いている状況</th><th>注意点</th></tr></thead><tbody>
+<tr><td>併用する</td><td>既存サービスが相談型・補助型の業務で定着している。実行型の業務を新たに自動化したい</td><td>費用が積み上がる。使い分けの基準が曖昧だと現場が迷う</td></tr>
+<tr><td>乗り換える</td><td>既存サービスの利用が少ない、または契約の更新時期が近い。主な用途がClaude Codeで代替できる</td><td>移行期間の混乱、既存の資産の作り直し、契約の途中解約条件</td></tr>
+<tr><td>見送る</td><td>実行型の業務がまだ特定できていない。管理体制が整っていない</td><td>先送りの理由を明確にして、再検討の時期を決めておく</td></tr>
+</tbody></table></div>
+<p>多くの会社にとって現実的なのは、いきなり乗り換えるのではなく、特定の部署・業務に絞ってClaude Codeを追加する「併用」から始める形です。試行の結果を見てから、既存サービスの更新時期に合わせて整理するほうが、リスクが小さくなります。</p>
+
+<h2>判断のための6つの問い</h2>
+<h3>1. 既存サービスは、今どの業務で何人が使っているか</h3>
+<p>契約している席数のうち、実際に使っている人がどれだけいるかを確認します。利用が少ない契約は、整理の対象として検討しやすいです。一方で、全社で定着している契約を急に変えると、混乱の原因になります。利用状況は、各サービスの管理画面や請求書で確認できる範囲で集めます。</p>
+<h3>2. 契約の更新時期と、途中解約の条件はどうなっているか</h3>
+<p>年間契約か月額契約か、更新の何日前までに通知が必要か、途中解約ができるかを、契約書または管理画面で確認します。ここは各社の契約によって異なるため、一般論では判断できません。更新時期に合わせて「その時点でどちらを残すか決める」ための試行期間を逆算するのが現実的です。</p>
+<h3>3. 実行型の業務に、具体的な候補はあるか</h3>
+<p>Claude Codeを追加する意味が出るのは、複数ファイルにまたがる処理や、定型の手順の自動化など、実行型の業務が特定できているときです。候補が思い浮かばないまま導入すると、既存のチャット型サービスと同じ使い方に落ち着き、費用だけが増えます。業務の棚卸しの方法は「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」も参考になります。</p>
+<h3>4. データの扱いは、各サービスで同じ基準にできるか</h3>
+<p>併用すると、情報の送り先が増えます。Anthropicの公式ドキュメント（<a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener">Data usage</a>）には、Team・Enterprise・APIなどの商用プランでは、Claude Codeに送られたコードやプロンプトでAnthropicが生成モデルを学習しないこと、標準の保持期間が30日であることが記載されています。他のサービスも、それぞれの契約プランでデータの扱いを確認し、一覧にして比較します。入力してよい情報の区分は、どのサービスにも共通の基準にしておきます。社内ルールの作り方は「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">Claude Codeの情報漏えい対策と社内ルールの作り方</a>」で整理しています。</p>
+<h3>5. 管理に必要な機能は足りているか</h3>
+<p>利用者の追加・削除、ログイン方式の統一、利用状況の把握、監査ログなど、管理に必要な機能が契約プランに含まれているかを確認します。Claude側については、公式の料金ページ（2026年10月9日確認）で、TeamプランにSSOや利用状況分析などが含まれ、SCIMや監査ログはEnterpriseプランの機能として整理されています。詳しくは「<a href="2026-10-09-claude-team-enterprise-erabikata.html">Claude TeamとEnterpriseの違いと選び方</a>」を参照してください。</p>
+<h3>6. 現場が使い分けられるか</h3>
+<p>最後は、人の問題です。ツールが増えるほど、「この作業はどれでやるのか」で迷う人が出ます。使い分けの基準が1枚の表で示され、迷ったときの相談先が決まっていれば、混乱は小さくなります。次の章で、その表の作り方を説明します。</p>
+
+<h2>併用する場合の役割分担表の作り方</h2>
+<p>併用を選ぶなら、業務ごとにどのツールを使うかを表にします。最初から全業務を網羅しようとせず、利用が多い業務5〜10件から始めます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>業務の例</th><th>タイプ</th><th>使うツールの考え方</th><th>確認する人</th></tr></thead><tbody>
+<tr><td>調べもの、要約、文章のたたき台</td><td>相談型</td><td>既存のチャット型サービスを継続</td><td>作成者本人</td></tr>
+<tr><td>日常のコーディング中の補完</td><td>補助型</td><td>既存のエディタ内サービスを継続</td><td>作成者本人</td></tr>
+<tr><td>複数ファイルの一括修正、定型レポートの作成</td><td>実行型</td><td>Claude Codeを試行</td><td>作成者とレビュー担当</td></tr>
+<tr><td>社外に出す文書の最終版</td><td>—</td><td>どのツールでも、従来の承認フローを通す</td><td>承認者</td></tr>
+</tbody></table></div>
+<p>表の「使うツールの考え方」の欄は、試行の結果を見て更新します。ここに「理由」を併記しておくと、後から見直す際に判断の根拠が分かります。表の内容は、製品の優劣ではなく、業務のタイプと会社の契約状況から決めるのがポイントです。</p>
+
+<h2>乗り換える場合に確認すること</h2>
+<p>既存サービスをClaude Codeに置き換える場合は、次の4点を移行計画に入れます。</p>
+<h3>契約と費用</h3>
+<p>現行契約の終了日、解約の通知期限、移行期間中に二重で発生する費用を、経理部門と確認します。Claude Codeの費用の見積もり方は「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">Claude Codeの法人導入にかかる費用の内訳</a>」にまとめています。ライセンスの金額は必ず公式の料金ページで取得日付きで確認してください。</p>
+<h3>既存の資産</h3>
+<p>現行サービスで作り込んだプロンプト集、連携設定、社内のマニュアルなどがある場合、そのまま使えるとは限りません。何を作り直すかを一覧にして、工数を見積もります。Claude Codeでは、プロジェクトごとのルールをCLAUDE.mdに書いて共有する運用がよく使われるため、既存のプロンプト集をこの形式に整理し直す作業が発生する場合があります。</p>
+<h3>習熟と研修</h3>
+<p>操作や考え方が変わるため、研修の時間が必要です。特に非エンジニアの利用者は、ターミナルに不慣れなことがハードルになります。研修の設計や助成金の可否は「<a href="2026-10-02-claude-code-kenshu-joseikin.html">Claude Code研修に人材開発支援助成金は使える？</a>」を参照してください。</p>
+<h3>データの移し替え</h3>
+<p>既存サービス内に残っている会話履歴や、保管している成果物をどうするかを決めます。保存が必要なものは、乗り換え前にエクスポートできる範囲で出力しておきます。エクスポートの可否や形式はサービスごとに異なるため、各社の公式ヘルプで確認してください。</p>
+
+<h2>併用を始める前にやること</h2>
+<p>併用を選んだ場合の、最初の2週間でやることをまとめます。</p>
+<ol>
+<li><strong>対象業務を2〜3件に絞る</strong>：実行型の業務から、効果を測りやすいものを選ぶ</li>
+<li><strong>試行する人を決める</strong>：1つの部署の数名から始める</li>
+<li><strong>基準値を測る</strong>：現状の所要時間を記録しておく</li>
+<li><strong>入力の基準を共通化する</strong>：既存サービスと同じ情報区分を使う</li>
+<li><strong>役割分担表を配る</strong>：迷ったときの相談先を明記する</li>
+<li><strong>評価日を決める</strong>：契約更新日から逆算して、継続・拡大・中止を判断する日を決める</li>
+</ol>
+<p>この進め方の詳細は「<a href="2026-08-01-claude-code-onboarding.html">Claude Code導入初期に必ずつまずく3つの壁と越え方</a>」も参考になります。評価の際には、費用だけでなく「実行型の業務でどれだけ時間が減ったか」を基準値と比べて確認します。</p>
+
+<div class="post-tldr"><strong>自社の業務に合う使い分けを一緒に整理します</strong><p style="margin:8px 0 12px;">凪AIでは、Claude Codeの導入に際して、対象業務の棚卸し、試行の範囲と期間の設計、研修、利用ルールの整備を支援しています。既存のAIサービスとの併用か乗り換えかで迷っている段階のご相談も承ります。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">既存ツールとの使い分けを無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. ChatGPTの契約があるのに、Claude Codeを追加する意味はありますか</h3>
+<p>チャットでの相談や文章作成が中心なら、追加の必要は小さいかもしれません。一方、複数のファイルにまたがる作業や、定型手順の自動化のように、AIに作業を進めさせたい業務が特定できているなら、追加を検討する価値があります。まず、その業務の候補が実在するかを確認してください。</p>
+<h3>Q. 併用すると費用が二重になりませんか</h3>
+<p>併用すれば、その分の費用は上乗せになります。そのため、試行の範囲を絞り、効果の測定方法を決めたうえで、契約更新時に整理する前提で始めるのが現実的です。費用の内訳は公式の料金ページで取得日を記録して見積もります。</p>
+<h3>Q. 社員が自分でツールを選んで使っているのですが、どう統制すればよいですか</h3>
+<p>禁止だけでは個人アカウントでの利用が見えなくなります。会社契約のツールを一覧にして、業務ごとの使い分け表を配り、入力してよい情報の基準を共通にすることが第一歩です。そのうえで、会社契約のアカウント以外で業務情報を扱わないルールを周知します。</p>
+<h3>Q. Microsoft 365を使っている会社は、どう考えればよいですか</h3>
+<p>すでにOffice製品の中でAI機能を使っている場合は、相談型・補助型の業務は現行のままで足りている可能性があります。この場合、Claude Codeは実行型の業務に限って追加する形から検討します。各社のプランや機能は更新が早いので、公式情報で確認してください。</p>
+<h3>Q. 乗り換えの検討に、どのくらいの期間を見ておけばよいですか</h3>
+<p>決まった期間はなく、契約の更新日から逆算して決めます。試行の期間、評価、社内決裁にそれぞれ何週間かかるかを積み上げ、更新の通知期限に間に合うように開始日を置きます。対象業務が月次の場合は、評価に必要な回数を確保するために、試行を長めに取る必要があります。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>乗り換えか併用かは、業務のタイプ（相談型・補助型・実行型）と、契約の状況、管理の手間で決める</li>
+<li>多くの会社では、実行型の業務に絞った併用の試行から始め、契約更新時に整理するほうがリスクが小さい</li>
+<li>併用するなら、業務ごとの使い分け表と、全ツール共通の入力基準を用意する</li>
+<li>乗り換えるなら、契約・既存の資産・習熟・データの4点を移行計画に入れる</li>
+</ul>
+<p>使い分けや移行の進め方について相談したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

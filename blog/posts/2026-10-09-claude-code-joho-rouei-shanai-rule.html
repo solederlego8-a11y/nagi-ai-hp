@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Codeの情報漏えい対策｜社内利用ルールの作り方と公式設定への対応づけ｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeを会社で使うときの社内ルールを、入力してよい情報・権限・出力の確認・ログ・事故対応の5本柱で整理。Anthropic公式ドキュメントの設定と規約に対応づけて解説します。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-joho-rouei-shanai-rule.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Codeの情報漏えい対策｜社内利用ルールの作り方と公式設定への対応づけ｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeを会社で使うときの社内ルールを、入力してよい情報・権限・出力の確認・ログ・事故対応の5本柱で整理。Anthropic公式ドキュメントの設定と規約に対応づけて解説します。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-joho-rouei-shanai-rule.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Codeの情報漏えい対策｜社内利用ルールの作り方と公式設定への対応づけ",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "description": "Claude Codeを会社で使うときの社内ルールを、入力してよい情報・権限・出力の確認・ログ・事故対応の5本柱で整理。Anthropic公式ドキュメントの設定と規約に対応づけて解説します。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-joho-rouei-shanai-rule.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "社内ルールは導入前に完成させる必要がありますか", "acceptedAnswer": {"@type": "Answer", "text": "最初から完璧なものは不要です。試行の範囲（人数・業務・期間）に合わせた最小限のルールを先に作り、試行の結果を見ながら改訂するほうが現実的です。ただし、入力してよい情報の区分と、会社契約のアカウントのみ使うという2点は、試行の開始前に決めておきます。"}}, {"@type": "Question", "name": "Claude Codeに入力した内容は学習に使われませんか", "acceptedAnswer": {"@type": "Answer", "text": "公式のData usageのページには、Team・Enterprise・APIなどの商用プランでは、商用規約のもとでClaude Codeに送られたコードやプロンプトでAnthropicが生成モデルを学習しない、と記載されています（顧客がモデル改善への提供を選んだ場合を除く）。一方、Free・Pro・Maxの個人向けプランは設定によって扱いが変わります。契約前に、ご自身の契約形態で最新の規約を確認してください。"}}, {"@type": "Question", "name": "設定はどこまで会社が強制できますか", "acceptedAnswer": {"@type": "Answer", "text": "公式では、管理者が配布する設定により、利用者や各プロジェクトの設定では上書きできない形で組織の標準を適用できると説明されています。強制できる範囲の詳細は公式の設定ドキュメントで確認してください。導入環境（Windows・Mac、社内ネットワークの構成など）によっても配布方法が変わります。"}}, {"@type": "Question", "name": "個人アカウントで使っている社員がいる場合はどうしますか", "acceptedAnswer": {"@type": "Answer", "text": "まず、実態の把握を目的に聞き取りを行い、責めずに会社契約のアカウントへ移行する流れを作ります。そのうえで、個人アカウントでの業務利用は禁止し、会社のアカウントを使うほうが便利になる環境（申請が早い、研修がある）を整えることが、禁止だけよりも効果的です。"}}, {"@type": "Question", "name": "社外の委託先がClaude Codeを使っている場合は", "acceptedAnswer": {"@type": "Answer", "text": "委託契約や秘密保持契約の中に、生成AIの利用に関する条項があるか確認します。委託先に、入力する情報の範囲や利用するプランを事前に報告してもらう取り決めを入れる方法があります。法務部門と相談して決めてください。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.09</span><span class="tag">セキュリティ・社内ルール</span></div>
+    <h1>Claude Codeの情報漏えい対策｜社内利用ルールの作り方と公式設定への対応づけ</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>Claude Codeを会社で使いたいと考えたとき、最初に聞かれるのは「情報漏えいは大丈夫なのか」です。情報システム部門や法務部門から「利用ルールを先に作ってほしい」と言われたものの、何を書けばよいのか分からず、そこで止まってしまうケースは少なくありません。</p>
+<p>この記事では、Claude Codeの社内利用ルールを作るときに決める項目と、その項目をAnthropicの公式ドキュメントで確認できる設定や規約にどう対応づけるかを整理します。ルールを「気をつけましょう」で終わらせず、設定で守れる部分と運用で守る部分に分けて考えるのが目的です。なお、以下の内容は2026年10月9日時点の公式ドキュメントに基づいています。仕様は変わることがあるため、策定時には必ず最新の公式情報を確認してください。</p>
+<div class="post-tldr"><strong>要点</strong><ul><li>社内ルールは「入力してよい情報」「権限」「確認の責任」「ログと保管」「事故時の連絡」の5本柱で作ると抜けにくい</li><li>Team・Enterpriseなどの商用プランでは、Claude Codeに送ったコードやプロンプトでAnthropicが生成モデルを学習することはない、と公式ドキュメントに記載されている（個人向けのFree・Pro・Maxは設定による）</li><li>標準の保持期間は商用プランで30日。ゼロデータ保持は適格なEnterpriseアカウントに個別対応で、標準のEnterpriseには含まれない</li><li>「.envを読ませない」などの禁止事項は、権限のdenyルールと管理者配布の設定（managed settings）で仕組みにできる</li></ul></div>
+
+<h2>情報漏えいの不安を分解する</h2>
+<p>「情報漏えいが心配」という懸念は、実際には性質の違う複数の心配が混ざっています。ルールを作る前に、何を心配しているのかを分けておくと、対策が具体的になります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>懸念</th><th>起きうること</th><th>主な対策の種類</th></tr></thead><tbody>
+<tr><td>入力した情報がAI提供元に残る・学習に使われる</td><td>顧客情報や未公開情報が社外のサーバーに保持される</td><td>契約プランの確認、入力禁止情報の定義</td></tr>
+<tr><td>AIが意図しない操作をする</td><td>ファイルの削除、想定外のコマンド実行</td><td>権限設定、確認の仕組み、作業フォルダの限定</td></tr>
+<tr><td>秘密情報が成果物に混ざる</td><td>APIキーやパスワードがコードや文書に書き込まれる</td><td>秘密情報ファイルの読み取り禁止、公開前の確認</td></tr>
+<tr><td>個人アカウントでの無断利用</td><td>会社が把握できない場所に業務情報が流れる</td><td>利用アカウントの統一、禁止事項の周知</td></tr>
+<tr><td>外部サービスとの連携</td><td>連携先経由で情報が出ていく</td><td>連携（MCPなど）の許可制</td></tr>
+</tbody></table></div>
+<p>表の右端を見ると分かるように、対策は「契約・規約の確認」「設定による制御」「運用ルール」の3種類に分かれます。以降は、この3種類を意識して、ルールの5本柱を順に説明します。</p>
+
+<h2>柱1：入力してよい情報を決める</h2>
+<h3>まず契約プランでデータの扱いが変わることを押さえる</h3>
+<p>Anthropicの公式ドキュメント（<a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener">Data usage</a>）では、利用者を消費者向け（Free・Pro・Max）と商用（Team・Enterprise・API）に分けて、データの扱いを説明しています。</p>
+<ul>
+<li>消費者向けプラン：モデル改善へのデータ利用を許可するかどうかを利用者が選べる設定があり、許可した場合はClaude Codeの利用データも学習に使われうる</li>
+<li>商用プラン：Anthropicは、商用規約のもとでClaude Codeに送られたコードやプロンプトを使って生成モデルを学習しない、と記載されている（顧客がモデル改善への提供を選んだ場合を除く）</li>
+</ul>
+<p>つまり、社員が個人の契約アカウントで業務の情報を扱うのと、会社が契約した商用プランのアカウントで扱うのとでは、前提が異なります。ルールの最初に「業務で使うのは会社が契約したアカウントのみ」と書く理由はここにあります。契約の詳細は、公式が案内する<a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener">商用利用規約</a>を法務部門と確認してください。</p>
+<h3>入力してよい情報を3段階で分類する</h3>
+<p>次に、自社の情報を分類します。情報管理規程がすでにある会社は、その区分に合わせるのが近道です。ない場合は、次のように3段階に分けると運用しやすくなります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>区分</th><th>例</th><th>Claude Codeへの入力</th></tr></thead><tbody>
+<tr><td>公開情報</td><td>自社サイトの掲載内容、公開済みの資料</td><td>可</td></tr>
+<tr><td>社内限定情報</td><td>社内マニュアル、業務フロー、匿名化した集計データ</td><td>対象業務と範囲を決めて可</td></tr>
+<tr><td>厳重管理情報</td><td>顧客の個人情報、未公開の財務情報、認証情報、取引先との秘密保持契約の対象情報</td><td>原則不可（例外は情報システム部門・法務の承認制）</td></tr>
+</tbody></table></div>
+<p>ここで大切なのは、禁止リストを長く書くことではなく、「迷ったときの判断と連絡先」を決めておくことです。「判断に迷う情報は入力せず、情報システム部門に確認する」という一文があるだけで、現場の迷いが減ります。</p>
+<h3>データの保持期間も規程に反映する</h3>
+<p>同じ公式ドキュメントには、商用プランの標準の保持期間は30日と記載されています。ゼロデータ保持（サーバー側に保持しない運用）は、適格なアカウントのClaude Code向けにEnterpriseで利用でき、標準のEnterpriseプランには含まれず、組織ごとに契約窓口を通じて有効化する、との説明です。また、Claude Codeのクライアントは、セッションの記録を利用者のPC内に既定で30日間、平文で保存します。社内規程には「サーバー側の保持」と「各PCに残る記録」の2か所があることを書いておくと、端末の管理ルールとつなげられます。</p>
+
+<h2>柱2：権限を絞る</h2>
+<h3>既定では「確認しながら動く」設計になっている</h3>
+<p>公式の<a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">セキュリティのページ</a>によると、Claude Codeは通常のモード（Manual mode）では読み取り専用の権限から始まり、ファイルの編集やコマンド実行が必要になるたびに利用者に確認します。起動したフォルダの外のファイルを読み書きする際にも確認が出ます。一方で、確認を減らすモードも用意されており、どのモードで使うかは利用者や組織の設定で変わります。</p>
+<p>ここから分かるのは、「ツールが勝手に何でもやる」わけではない一方で、「確認ボタンを押す人が何を承認しているか理解していること」が前提になっているという点です。公式も、提案されたコードやコマンドを承認前に確認する責任は利用者にあると書いています。研修では、承認の画面で何を見るべきかを教える必要があります。</p>
+<h3>禁止事項は権限のdenyルールで仕組みにする</h3>
+<p>公式の<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener">権限のページ</a>には、許可（allow）・確認（ask）・禁止（deny）のルールを設定できると説明されています。たとえば、ファイル読み取りの禁止ルールとして <code>Read(./.env)</code> や <code>Read(./secrets/**)</code> のような書き方が示されています。パスワードやAPIキーを置いたファイルを読ませない、という社内ルールは、文書に書くだけでなく、この設定に落とし込めます。</p>
+<p>さらに、組織全体に設定を強制する仕組みとして、管理者が配布する設定（managed settings）があります。公式では、利用者や各プロジェクトの設定では上書きできない形で、組織の標準を配れると説明されています。自動承認に近いモードを使わせない設定も、管理者の設定として用意されています。ルールを守るかどうかを個人の注意に任せず、設定で外れられないようにできる部分は、設定で固めるのが基本です。</p>
+<h3>作業するフォルダを限定する</h3>
+<p>権限の設計で次に効くのは、作業フォルダの限定です。業務データの本番フォルダではなく、コピーした作業用フォルダで試す、という運用にすると、誤った操作があっても元のデータを守れます。経理・人事のような機密性の高い部署では、特にこの運用が重要です。公式もサンドボックス（コマンドの実行範囲を隔離する機能）を用意しており、ファイルとネットワークの両面で範囲を絞れると説明しています。</p>
+
+<h2>柱3：AIの出力を誰がどう確認するか</h2>
+<p>情報漏えいとは別に、AIの出力を確認せずに使う問題があります。次の3点を決めておくと、責任の所在がはっきりします。</p>
+<ol>
+<li><strong>確認者</strong>：AIが作った成果物を、誰が確認してから業務に使うか（作成者本人か、第三者か）</li>
+<li><strong>確認の観点</strong>：数字、固有名詞、宛先、法令に関わる記述など、必ず見る箇所</li>
+<li><strong>外部に出す場合の承認</strong>：顧客への文書、公開物、契約に関わる文書は、従来どおりの承認フローを通す</li>
+</ol>
+<p>「AIが作ったから」という理由で承認の手順を省略しないことを、ルールに明記しておきます。責任の主体はAIではなく、使う社員と会社です。</p>
+
+<h2>柱4：ログと保管</h2>
+<p>誰がどのように使っているかを把握できなければ、ルール違反の発見も、事故時の調査もできません。公式のセキュリティのページでは、組織向けの対策として、管理者設定による標準の強制、承認済み権限設定のバージョン管理での共有、OpenTelemetryの指標による利用状況の監視などが挙げられています。</p>
+<p>ただし、どこまで把握できるかは契約プランによって異なります。Anthropicの<a href="https://claude.com/pricing" target="_blank" rel="noopener">公式料金ページ</a>（2026年10月9日確認）では、Teamプランに含まれない機能として監査ログやSCIMなどが挙げられ、Enterpriseプランに含まれる機能として整理されています。必要なログの粒度から、契約プランを逆算する考え方もあります。プランの違いについては「<a href="2026-10-09-claude-team-enterprise-erabikata.html">Claude TeamとEnterpriseの違いと選び方</a>」で整理しています。</p>
+<p>また、フィードバック機能（/feedbackなど）を使うと、会話の履歴がAnthropicに送られる、と公式のData usageのページに記載されています。この機能を社内で許可するかどうかも、ルールに書く項目です。公式には、環境変数で無効にできるとも書かれています。</p>
+
+<h2>柱5：事故が起きたときの連絡と対応</h2>
+<p>ルールを作っても、事故はゼロにはなりません。次のような場合に備えて、連絡先と最初の動きを決めておきます。</p>
+<ul>
+<li>入力禁止の情報を入力してしまった</li>
+<li>秘密情報を含む成果物を外部に送ってしまった</li>
+<li>意図しない操作でファイルが消えた・変更された</li>
+<li>不審なコマンドや指示を提案された</li>
+</ul>
+<p>決めておくのは、(1)誰に何分以内に連絡するか、(2)使用を止めるか、(3)情報システム部門・法務部門が事実を確認する手順、(4)必要な場合の社外・取引先への連絡判断の担当、の4点です。責めるためではなく、早く報告された人が不利にならないようにする方針を書いておくと、報告が上がりやすくなります。</p>
+
+<h2>社内ルールの構成例</h2>
+<p>ここまでの内容を、規程の目次としてまとめた例です。自社の規程のフォーマットに合わせて並べ替えてください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>章</th><th>書くこと</th><th>確認する公式情報・社内文書</th></tr></thead><tbody>
+<tr><td>1. 目的と適用範囲</td><td>対象者、対象業務、対象外の業務</td><td>導入計画、稟議書</td></tr>
+<tr><td>2. 利用できるアカウント</td><td>会社契約のアカウントのみ。個人アカウントでの業務利用禁止</td><td>契約プラン、商用利用規約</td></tr>
+<tr><td>3. 入力してよい情報</td><td>3段階の区分、迷ったときの連絡先</td><td>情報管理規程</td></tr>
+<tr><td>4. 権限と設定</td><td>禁止ファイル、作業フォルダ、モードの制限</td><td>権限のページ、managed settings</td></tr>
+<tr><td>5. 出力の確認</td><td>確認者、観点、外部公開時の承認</td><td>既存の承認フロー</td></tr>
+<tr><td>6. ログと保管</td><td>利用状況の把握、記録の保管期間、端末の管理</td><td>Data usageのページ、料金ページ</td></tr>
+<tr><td>7. 事故時の対応</td><td>連絡先、初動、報告書</td><td>インシデント対応規程</td></tr>
+<tr><td>8. 見直し</td><td>見直しの頻度、責任者</td><td>—</td></tr>
+</tbody></table></div>
+<p>ガバナンス全体の確認項目は「<a href="2026-07-18-ai-governance-checklist.html">全社展開の前に机上に置くべきガバナンスチェックリスト</a>」にも整理しています。稟議書に添付する場合は「<a href="2026-10-02-claude-code-ringi-kakikata.html">Claude Code導入の稟議書の書き方</a>」の「リスクと対策」の項目と対応づけてください。</p>
+
+<h2>ルールを作るときのよくある失敗</h2>
+<h3>禁止事項だけで作ってしまう</h3>
+<p>禁止ばかりのルールは、現場が使わなくなるか、ルールを無視して個人アカウントで使うか、のどちらかに向かいがちです。「この範囲なら使ってよい」という許可の範囲を、禁止と同じ重みで書くことが大切です。</p>
+<h3>設定の裏づけがない</h3>
+<p>「秘密情報ファイルは読ませない」と書いても、設定がなければ守られる保証がありません。ルールの各項目に、「設定で守る」「運用で守る」のどちらなのかを併記しておくと、実効性を点検できます。</p>
+<h3>作りっぱなしにする</h3>
+<p>ツールの仕様もプランの内容も更新されます。見直しの頻度（たとえば四半期ごと）と責任者をルールに書いておきます。利用が始まると現場から質問や例外の要望が出るため、その内容を次の改訂に反映する仕組みも用意しておくとよいでしょう。</p>
+<h3>情報システム部門と法務部門を最後に巻き込む</h3>
+<p>ルールの草案ができてから見せると、根本的な指摘で作り直しになることがあります。論点の整理の段階から相談しておくと、手戻りが減ります。</p>
+
+<div class="post-tldr"><strong>利用ルールの草案づくりから相談できます</strong><p style="margin:8px 0 12px;">凪AIでは、権限設計・監査ログ・利用ルール整備・承認フローの整備、および情報システム部門・法務部門との合意形成の支援を行っています。「何から書けばよいか分からない」という段階でも、状況を伺ったうえで進め方をご提案します。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">利用ルールの作り方を無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 社内ルールは導入前に完成させる必要がありますか</h3>
+<p>最初から完璧なものは不要です。試行の範囲（人数・業務・期間）に合わせた最小限のルールを先に作り、試行の結果を見ながら改訂するほうが現実的です。ただし、入力してよい情報の区分と、会社契約のアカウントのみ使うという2点は、試行の開始前に決めておきます。</p>
+<h3>Q. Claude Codeに入力した内容は学習に使われませんか</h3>
+<p>公式のData usageのページには、Team・Enterprise・APIなどの商用プランでは、商用規約のもとでClaude Codeに送られたコードやプロンプトでAnthropicが生成モデルを学習しない、と記載されています（顧客がモデル改善への提供を選んだ場合を除く）。一方、Free・Pro・Maxの個人向けプランは設定によって扱いが変わります。契約前に、ご自身の契約形態で最新の規約を確認してください。</p>
+<h3>Q. 設定はどこまで会社が強制できますか</h3>
+<p>公式では、管理者が配布する設定により、利用者や各プロジェクトの設定では上書きできない形で組織の標準を適用できると説明されています。強制できる範囲の詳細は公式の設定ドキュメントで確認してください。導入環境（Windows・Mac、社内ネットワークの構成など）によっても配布方法が変わります。</p>
+<h3>Q. 個人アカウントで使っている社員がいる場合はどうしますか</h3>
+<p>まず、実態の把握を目的に聞き取りを行い、責めずに会社契約のアカウントへ移行する流れを作ります。そのうえで、個人アカウントでの業務利用は禁止し、会社のアカウントを使うほうが便利になる環境（申請が早い、研修がある）を整えることが、禁止だけよりも効果的です。</p>
+<h3>Q. 社外の委託先がClaude Codeを使っている場合は</h3>
+<p>委託契約や秘密保持契約の中に、生成AIの利用に関する条項があるか確認します。委託先に、入力する情報の範囲や利用するプランを事前に報告してもらう取り決めを入れる方法があります。法務部門と相談して決めてください。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>情報漏えいの不安は、入力情報・権限・出力の確認・ログ・事故対応に分解して、ルールの5本柱にする</li>
+<li>データの扱いは契約プランで異なる。業務で使うのは会社契約のアカウントに限る</li>
+<li>禁止事項は、読み取り禁止のdenyルールや管理者配布の設定で、できる限り仕組みにする</li>
+<li>ルールには「設定で守る」「運用で守る」の別を併記し、見直しの頻度と責任者を決める</li>
+</ul>
+<p>導入の進め方全体は「<a href="2026-08-01-claude-code-onboarding.html">Claude Code導入初期に必ずつまずく3つの壁と越え方</a>」も参考にしてください。社内ルールの草案づくりや、情報システム部門への説明の準備について相談したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

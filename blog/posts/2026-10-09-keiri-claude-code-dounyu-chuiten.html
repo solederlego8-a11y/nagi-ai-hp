@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>経理部門にClaude Codeを導入する前に決めること｜任せる業務・入力情報・証憑保存・確認体制｜凪AI ブログ</title>
+<meta name="description" content="経理部門でClaude Codeを導入する際に、任せる業務の選び方、入力する情報と権限、電子帳簿保存法など証憑の確認、確認者の役割分担、試行の進め方をまとめます。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-keiri-claude-code-dounyu-chuiten.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="経理部門にClaude Codeを導入する前に決めること｜任せる業務・入力情報・証憑保存・確認体制｜凪AI ブログ">
+<meta property="og:description" content="経理部門でClaude Codeを導入する際に、任せる業務の選び方、入力する情報と権限、電子帳簿保存法など証憑の確認、確認者の役割分担、試行の進め方をまとめます。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-keiri-claude-code-dounyu-chuiten.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "経理部門にClaude Codeを導入する前に決めること｜任せる業務・入力情報・証憑保存・確認体制",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "description": "経理部門でClaude Codeを導入する際に、任せる業務の選び方、入力する情報と権限、電子帳簿保存法など証憑の確認、確認者の役割分担、試行の進め方をまとめます。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-keiri-claude-code-dounyu-chuiten.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "経理の担当者がプログラミングを知らなくても使えますか", "acceptedAnswer": {"@type": "Answer", "text": "Claude Codeは、日本語で目的を伝えて作業を進めさせる使い方ができるため、プログラミングの知識がなくても始められる場合があります。ただし、ターミナル（黒い画面）の操作に不慣れだと最初に戸惑う人が多いので、研修で操作の基本と、承認の画面で見るべき点を教えておく必要があります。"}}, {"@type": "Question", "name": "会計ソフトのAI機能がある場合、Claude Codeは不要ですか", "acceptedAnswer": {"@type": "Answer", "text": "会計ソフトの機能で足りる業務は、その機能を使うほうが管理しやすい場合があります。Claude Codeは、会計ソフトの外側にある手作業（複数ファイルの加工、独自の突合など）の補助に向きます。まず、現在の手作業がどこに残っているかを棚卸しして、判断してください。"}}, {"@type": "Question", "name": "請求書のPDFをAIに読ませても問題ありませんか", "acceptedAnswer": {"@type": "Answer", "text": "請求書には取引先名、金額、口座情報などが含まれます。商用プランでデータが学習に使われないことは公式ドキュメントに記載されていますが、社内の情報区分でそのデータを入力してよいかは、別に決める必要があります。また、原本の保存要件に影響しないように、原本は別に保存したまま、コピーを使って処理します。"}}, {"@type": "Question", "name": "税務や法令の判断をAIに任せることはできますか", "acceptedAnswer": {"@type": "Answer", "text": "判断を任せることはおすすめしません。AIには、集計や、確認対象の候補出しのような補助の役割を任せ、判断と責任は人が持つ前提にしてください。個別の税務の判断は、税理士に相談してください。"}}, {"@type": "Question", "name": "試行にはどのくらいの期間が必要ですか", "acceptedAnswer": {"@type": "Answer", "text": "対象業務の発生頻度によります。日次の業務なら数週間、月次の業務なら、人の結果と比較できる回数を確保するために数か月が必要になることがあります。評価の基準は、試行の前に決めておきます。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.09</span><span class="tag">部門別（経理）</span></div>
+    <h1>経理部門にClaude Codeを導入する前に決めること｜任せる業務・入力情報・証憑保存・確認体制</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>「経理の月次作業が重い。Claude Codeで自動化できないか」。経理部門からこうした声が上がり、いざ導入を相談しようとすると、情報システム部門からは情報管理の懸念、税理士や監査担当からは証憑の保存の懸念が出てきます。経理は、会社の中でも特に機密性が高く、法令の要件も多い部署のため、他の部署と同じ進め方では止まりやすい領域です。</p>
+<p>この記事では、経理部門でClaude Codeを導入する前に決めておくことを、(1)任せる業務の選び方、(2)入力する情報と権限、(3)法令・証憑への対応、(4)確認と承認の役割分担、(5)試行の進め方、の順にまとめます。経理に関わる法令や税務の判断は、個別の事情によって異なるため、この記事では一般的な確認ポイントを示すにとどめ、最終判断は税理士・監査担当などの専門家に確認してください。</p>
+<div class="post-tldr"><strong>要点</strong><ul><li>最初に任せるのは、判断を含まない「集計・変換・照合」の業務。会計処理や税務の判断は人が行う</li><li>本番の会計データや銀行情報を直接触らせず、コピーしたデータを作業用フォルダで扱う</li><li>電子取引のデータは電子帳簿保存法の要件に沿って保存する必要がある。AIで加工した後も、原本の保存と加工の記録を残す設計にする</li><li>経理・情報システム・税理士の3者で「対象業務」「入力してよい情報」「確認者」を先に合意してから試行する</li></ul></div>
+
+<h2>経理が他の部署と違う3つの点</h2>
+<p>経理部門の導入は、次の3点で他の部署と事情が異なります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>違い</th><th>理由</th><th>導入への影響</th></tr></thead><tbody>
+<tr><td>扱う情報の機密性が高い</td><td>取引先名、請求額、口座情報、従業員の給与など</td><td>入力できる情報を厳しく絞る。権限を最小にする</td></tr>
+<tr><td>正確性の要求が高い</td><td>数字の誤りが決算や税務に直結する</td><td>AIの出力を必ず人が確認する。確認の手順を固定する</td></tr>
+<tr><td>保存・証憑の法令要件がある</td><td>帳簿や取引データには保存の要件がある</td><td>自動化後も証憑が要件どおり残る設計にする</td></tr>
+</tbody></table></div>
+<p>これらは「経理には向かない」という意味ではありません。向いている業務を選び、守るべき条件を先に決めておけば、効果の出る領域があります。</p>
+
+<h2>任せる業務の選び方</h2>
+<h3>「判断」を含まない業務から始める</h3>
+<p>最初に任せる業務は、手順が決まっていて、結果が正しいかどうかを人が確認しやすいものが向いています。次のように、業務を「判断の有無」で分けます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>分類</th><th>業務の例</th><th>最初の試行に</th></tr></thead><tbody>
+<tr><td>集計・変換</td><td>複数のCSVの形式をそろえる、月次の明細を集計表にまとめる</td><td>向いている</td></tr>
+<tr><td>照合・突合</td><td>請求書の一覧と入金データの突合候補を出す、数字の不一致を洗い出す</td><td>向いている（最終確認は人）</td></tr>
+<tr><td>定型文書の作成</td><td>支払通知や確認依頼の文面のたたき台</td><td>向いている（宛先・金額は人が確認）</td></tr>
+<tr><td>分類の候補出し</td><td>経費の勘定科目の候補を提示する</td><td>候補止まりにし、決定は人が行う</td></tr>
+<tr><td>会計処理・税務の判断</td><td>科目の最終決定、税区分の判断、申告に関わる判断</td><td>任せない</td></tr>
+<tr><td>支払の実行、会計システムへの直接登録</td><td>振込、仕訳の本登録</td><td>任せない</td></tr>
+</tbody></table></div>
+<p>表の下の2行は、AIに任せない業務です。判断と実行は人が行い、AIは前段の集計や候補出しを担う、という分担にします。Claude Codeはファイルを読み、スクリプトを書いて実行できるため、複数ファイルの変換や集計のように、手作業だと時間のかかる処理の効果が出やすい領域です。</p>
+<h3>既存のシステムとの役割分担を考える</h3>
+<p>すでに経費精算や会計のクラウドサービスを使っている場合、その承認ワークフローや証跡は残すのが基本です。Claude Codeは、そうしたシステムの外側で行っている手作業（出力データの加工、突合、チェック）の補助に使う、という位置づけにすると、既存の統制を崩さずに済みます。</p>
+<h3>削減効果は、試行の前に測る</h3>
+<p>効果を示すには、試行の前に対象業務の所要時間を測っておく必要があります。他社の削減時間の数字は、業務の内容や条件が違うため、自社の見込みとして使えません。測定の方法は「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」を参照してください。</p>
+
+<h2>入力する情報と権限を決める</h2>
+<h3>経理データの区分を決める</h3>
+<p>経理の情報は、機密性の程度に差があります。次のように区分して、Claude Codeに入れてよいかどうかを決めておきます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>区分</th><th>例</th><th>入力の考え方</th></tr></thead><tbody>
+<tr><td>公開・一般情報</td><td>公開されている料金表、勘定科目の一覧</td><td>可</td></tr>
+<tr><td>社内限定（加工済み）</td><td>取引先名や個人名を符号に置き換えた集計データ</td><td>範囲を決めて可</td></tr>
+<tr><td>厳重管理</td><td>口座情報、従業員の給与・個人情報、未公開の決算情報</td><td>原則不可。例外は承認制</td></tr>
+</tbody></table></div>
+<p>実務では、元のデータから取引先名などを記号に置き換えた「作業用のコピー」を作り、それを使って集計や突合の処理を試す方法が考えられます。その場合は、置き換えの対応表は別の場所に厳重に保管し、AIには渡さないようにします。利用ルール全体の作り方は「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">Claude Codeの情報漏えい対策と社内ルールの作り方</a>」を参照してください。</p>
+<h3>本番のデータに直接触らせない</h3>
+<p>Anthropicの公式ドキュメント（<a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">Security</a>）には、Claude Codeは通常のモードでは読み取り専用から始まり、ファイルの編集やコマンドの実行の前に利用者に確認すること、起動したフォルダの外のファイルを読み書きする際にも確認を求めることが記載されています。この仕組みを前提に、経理では次の運用が考えられます。</p>
+<ul>
+<li>作業用の専用フォルダを作り、そのフォルダでClaude Codeを起動する</li>
+<li>本番の会計データや銀行のデータは、作業用フォルダにコピーしたものだけを扱う</li>
+<li>出力は新しいファイルとして保存し、元のファイルを上書きしない</li>
+<li>パスワードや認証情報を置いたファイルは、権限の禁止（deny）ルールで読み取りを禁止する</li>
+</ul>
+<p>禁止ルールの書き方などの詳細は、公式の<a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener">権限のページ</a>に記載されています。実際の設定は、情報システム部門と一緒に作ります。</p>
+
+<h2>法令・証憑への対応を確認する</h2>
+<h3>電子取引のデータの保存</h3>
+<p>国税庁の電子帳簿保存法の一問一答（<a href="https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/index.htm" target="_blank" rel="noopener">国税庁「電子帳簿保存法関係」</a>）によれば、所得税・法人税の保存義務者が、注文書や領収書などに通常記載される事項を電磁的方式でやり取りした場合、その取引情報を電磁的記録で保存する義務があります。請求書をメールやクラウドサービスで受け取っている場合は、この対象になりえます。</p>
+<p>AIを使った自動化との関係で確認しておきたいのは次の点です。</p>
+<ul>
+<li>受け取った請求書などの<strong>原本のデータが、要件に沿って保存される</strong>流れが維持されているか</li>
+<li>AIで加工・集計したファイルは、原本とは別の「作業用のデータ」として扱い、原本を置き換えていないか</li>
+<li>どのデータを、いつ、どの手順で加工したかを後から説明できるか</li>
+</ul>
+<p>具体的な保存要件は、取引の種類や会社の状況で異なるうえ、改正も行われます。最新の要件は国税庁の資料で確認し、自社の運用が要件を満たすかは、税理士や監査担当に確認してください。この記事は、税務の個別の助言ではありません。</p>
+<h3>適格請求書（インボイス）の確認</h3>
+<p>請求書の記載事項の確認や、取引先の登録番号の突合のような作業は、AIによる補助の候補になりやすい業務です。ただし、要件を満たすかどうかの最終判断は人が行います。確認の基準を、手順書として文書化しておくと、確認者の間で判断がぶれにくくなります。</p>
+<h3>内部統制の観点</h3>
+<p>上場企業やその子会社、監査を受ける会社では、業務の変更が内部統制に影響することがあります。自動化の導入前に、監査担当や内部統制の担当者に、対象業務と変更の内容を共有しておくと、後から指摘を受けるリスクが下がります。</p>
+
+<h2>確認と承認の役割分担</h2>
+<p>経理で特に重要なのは、AIの出力を誰が、どの基準で確認するかです。次のような分担を、試行の前に決めます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>工程</th><th>担当</th><th>確認すること</th></tr></thead><tbody>
+<tr><td>作業の依頼（指示の作成）</td><td>経理担当者</td><td>対象データ、出力の形式、禁止事項を指示に書く</td></tr>
+<tr><td>AIによる処理</td><td>Claude Code</td><td>処理の内容は記録に残す</td></tr>
+<tr><td>出力の確認（一次）</td><td>経理担当者本人</td><td>件数、合計金額、サンプルの数件を手計算で照合</td></tr>
+<tr><td>出力の確認（二次）</td><td>経理の責任者</td><td>一次確認の記録と、例外の処理を確認</td></tr>
+<tr><td>会計システムへの反映・支払</td><td>従来の担当者と承認者</td><td>従来の承認フローを維持する</td></tr>
+</tbody></table></div>
+<p>一次確認では、「合計が合っている」だけでなく、件数、境界の日付、例外のデータ（欠損、重複）を見る観点を、チェックリストにします。AIの処理を再実行できるように、指示の文面とスクリプトを保存しておくと、後から説明しやすくなります。</p>
+
+<h2>試行の進め方</h2>
+<ol>
+<li><strong>対象業務を1〜2件に絞る</strong>：月次で発生し、手順が決まっているもの</li>
+<li><strong>3者で合意する</strong>：経理、情報システム、税理士（または監査担当）で、対象業務・入力する情報・確認者を決める</li>
+<li><strong>基準値を測る</strong>：現状の所要時間、手戻りの回数を記録する</li>
+<li><strong>作業用データで試す</strong>：本番とは別のコピーデータで、まず1回分を試す</li>
+<li><strong>人の結果と比べる</strong>：同じデータを従来の方法でも処理し、結果が一致するかを確認する</li>
+<li><strong>評価する</strong>：精度、所要時間、確認の手間を、基準値と比べて判断する</li>
+</ol>
+<p>月次の業務は、評価に必要な回数を取るために数か月かかります。試行の期間や稟議の進め方は「<a href="2026-10-02-claude-code-ringi-kakikata.html">Claude Code導入の稟議書の書き方</a>」を参照してください。ライセンスの選び方は「<a href="2026-10-09-claude-team-enterprise-erabikata.html">Claude TeamとEnterpriseの違いと選び方</a>」にまとめています。</p>
+
+<h2>経理でよくある失敗</h2>
+<h3>最初から会計システムの登録まで自動化しようとする</h3>
+<p>登録や支払の自動化は、誤りの影響が大きく、取り消しにも手間がかかります。最初は、集計や突合の「結果をファイルで出す」ところまでにとどめます。</p>
+<h3>確認の手順がなく、AIの出力をそのまま使う</h3>
+<p>AIの出力に誤りがないとは言い切れません。確認者と確認の観点が決まっていない状態で運用すると、誤りが見過ごされます。</p>
+<h3>情報システム部門と税理士を後から巻き込む</h3>
+<p>導入の後半で懸念が出ると、作り直しになります。草案の段階で、どこまで入力してよいか、証憑の保存は問題ないかを聞いておくのが近道です。</p>
+
+<div class="post-tldr"><strong>経理部門の導入計画づくりを支援します</strong><p style="margin:8px 0 12px;">凪AIでは、対象業務の棚卸し、権限と利用ルールの設計、試行の計画、情報システム部門・法務部門との合意形成を支援しています。業務エージェントの開発も、成果物単位で承ります。経理部門での導入をご検討の場合は、お気軽にご相談ください（無料）。</p><a href="../../contact.html#form" class="btn btn-primary">経理業務の自動化を無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 経理の担当者がプログラミングを知らなくても使えますか</h3>
+<p>Claude Codeは、日本語で目的を伝えて作業を進めさせる使い方ができるため、プログラミングの知識がなくても始められる場合があります。ただし、ターミナル（黒い画面）の操作に不慣れだと最初に戸惑う人が多いので、研修で操作の基本と、承認の画面で見るべき点を教えておく必要があります。</p>
+<h3>Q. 会計ソフトのAI機能がある場合、Claude Codeは不要ですか</h3>
+<p>会計ソフトの機能で足りる業務は、その機能を使うほうが管理しやすい場合があります。Claude Codeは、会計ソフトの外側にある手作業（複数ファイルの加工、独自の突合など）の補助に向きます。まず、現在の手作業がどこに残っているかを棚卸しして、判断してください。</p>
+<h3>Q. 請求書のPDFをAIに読ませても問題ありませんか</h3>
+<p>請求書には取引先名、金額、口座情報などが含まれます。商用プランでデータが学習に使われないことは公式ドキュメントに記載されていますが、社内の情報区分でそのデータを入力してよいかは、別に決める必要があります。また、原本の保存要件に影響しないように、原本は別に保存したまま、コピーを使って処理します。</p>
+<h3>Q. 税務や法令の判断をAIに任せることはできますか</h3>
+<p>判断を任せることはおすすめしません。AIには、集計や、確認対象の候補出しのような補助の役割を任せ、判断と責任は人が持つ前提にしてください。個別の税務の判断は、税理士に相談してください。</p>
+<h3>Q. 試行にはどのくらいの期間が必要ですか</h3>
+<p>対象業務の発生頻度によります。日次の業務なら数週間、月次の業務なら、人の結果と比較できる回数を確保するために数か月が必要になることがあります。評価の基準は、試行の前に決めておきます。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>経理では、判断を含まない「集計・変換・照合」から始め、会計処理・税務の判断と支払の実行は人が行う</li>
+<li>本番データに触らせず、作業用のコピーと専用フォルダで扱う。禁止ファイルは権限のルールで読み取りを止める</li>
+<li>電子取引データの保存要件は国税庁の資料で確認し、原本の保存と加工の記録を残す。判断は税理士・監査担当に確認する</li>
+<li>経理・情報システム・税理士の3者で、対象業務・入力情報・確認者を先に合意する</li>
+</ul>
+<p>経理部門での進め方について相談したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

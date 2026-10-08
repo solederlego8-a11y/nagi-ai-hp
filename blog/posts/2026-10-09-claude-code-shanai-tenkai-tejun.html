@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Codeの試行後に社内展開する手順｜拡大の判断基準・展開の順番・標準の整え方｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeの試行が終わった後に、拡大の判断基準、部署ごとの展開の順番、権限・ルール・研修など整えるもの、展開後の見直しまでを段階ごとに整理します。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-shanai-tenkai-tejun.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Codeの試行後に社内展開する手順｜拡大の判断基準・展開の順番・標準の整え方｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeの試行が終わった後に、拡大の判断基準、部署ごとの展開の順番、権限・ルール・研修など整えるもの、展開後の見直しまでを段階ごとに整理します。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-shanai-tenkai-tejun.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Codeの試行後に社内展開する手順｜拡大の判断基準・展開の順番・標準の整え方",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "description": "Claude Codeの試行が終わった後に、拡大の判断基準、部署ごとの展開の順番、権限・ルール・研修など整えるもの、展開後の見直しまでを段階ごとに整理します。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-shanai-tenkai-tejun.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "試行が終わってから、全社展開まで何か月かかりますか", "acceptedAnswer": {"@type": "Answer", "text": "会社の規模、部署の数、整備が必要なルールの量によって大きく異なるため、一般的な期間は示せません。段階ごとに「次に進む条件」を決め、条件を満たしたら進む形にすると、期間は後から決まります。目安がほしい場合は、まず自社の部署数と、各段階にかかる準備を書き出して積み上げてください。"}}, {"@type": "Question", "name": "部署から「うちもやりたい」と言われたら、すぐ入れてよいですか", "acceptedAnswer": {"@type": "Answer", "text": "需要があるのは良い兆候ですが、標準のルール、研修、相談窓口が整う前に個別対応すると、事故のもとになります。「展開の順番は決まっており、準備ができ次第入る」と伝え、準備の間は、研修への先行参加や、よくある質問集の共有のような、リスクの低い支援から始めると良いでしょう。"}}, {"@type": "Question", "name": "非エンジニアの部署でも展開できますか", "acceptedAnswer": {"@type": "Answer", "text": "Claude Codeは日本語で指示できますが、ターミナル（黒い画面）の操作に慣れていない人は最初に戸惑いやすいです。研修で操作の基本と承認の画面の見方を教え、部署内の推進役を置くことで、非エンジニアの部署でも展開しやすくなります。対象業務の選び方は、部署ごとに検討します。"}}, {"@type": "Question", "name": "展開後に効果が見えなくなった場合はどうしますか", "acceptedAnswer": {"@type": "Answer", "text": "測定の仕組みが試行限りになっていることが多いです。対象業務ごとに、所要時間や件数を継続して記録する仕組みを置き、見直しの会議で確認します。使われていない部署には、原因（業務が合わない、研修不足、ルールが厳しい）を聞き取って対処します。"}}, {"@type": "Question", "name": "外部の支援会社は、どの段階で使うのが効果的ですか", "acceptedAnswer": {"@type": "Answer", "text": "自社だけで標準の整備や研修が回せない場合、第1波の前の「標準を整える段階」と、研修の設計で外部の支援を使う会社があります。選び方は「Claude Codeの導入支援会社の選び方」を参照してください。費用の見積もりは「Claude Codeの法人導入にかかる費用の内訳」にまとめています。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.09</span><span class="tag">社内展開</span></div>
+    <h1>Claude Codeの試行後に社内展開する手順｜拡大の判断基準・展開の順番・標準の整え方</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>Claude Codeの試行が一段落し、「効果はありそうだ。次は他の部署にも広げたい」という段階に入ったとき、多くの会社が次の壁にぶつかります。試行は、意欲のある人が少人数で進めたから回った面があり、同じやり方では広げられないからです。「誰に、どの順番で、何を整えてから広げるのか」が決まっていないと、拡大が止まったり、ルールがないまま使う人が増えたりします。</p>
+<p>この記事では、試行が終わった後に社内展開を進める手順を、(1)拡大するかどうかの判断、(2)展開の単位と順番、(3)標準として整えるもの、(4)研修と相談窓口、(5)展開後の見直し、の流れで整理します。導入の初期段階でつまずきやすい点は「<a href="2026-08-01-claude-code-onboarding.html">Claude Code導入初期に必ずつまずく3つの壁と越え方</a>」、試行の稟議は「<a href="2026-10-02-claude-code-ringi-kakikata.html">Claude Code導入の稟議書の書き方</a>」にまとめています。この記事は、その次の段階を扱います。</p>
+<div class="post-tldr"><strong>要点</strong><ul><li>拡大するかどうかは、試行の前に決めた判断基準（時間の削減、継続利用、ルール違反の有無）に照らして決める</li><li>展開は全社一斉ではなく、部署や業務の単位で順番に広げる。各段階で「次に進む条件」を決める</li><li>広げる前に、利用ルール・権限の標準設定・プロジェクトごとの指示書（CLAUDE.md）・研修・相談窓口を標準品として整える</li><li>展開後は、利用状況と失敗例を定期的に集め、ルールと標準を更新する担当を置く</li></ul></div>
+
+<h2>展開で起きやすい問題</h2>
+<p>試行と展開では、前提が変わります。試行では、使う人は自分から手を挙げた人で、困ったときは推進担当に直接聞けました。展開では、使う人の中に「言われたから使う人」が増え、推進担当だけでは質問を受けきれなくなります。起きやすい問題を整理します。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>問題</th><th>原因</th><th>先に整えること</th></tr></thead><tbody>
+<tr><td>使う人と使わない人の差が広がる</td><td>業務と結びついた使い方が共有されていない</td><td>部署ごとの活用例、研修</td></tr>
+<tr><td>ルールを知らずに使う人が出る</td><td>周知が一度きりで、新しい人に届かない</td><td>利用ルールの周知の仕組み、入社時の案内</td></tr>
+<tr><td>質問が推進担当に集中する</td><td>相談窓口が個人になっている</td><td>相談窓口の設置、よくある質問集</td></tr>
+<tr><td>設定がバラバラになる</td><td>各自が自己流で設定している</td><td>標準の権限設定、指示書のひな形</td></tr>
+<tr><td>効果が見えなくなる</td><td>測定の方法が試行限りだった</td><td>展開後も続く測定の仕組み</td></tr>
+</tbody></table></div>
+<p>これらは、広げる前に準備できることがほとんどです。次の章から、順に説明します。</p>
+
+<h2>手順1：拡大してよいかを判断する</h2>
+<h3>試行前に決めた基準で判断する</h3>
+<p>試行の前に、「どうなったら拡大し、どうなったら中止するか」を決めておくことが、拡大の判断を楽にします。基準がないまま試行が終わると、「なんとなく良さそうだから広げる」「懸念が出たので止める」という感覚的な判断になります。基準の例を示します。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>観点</th><th>確認すること</th><th>記録するもの</th></tr></thead><tbody>
+<tr><td>効果</td><td>対象業務の所要時間が、試行前の基準値から減ったか</td><td>試行前後の所要時間、件数</td></tr>
+<tr><td>定着</td><td>試行の参加者が、期間の終わりまで使い続けたか</td><td>利用者数、継続して使った人数</td></tr>
+<tr><td>品質</td><td>AIの出力の確認で、重大な誤りが見つかっていないか</td><td>確認で直した箇所、手戻りの回数</td></tr>
+<tr><td>安全</td><td>入力禁止の情報の入力や、ルール違反がなかったか</td><td>ルール違反の件数、ヒヤリハット</td></tr>
+<tr><td>費用</td><td>試行の費用が、見込みの範囲に収まったか</td><td>ライセンス、研修、社内工数の実績</td></tr>
+</tbody></table></div>
+<p>効果の測り方は「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」を参照してください。他社の削減時間の数字ではなく、自社の測定値で判断することが重要です。</p>
+<h3>参加者の声も集める</h3>
+<p>数字に出ない情報も、展開の準備には役に立ちます。次の点を、参加者から聞いておきます。</p>
+<ul>
+<li>どの場面で役に立ち、どの場面で役に立たなかったか</li>
+<li>つまずいたところ、質問が多かったところ</li>
+<li>ルールが厳しすぎる・足りないと感じた点</li>
+<li>他の部署に広げるなら、何を整えておくべきか</li>
+</ul>
+<p>これらは、研修の内容や標準の設定、よくある質問集の材料になります。</p>
+
+<h2>手順2：展開の単位と順番を決める</h2>
+<h3>全社一斉ではなく、段階的に広げる</h3>
+<p>展開は、一度に全員へ広げるのではなく、いくつかの段階に分けます。各段階で、次に進む条件を決めておきます。段階の分け方の一例を示します。実際の人数や期間は、会社の規模や業務に応じて自社で決めてください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>段階</th><th>対象</th><th>目的</th><th>次に進む条件の例</th></tr></thead><tbody>
+<tr><td>試行（完了）</td><td>1部署の少人数</td><td>効果と安全性の確認</td><td>拡大の判断基準を満たす</td></tr>
+<tr><td>第1波</td><td>試行の部署全体＋近い業務の1〜2部署</td><td>標準の整備、研修・相談窓口の検証</td><td>質問の傾向が把握でき、ルール違反がない</td></tr>
+<tr><td>第2波</td><td>希望する部署、または業務が類似する部署</td><td>部署横断の活用例づくり</td><td>各部署で対象業務が決まり、効果の測定が回っている</td></tr>
+<tr><td>全社展開</td><td>対象を希望する全部署</td><td>通常の運用に移行</td><td>相談窓口と見直しの仕組みが定常運用になっている</td></tr>
+</tbody></table></div>
+<p>すべての部署に必ず展開する必要はありません。Claude Codeの効果が出やすい業務は、部署によって異なります。効果の出る業務が見つからない部署に、無理に広げる必要はありません。</p>
+<h3>広げる部署の選び方</h3>
+<p>第1波、第2波の部署は、次の観点で選びます。</p>
+<ul>
+<li><strong>業務が試行に近い</strong>：試行の知見を使い回しやすい</li>
+<li><strong>推進役になる人がいる</strong>：部署内で質問を受けられる人がいる</li>
+<li><strong>部門長が前向き</strong>：担当者の時間を使うことに合意がある</li>
+<li><strong>扱う情報の機密性が極端に高くない</strong>：最初の波は、リスクの低い部署から始める</li>
+</ul>
+<p>経理や人事のように機密性が高い部署は、権限と入力情報の整理を先に済ませてから、後の波で入れるのが安全です。経理の場合の確認事項は「<a href="2026-10-09-keiri-claude-code-dounyu-chuiten.html">経理部門にClaude Codeを導入する前に決めること</a>」にまとめています。</p>
+
+<h2>手順3：標準として整えるもの</h2>
+<p>展開する前に、各部署が共通で使える「標準品」を用意します。これが、各部署がバラバラに設定して事故が起きるのを防ぎます。</p>
+<h3>利用ルール</h3>
+<p>入力してよい情報、使ってよいアカウント、確認の責任、事故時の連絡先を、1つの文書にまとめます。試行時のルールを展開向けに更新します。作り方は「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">Claude Codeの情報漏えい対策と社内ルールの作り方</a>」を参照してください。</p>
+<h3>権限の標準設定</h3>
+<p>Anthropicの公式ドキュメント（<a href="https://code.claude.com/docs/en/security" target="_blank" rel="noopener">Security</a>）には、組織の標準を強制する管理者設定（managed settings）、承認済みの権限設定をバージョン管理で共有する方法、利用状況をOpenTelemetryの指標で監視する方法が、チーム向けの対策として挙げられています。展開では、これらを使って、全社共通の「禁止するファイル」「確認を必須にする操作」を標準として配ります。部署固有の設定は、標準に上乗せする形にします。</p>
+<h3>プロジェクトごとの指示書（CLAUDE.md）</h3>
+<p>Claude Codeでは、プロジェクトのルールや前提をCLAUDE.mdというファイルに書いておく運用がよく使われます。部署の業務ごとに、書き方のひな形を用意しておくと、各部署が自分の業務のルールを書き込みやすくなります。ひな形には、業務の目的、使ってよい資料、禁止事項、出力の形式、確認者を入れます。</p>
+<h3>契約プランと管理機能</h3>
+<p>利用者が増えると、アカウントの追加・削除の手間が増えます。プランによって利用できる管理機能が異なるため、展開の規模に合わせて見直します。公式の<a href="https://claude.com/pricing" target="_blank" rel="noopener">料金ページ</a>（2026年10月9日確認）では、SCIMや監査ログなどがEnterpriseの機能として整理されています。判断の軸は「<a href="2026-10-09-claude-team-enterprise-erabikata.html">Claude TeamとEnterpriseの違いと選び方</a>」を参照してください。</p>
+
+<h2>手順4：研修と相談窓口を用意する</h2>
+<h3>研修は「業務に結びつけた内容」にする</h3>
+<p>機能の説明だけの研修では、現場で使われません。部署ごとの対象業務を使った実習を中心にします。研修に入れる内容の例です。</p>
+<ol>
+<li>利用ルールの説明（入力してよい情報、承認の画面で見るべき点）</li>
+<li>基本操作（起動、作業フォルダの指定、指示の出し方）</li>
+<li>自部署の業務を使った実習</li>
+<li>出力の確認の仕方（誤りを見つける観点）</li>
+<li>困ったときの相談先</li>
+</ol>
+<p>研修に助成金が使えるかどうかは、制度の要件によります。「<a href="2026-10-02-claude-code-kenshu-joseikin.html">Claude Code研修に人材開発支援助成金は使える？</a>」で整理しています。</p>
+<h3>相談窓口を個人から仕組みにする</h3>
+<p>質問が推進担当の個人に集中しないよう、相談窓口を作ります。次の3層で考えると運用しやすくなります。</p>
+<ul>
+<li><strong>よくある質問集</strong>：試行で出た質問と回答をまとめる</li>
+<li><strong>部署内の推進役</strong>：各部署に1〜2名置き、日常の質問を受ける</li>
+<li><strong>全社の相談窓口</strong>：推進役で解決しないこと、ルールに関わることを受ける</li>
+</ul>
+<p>推進役には、業務の時間の一部を使うことを、部門長が了承しておく必要があります。担当者の善意に頼ると、続きません。</p>
+
+<h2>手順5：展開後の見直しを仕組みにする</h2>
+<p>展開して終わりではなく、見直しの仕組みを置きます。見直しの頻度は、たとえば月1回など、自社で決めてください。見直しで集める内容の例です。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>集めるもの</th><th>集め方</th><th>反映先</th></tr></thead><tbody>
+<tr><td>利用状況（利用者数、継続して使っている人）</td><td>管理画面、利用状況の指標</td><td>展開の優先順位、研修の対象</td></tr>
+<tr><td>活用例と失敗例</td><td>部署の推進役から報告</td><td>よくある質問集、研修教材</td></tr>
+<tr><td>ルール違反とヒヤリハット</td><td>相談窓口、報告</td><td>利用ルール、標準設定</td></tr>
+<tr><td>効果の測定値</td><td>各部署の所要時間の記録</td><td>経営層への報告、拡大の判断</td></tr>
+<tr><td>仕様やプランの変更</td><td>公式ドキュメントの確認</td><td>ルール、契約、標準設定</td></tr>
+</tbody></table></div>
+<p>見直しの担当者と、決定権者を決めておくと、更新が止まりません。ツールの仕様や契約プランは変更されることがあるため、公式の情報を定期的に確認する担当も決めておきます。</p>
+
+<h2>展開でよくある失敗</h2>
+<h3>試行の成功を、そのまま全社に当てはめる</h3>
+<p>試行の成功は、意欲のある少人数と、業務の相性によるものかもしれません。他の部署でも同じ効果が出るとは限らないため、部署ごとに対象業務を決め、効果を測り直します。</p>
+<h3>標準を整えないまま広げる</h3>
+<p>ルール、権限、研修が整っていない状態で人数だけ増やすと、事故の確率が上がります。広げるスピードより、標準の整備を優先します。</p>
+<h3>強制的に使わせる</h3>
+<p>使うこと自体が目的化すると、形だけの利用が増えます。使うかどうかは、業務の価値で判断してもらい、使いたい人が使える環境を整えるのが基本です。</p>
+<h3>担当者が一人で抱え込む</h3>
+<p>展開の推進を特定の個人に任せると、その人が異動や退職をした時点で止まります。役割を分担し、手順を文書にしておきます。</p>
+
+<div class="post-tldr"><strong>試行の次の段階を、伴走で支援します</strong><p style="margin:8px 0 12px;">凪AIでは、導入伴走コンサルティング（標準6か月・4ステップ）で、業務の棚卸しからPoC、運用テスト、全社展開・定着までを支援しています。研修、ガバナンス・セキュリティ設計、導入後の内製化サポート（月次伴走）も含め、状況に合わせた組み合わせをご提案します。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">社内展開の進め方を無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 試行が終わってから、全社展開まで何か月かかりますか</h3>
+<p>会社の規模、部署の数、整備が必要なルールの量によって大きく異なるため、一般的な期間は示せません。段階ごとに「次に進む条件」を決め、条件を満たしたら進む形にすると、期間は後から決まります。目安がほしい場合は、まず自社の部署数と、各段階にかかる準備を書き出して積み上げてください。</p>
+<h3>Q. 部署から「うちもやりたい」と言われたら、すぐ入れてよいですか</h3>
+<p>需要があるのは良い兆候ですが、標準のルール、研修、相談窓口が整う前に個別対応すると、事故のもとになります。「展開の順番は決まっており、準備ができ次第入る」と伝え、準備の間は、研修への先行参加や、よくある質問集の共有のような、リスクの低い支援から始めると良いでしょう。</p>
+<h3>Q. 非エンジニアの部署でも展開できますか</h3>
+<p>Claude Codeは日本語で指示できますが、ターミナル（黒い画面）の操作に慣れていない人は最初に戸惑いやすいです。研修で操作の基本と承認の画面の見方を教え、部署内の推進役を置くことで、非エンジニアの部署でも展開しやすくなります。対象業務の選び方は、部署ごとに検討します。</p>
+<h3>Q. 展開後に効果が見えなくなった場合はどうしますか</h3>
+<p>測定の仕組みが試行限りになっていることが多いです。対象業務ごとに、所要時間や件数を継続して記録する仕組みを置き、見直しの会議で確認します。使われていない部署には、原因（業務が合わない、研修不足、ルールが厳しい）を聞き取って対処します。</p>
+<h3>Q. 外部の支援会社は、どの段階で使うのが効果的ですか</h3>
+<p>自社だけで標準の整備や研修が回せない場合、第1波の前の「標準を整える段階」と、研修の設計で外部の支援を使う会社があります。選び方は「<a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">Claude Codeの導入支援会社の選び方</a>」を参照してください。費用の見積もりは「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">Claude Codeの法人導入にかかる費用の内訳</a>」にまとめています。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>拡大の判断は、試行の前に決めた基準（効果・定着・品質・安全・費用）で行う</li>
+<li>展開は段階的に進め、各段階で次に進む条件を決める。効果の出ない部署に無理に広げない</li>
+<li>広げる前に、利用ルール、権限の標準設定、CLAUDE.mdのひな形、研修、相談窓口を整える</li>
+<li>展開後は、利用状況・活用例・ルール違反・効果を定期的に集め、標準を更新する担当を置く</li>
+</ul>
+<p>社内展開の計画づくりや、標準の整備について相談したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

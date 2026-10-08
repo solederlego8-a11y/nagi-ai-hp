@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude TeamとEnterpriseの違いと選び方｜法人契約前に確認する管理機能・料金の考え方｜凪AI ブログ</title>
+<meta name="description" content="Claude TeamプランとEnterpriseプランの違いを、Anthropic公式料金ページ（2026年10月9日時点）の記載をもとに整理。管理機能・料金の考え方・契約前の確認事項を解説します。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-team-enterprise-erabikata.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude TeamとEnterpriseの違いと選び方｜法人契約前に確認する管理機能・料金の考え方｜凪AI ブログ">
+<meta property="og:description" content="Claude TeamプランとEnterpriseプランの違いを、Anthropic公式料金ページ（2026年10月9日時点）の記載をもとに整理。管理機能・料金の考え方・契約前の確認事項を解説します。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-team-enterprise-erabikata.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude TeamとEnterpriseの違いと選び方｜法人契約前に確認する管理機能・料金の考え方",
+  "datePublished": "2026-10-09",
+  "dateModified": "2026-10-09",
+  "description": "Claude TeamプランとEnterpriseプランの違いを、Anthropic公式料金ページ（2026年10月9日時点）の記載をもとに整理。管理機能・料金の考え方・契約前の確認事項を解説します。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-team-enterprise-erabikata.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "人数が少なくてもEnterpriseは契約できますか", "acceptedAnswer": {"@type": "Answer", "text": "公式ページには、Enterpriseの人数の下限・上限は明記されていません。契約の条件は変わることがあるため、Anthropicの窓口で確認してください。小規模での試行なら、まず公式ページに「2〜150人向け」と記載のあるTeamが検討しやすい構成です。"}}, {"@type": "Question", "name": "TeamからEnterpriseに後から切り替えられますか", "acceptedAnswer": {"@type": "Answer", "text": "切り替えの手順や条件は、公式のヘルプセンターで確認する必要があります。この記事では、切り替えの可否を断定しません。将来の移行を見込む場合は、契約前にAnthropicの窓口で確認することをおすすめします。"}}, {"@type": "Question", "name": "Premium席はどんな人に割り当てればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "公式ページでは、Premium席はStandard席の5倍の使用量と記載されています。Claude Codeを長時間使う利用者や、使用量が多い業務の担当者が候補になります。最初はStandard席で始め、使用量の上限に頻繁に達する人にPremiumを割り当てる、という運用が考えられます。割り当ての基準は、試行で測定した使用状況から決めます。"}}, {"@type": "Question", "name": "円換算の費用はどう見積もればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "公式の料金はドル建てです。稟議書には、ドルでの単価を取得日つきで記載し、社内の為替レートの基準で円換算した金額と、変動を見込んだ上限額を併記する方法があります。経理部門の方針に合わせてください。"}}, {"@type": "Question", "name": "他社のクラウド経由（Bedrockなど）で使う方法もありますか", "acceptedAnswer": {"@type": "Answer", "text": "公式のData usageのページには、Amazon Bedrockなどの第三者のプラットフォーム経由で利用する場合の記載があります。この場合、データの扱いや管理機能が、Claude.comのTeam・Enterpriseとは異なります。この記事では、Claude.comのTeamとEnterpriseの比較に絞っています。クラウド経由の利用を検討する場合は、クラウド事業者側の契約と公式ドキュメントを確認してください。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.09</span><span class="tag">プラン選定</span></div>
+    <h1>Claude TeamとEnterpriseの違いと選び方｜法人契約前に確認する管理機能・料金の考え方</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p>Claude Codeを会社で契約しようとすると、料金ページで「Team」と「Enterprise」の2つのプランが並んでいることに気づきます。どちらもClaude Codeが含まれていますが、管理機能や課金の仕組みが違います。「何人から何を選べばよいのか」「あとから切り替えられるのか」と迷って、稟議が止まってしまうことも少なくありません。</p>
+<p>この記事では、Anthropicの公式料金ページで確認できる範囲（2026年10月9日時点）の情報を使い、TeamプランとEnterpriseプランの違い、自社の条件から選ぶための判断表、契約前に確認しておくことを整理します。料金やプランの内容は変更されることがあるため、契約前には必ず<a href="https://claude.com/pricing" target="_blank" rel="noopener">公式の料金ページ</a>で最新の内容を確認してください。この記事の金額は取得時点のものであり、為替によって円換算額も変わります。</p>
+<div class="post-tldr"><strong>要点（2026年10月9日時点の公式料金ページより）</strong><ul><li>Team：Standard席は年払いで月20ドル／席、月払いで25ドル。Premium席は年払い100ドル、月払い125ドル。「2〜150人のチーム向け」と記載。Claude Codeを含む</li><li>Enterprise：1席あたり月20ドル（年払い）に加え、使用量がAPI料金で課金される。年払いのみ。Claude Codeを含む</li><li>SCIM（ユーザーの自動管理）、監査ログ、ロールベースのアクセス制御、カスタムのデータ保持などは、公式ページ上でEnterpriseの機能として整理されている</li><li>選ぶ基準は人数だけでなく、「管理・監査に何が必要か」と「使用量をどう見積もるか」</li></ul></div>
+
+<h2>TeamとEnterpriseの違いを一覧で見る</h2>
+<p>公式の料金ページの記載を、比較しやすいように表にしました（2026年10月9日時点）。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>Team</th><th>Enterprise</th></tr></thead><tbody>
+<tr><td>対象</td><td>2〜150人のチーム向けと記載</td><td>人数の上限の記載なし</td></tr>
+<tr><td>席の料金</td><td>Standard：年払い月20ドル／月払い月25ドル。Premium：年払い月100ドル／月払い月125ドル</td><td>1席月20ドル（年払い）＋使用量をAPI料金で課金</td></tr>
+<tr><td>支払いサイクル</td><td>月払い・年払いのどちらも可</td><td>年払いのみ（FAQの記載）</td></tr>
+<tr><td>Claude Code</td><td>含む</td><td>含む</td></tr>
+<tr><td>SSO、ドメイン確認、利用状況分析、集中課金・管理</td><td>含む</td><td>含む</td></tr>
+<tr><td>ドメインキャプチャ、ロールベースのアクセス、SCIM</td><td>含まない</td><td>含む</td></tr>
+<tr><td>監査ログ、Compliance API</td><td>含まない</td><td>含む</td></tr>
+<tr><td>カスタムのデータ保持、HIPAA対応の提供</td><td>含まない</td><td>含む</td></tr>
+</tbody></table></div>
+<p>表のとおり、TeamとEnterpriseの大きな違いは、(1)「統制と監査の機能」と(2)「料金の考え方」の2つです。席の単価だけを比べても、全体の費用は分かりません。次の章から順に見ていきます。</p>
+
+<h2>違い1：統制と監査の機能</h2>
+<h3>Teamで足りるのはどんな状況か</h3>
+<p>Teamには、SSO（既存の認証基盤でのログイン）、ドメイン確認、中央の請求・管理、利用状況の分析、組織全体へのスキル配布、コネクタの管理者制御が含まれています。小規模から中規模で、ログインの統一と利用状況の把握ができれば十分、という会社には、機能面でTeamが検討しやすい構成です。</p>
+<h3>Enterpriseが必要になるのはどんな状況か</h3>
+<p>公式ページでEnterpriseの機能として挙げられているのは、次の項目です。</p>
+<ul>
+<li><strong>SCIM</strong>：人事システムや認証基盤と連携して、入社・異動・退職に応じて利用者を自動で追加・削除する</li>
+<li><strong>ロールベースのアクセス</strong>：役割ごとに権限を分ける</li>
+<li><strong>監査ログ、Compliance API</strong>：操作の記録を残し、監査や調査に使う</li>
+<li><strong>カスタムのデータ保持</strong>：データの保持期間を組織の要件に合わせる</li>
+</ul>
+<p>これらが「社内規程や監査の要件として必須かどうか」が、プランを分ける最大の判断材料になります。たとえば、退職者のアカウントを遅滞なく止めることが規程で求められていて、手作業では回らない人数なら、SCIMが必要になります。監査部門から利用の記録を求められる見込みがあるなら、監査ログが必要です。逆に、これらの要件がなく、試行の段階で人数も少ないなら、必須とは言えません。</p>
+<p>なお、データの保持については、公式のData usageのページに、商用プランの標準の保持期間は30日であること、ゼロデータ保持は適格なアカウントのClaude Code向けにEnterpriseで利用でき、標準のEnterpriseには含まれず組織ごとに有効化されることが記載されています。厳格なデータ保持の要件がある場合は、契約前にAnthropicの窓口で確認してください。</p>
+
+<h2>違い2：料金の考え方</h2>
+<h3>Teamは「席の料金」で見積もりやすい</h3>
+<p>Teamは、席ごとの月額が決まっているため、人数に応じて費用を計算できます。公式ページの記載では、Standard席は、Proプランより多い使用量が含まれ、Premium席はStandard席の5倍の使用量と記載されています。使用量が多いと見込まれる利用者にはPremiumを割り当てる、という使い分けができます。</p>
+<p>例として、Standard席を年払いで10席契約する場合の席料金は、公式の単価（月20ドル）から、月200ドルと計算できます（年払い。為替や税は別）。これはあくまで計算例であり、実際の費用は人数、席の種類、支払い方法、為替で変わります。</p>
+<h3>Enterpriseは「席料金＋使用量」で、見積もりに幅が出る</h3>
+<p>公式ページでは、Enterpriseは1席あたり月20ドル（年払い）に、使用量がAPI料金で加わる仕組みと説明されており、使用量のコストは「モデルとタスクによって変わる」と記載されています。つまり、席の数が決まっても、使い方によって総額が変わります。稟議書に書く際には、試行で測定した使用量を基に上限額を置くなど、幅を持たせた見積もりが必要です。</p>
+<p>この性質から、使用量の予測が難しい段階でEnterpriseを選ぶと、費用の見通しが立てにくくなります。試行の段階では、見積もりが立てやすい構成から始めて、必要な統制機能が明確になった時点でEnterpriseを検討する、という順序もあります。ただし、プランの切り替え方法や条件は公式のヘルプで確認が必要です。</p>
+<h3>支払い方法にも違いがある</h3>
+<p>公式ページには、セルフサービスのEnterpriseはクレジットカードとACHに対応し、請求書払いには対応しないこと、営業担当を通じたEnterpriseでは請求書払い（ネット条件）やAWS Marketplaceでの契約が可能なことが記載されています。海外サービスのドル建て支払いは、社内の経理の方針と合わない場合があるため、稟議の前に経理部門へ確認しておくと安全です。稟議書の書き方は「<a href="2026-10-02-claude-code-ringi-kakikata.html">Claude Code導入の稟議書の書き方</a>」を参照してください。</p>
+
+<h2>自社に合うプランを選ぶ判断表</h2>
+<p>次の問いに、自社の状況で答えてみてください。「はい」が多い側が、検討の出発点になります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>問い</th><th>「はい」ならTeam寄り</th><th>「はい」ならEnterprise寄り</th></tr></thead><tbody>
+<tr><td>利用者数は150人以内で、試行の段階か</td><td>はい</td><td>—</td></tr>
+<tr><td>入退社に応じた利用者の自動管理（SCIM）が規程で必要か</td><td>—</td><td>はい</td></tr>
+<tr><td>監査ログやCompliance APIが必要か</td><td>—</td><td>はい</td></tr>
+<tr><td>役割ごとに細かい権限を分ける必要があるか</td><td>—</td><td>はい</td></tr>
+<tr><td>データ保持の期間を組織の要件に合わせる必要があるか</td><td>—</td><td>はい</td></tr>
+<tr><td>月払いで始めたいか</td><td>はい</td><td>—</td></tr>
+<tr><td>使用量が読めず、まず費用を席数で固定して見積もりたいか</td><td>はい</td><td>—</td></tr>
+<tr><td>請求書払いが必須か</td><td>要確認</td><td>営業担当経由の契約で可能と記載</td></tr>
+</tbody></table></div>
+<p>この表は、公式ページの記載に基づく目安であり、最終的な判断は、情報システム部門・法務部門・経理部門との確認を経て決めてください。表のどちらにも当てはまらない、または両方に当てはまる場合は、Anthropicの営業窓口への確認が必要です。</p>
+
+<h2>契約前に確認する6つのこと</h2>
+<ol>
+<li><strong>利用者数と席の種類</strong>：試行の人数と、将来の拡大時の人数を分けて見積もる</li>
+<li><strong>必要な統制機能</strong>：SCIM、監査ログ、ロール、データ保持のうち、規程で必須のものを洗い出す</li>
+<li><strong>支払い方法</strong>：カード、請求書払いの可否、ドル建ての扱いを経理に確認する</li>
+<li><strong>契約期間と変更</strong>：月払い・年払い、途中の席の追加・減少、プラン変更の条件を公式ヘルプで確認する</li>
+<li><strong>データの扱い</strong>：商用規約と、データ保持の条件を法務部門と確認する（<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルールの作り方</a>）</li>
+<li><strong>既存契約との関係</strong>：他社のAIサービスとの併用か乗り換えかを決める（<a href="2026-10-09-claude-code-chatgpt-copilot-heiyo.html">併用か乗り換えかの判断基準</a>）</li>
+</ol>
+<p>費用の全体像（ライセンス、研修、外部支援、社内工数）は「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">Claude Codeの法人導入にかかる費用の内訳</a>」で整理しています。ライセンスは費用の一部でしかないため、プランの選択と並行して、全体の見積もりを作ることをおすすめします。</p>
+
+<h2>プラン選びでよくある失敗</h2>
+<h3>席の単価だけで比べる</h3>
+<p>Enterpriseの席単価が低く見えても、使用量が別に課金されます。逆に、Teamは席料金に利用枠が含まれる構成です。単価ではなく、想定する使い方での総額を、試行のデータで見積もる必要があります。</p>
+<h3>将来必要になる統制を見落とす</h3>
+<p>試行ではTeamで十分でも、全社展開では監査ログやSCIMが規程上必須になることがあります。試行の計画段階で、将来の要件を情報システム部門に確認しておくと、後から契約を作り直す手間が減ります。全社展開の手順は「<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">Claude Codeの社内展開の手順</a>」にまとめています。</p>
+<h3>個人プランで業務を始めてしまう</h3>
+<p>Pro・Maxなどの個人向けプランは、データの扱いの設定が商用プランとは異なります。Anthropicの公式ドキュメントでは、個人向けプランはモデル改善への利用を選択でき、許可した場合はClaude Codeの利用データも学習に使われうると説明されています。業務で使うアカウントは、会社契約のプランに統一してください。</p>
+
+<div class="post-tldr"><strong>プラン選びと稟議の材料づくりを支援します</strong><p style="margin:8px 0 12px;">凪AIでは、試行の範囲設計、必要な統制機能の整理、利用ルールや権限設計、情報システム部門・法務部門との合意形成の支援を行っています。「TeamとEnterpriseのどちらが自社に合うか整理したい」という段階のご相談も承ります。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">プラン選びを無料で相談する →</a></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 人数が少なくてもEnterpriseは契約できますか</h3>
+<p>公式ページには、Enterpriseの人数の下限・上限は明記されていません。契約の条件は変わることがあるため、Anthropicの窓口で確認してください。小規模での試行なら、まず公式ページに「2〜150人向け」と記載のあるTeamが検討しやすい構成です。</p>
+<h3>Q. TeamからEnterpriseに後から切り替えられますか</h3>
+<p>切り替えの手順や条件は、公式のヘルプセンターで確認する必要があります。この記事では、切り替えの可否を断定しません。将来の移行を見込む場合は、契約前にAnthropicの窓口で確認することをおすすめします。</p>
+<h3>Q. Premium席はどんな人に割り当てればよいですか</h3>
+<p>公式ページでは、Premium席はStandard席の5倍の使用量と記載されています。Claude Codeを長時間使う利用者や、使用量が多い業務の担当者が候補になります。最初はStandard席で始め、使用量の上限に頻繁に達する人にPremiumを割り当てる、という運用が考えられます。割り当ての基準は、試行で測定した使用状況から決めます。</p>
+<h3>Q. 円換算の費用はどう見積もればよいですか</h3>
+<p>公式の料金はドル建てです。稟議書には、ドルでの単価を取得日つきで記載し、社内の為替レートの基準で円換算した金額と、変動を見込んだ上限額を併記する方法があります。経理部門の方針に合わせてください。</p>
+<h3>Q. 他社のクラウド経由（Bedrockなど）で使う方法もありますか</h3>
+<p>公式のData usageのページには、Amazon Bedrockなどの第三者のプラットフォーム経由で利用する場合の記載があります。この場合、データの扱いや管理機能が、Claude.comのTeam・Enterpriseとは異なります。この記事では、Claude.comのTeamとEnterpriseの比較に絞っています。クラウド経由の利用を検討する場合は、クラウド事業者側の契約と公式ドキュメントを確認してください。</p>
+
+<h2>まとめ</h2>
+<ul>
+<li>TeamとEnterpriseの違いは、統制と監査の機能（SCIM、監査ログ、ロール、データ保持）と、料金の考え方（席料金か、席料金＋API料金の使用量課金か）</li>
+<li>公式ページの記載（2026年10月9日時点）では、Teamは2〜150人向けでSCIMや監査ログを含まず、Enterpriseはこれらを含む</li>
+<li>人数だけでなく、規程で必須の統制機能から逆算してプランを選ぶ</li>
+<li>金額は取得日つきで記録し、契約前に公式ページと窓口で最新の条件を確認する</li>
+</ul>
+<p>プラン選びや、稟議に必要な材料の整理について相談したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
