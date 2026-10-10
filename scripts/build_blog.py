@@ -197,7 +197,7 @@ def page_shell(prefix, title, description, active_href, body_html, canonical_pat
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 NAGI AI Consulting Inc.（架空のサンプル企業）</span>
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
       <span><a href="#">プライバシーポリシー</a></span>
     </div>
   </div>
