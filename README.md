@@ -122,3 +122,34 @@ push後、数十秒〜数分でhttps://solederlego8-a11y.github.io/nagi-ai-hp/ �
 
 - ブランドカラー：深藍（`--color-navy`）× 凪いだ海の緑青（`--color-teal`）× 夜明けの陽（`--color-amber`）
 - ポジショニング：インフルエンサー個人の発信力ではなく「エンジニア出身チームによる、現場に定着する堅実な導入支援」
+
+<!-- article-index:start -->
+## 凪AI 公開中のページ一覧
+
+Claude Code の法人導入支援（研修・社内展開・ガバナンス）。導入前の判断材料をブログで公開しています。
+
+サイト: https://solederlego8-a11y.github.io/nagi-ai-hp/
+
+### top
+- [凪AI｜Claude Code 法人導入支援 - 現場に定着する自動化を、静かに。](https://solederlego8-a11y.github.io/nagi-ai-hp/)
+- [会社概要](https://solederlego8-a11y.github.io/nagi-ai-hp/company.html)
+- [サービス](https://solederlego8-a11y.github.io/nagi-ai-hp/service.html)
+- [お問い合わせ](https://solederlego8-a11y.github.io/nagi-ai-hp/contact.html)
+
+### blog
+- [ブログ](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/index.html)
+- [Claude Code導入初期に必ずつまずく3つの壁と越え方](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-08-01-claude-code-onboarding.html)
+- [全社展開の前に机上に置くべきガバナンスチェックリスト](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-07-18-ai-governance-checklist.html)
+- [業務自動化のROIをどう測るか｜3つの指標](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-07-05-roi-how-to-measure.html)
+- [Claude Codeの情報漏えい対策｜社内利用ルールの作り方と公式設定への対応づけ](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-joho-rouei-shanai-rule.html)
+- [Claude Codeを既存のChatGPT・Copilot契約と併用するか乗り換えるか｜法人の判断基準と使い分け表](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-chatgpt-copilot-heiyo.html)
+- [Claude TeamとEnterpriseの違いと選び方｜法人契約前に確認する管理機能・料金の考え方](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-team-enterprise-erabikata.html)
+- [経理部門にClaude Codeを導入する前に決めること｜任せる業務・入力情報・証憑保存・確認体制](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-keiri-claude-code-dounyu-chuiten.html)
+- [Claude Codeの試行後に社内展開する手順｜拡大の判断基準・展開の順番・標準の整え方](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-09-claude-code-shanai-tenkai-tejun.html)
+- [業務エージェント開発を外注する前に決める8項目｜見積もり依頼シートの書き方](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-gyomu-agent-gaichu-junbi.html)
+- [Claude Code導入の稟議書の書き方｜決裁者が確認する7項目と記入の型](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-claude-code-ringi-kakikata.html)
+- [Claude Codeの導入支援会社の選び方｜研修・コンサル・開発の違いと問い合わせ前に聞く12の質問](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-claude-code-dounyu-shien-erabikata.html)
+- [Claude Code研修に人材開発支援助成金は使える？対象になる条件・ならないケースと申込み前の確認事項](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-claude-code-kenshu-joseikin.html)
+- [Claude Codeの法人導入にかかる費用の内訳｜ライセンス・研修・伴走・社内工数の見積もり方](https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-02-claude-code-houjin-hiyou-uchiwake.html)
+
+<!-- article-index:end -->
