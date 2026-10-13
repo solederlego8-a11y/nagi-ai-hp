@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code法人導入は状況別に選ぶ｜判断フロー表と読む順番｜凪AI ブログ</title>
+<meta name="description" content="Claude Code法人導入で何から読み、何から決めるか。試行の前・最中・後の状況別に、判断フロー表と記事の読む順番、外部支援を使う判断の目安を整理しました。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code法人導入は状況別に選ぶ｜判断フロー表と読む順番｜凪AI ブログ">
+<meta property="og:description" content="Claude Code法人導入で何から読み、何から決めるか。試行の前・最中・後の状況別に、判断フロー表と記事の読む順番、外部支援を使う判断の目安を整理しました。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Code法人導入は状況別に選ぶ｜判断フロー表と読む順番",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "description": "Claude Code法人導入で何から読み、何から決めるか。試行の前・最中・後の状況別に、判断フロー表と記事の読む順番、外部支援を使う判断の目安を整理しました。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "どの記事から読めばよいか分かりません", "acceptedAnswer": {"@type": "Answer", "text": "まず上の「試行の前か後か」の表で自社の段階を決め、右端の記事から読んでください。それでも迷う場合は、「止まっている原因」から選びます。稟議が原因なら稟議書の記事、セキュリティが原因なら社内ルールの記事です。"}}, {"@type": "Question", "name": "全部の記事を読まないと導入できませんか", "acceptedAnswer": {"@type": "Answer", "text": "全部を読む必要はありません。止まっている課題に近い記事だけで十分です。この記事は、必要な記事だけを選ぶための索引として使ってください。"}}, {"@type": "Question", "name": "少人数でも法人向けの準備は必要ですか", "acceptedAnswer": {"@type": "Answer", "text": "規模に応じて簡素化できますが、入力してよい情報の線引きと、成功・撤退の基準は、人数にかかわらず先に決めておく価値があります。詳しくは中小企業の導入記事で整理しています。"}}, {"@type": "Question", "name": "相談する前に何を準備すればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "対象業務の候補、利用予定人数、既存のAIツール、確認が必要な社内部門の4点があると、相談が具体的になります。詳しくは無料相談の準備の記事にまとめています。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.13</span><span class="tag">導入ガイド</span></div>
+    <h1>Claude Code法人導入は状況別に選ぶ｜判断フロー表と読む順番</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年10月13日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeの法人導入を調べ始めると、費用、研修、助成金、稟議、セキュリティ、プラン選び、外注先選びと、確認することが一度に押し寄せます。どれも大事に見えるため、「結局どこから手をつければいいのか」で止まってしまう担当者は少なくありません。実際には、会社の状況によって最初に読むべき話題は違います。稟議が通らず止まっているのか、セキュリティの懸念で止まっているのか、まだ試行も始めていないのかで、次の一手は変わります。</p>
+<p>この記事は、凪AIのブログにある既存記事を「いまの状況」から引ける形に束ねた、判断のハブです。自社がどの状況にあるかを表で確認し、読む記事と、準備ができた時点での問い合わせ先まで一本の流れで示します。記事で扱う内容は一般的な整理であり、個別の契約や法務・税務の判断は、各社の状況に応じて専門家や公式情報で確認してください。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>まだ試行していない：先に「<a href="2026-08-01-claude-code-onboarding.html">導入初期の3つの壁</a>」と「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a>」で全体像をつかむ</li><li>稟議や社内説明で止まっている：「<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a>」と「<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>」</li><li>セキュリティ懸念で止まっている：「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策と社内ルール</a>」</li><li>試行は終わった：「<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>」</li></ul><p style="margin:10px 0 0;">自社の状況がどれにも当てはまらない場合は、<a href="../../contact.html#form">無料相談</a>で状況を整理するところから始められます。</p></div>
+
+<h2>最初の分かれ目は「試行の前か後か」</h2>
+<p>法人導入の話題は、大きく「試行の前」「試行の最中」「試行の後」に分かれます。同じ「導入」という言葉でも、試行前の人が知りたいのは「何にいくらかかり、誰の承認が要るか」であり、試行後の人が知りたいのは「どう広げ、どう標準化するか」です。段階が違う記事を読んでも、自分の課題に答えが出ません。まず自社の段階を一つ決めてください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>段階</th><th>典型的な状況</th><th>最初に決めること</th><th>読む記事</th></tr></thead><tbody>
+<tr><td>試行の前（情報収集）</td><td>上司から「調べて」と言われた。何から始めるか不明</td><td>対象業務を1つ、予算の枠、確認する人</td><td><a href="2026-08-01-claude-code-onboarding.html">導入初期の3つの壁</a>、<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a></td></tr>
+<tr><td>試行の前（社内承認）</td><td>稟議や決裁が必要。セキュリティ部門の確認待ち</td><td>稟議に書く項目、守るべきルール</td><td><a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a>、<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルール</a></td></tr>
+<tr><td>試行の前（契約選び）</td><td>すでにChatGPTやCopilotがある。プランを決めたい</td><td>併用か乗り換えか、プランの種類</td><td><a href="2026-10-09-claude-code-chatgpt-copilot-heiyo.html">併用か乗り換えか</a>、<a href="2026-10-09-claude-team-enterprise-erabikata.html">TeamとEnterprise</a></td></tr>
+<tr><td>試行の最中</td><td>数名で触っているが、効果の測り方が曖昧</td><td>成功基準、撤退条件、期間</td><td><a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>、<a href="2026-07-05-roi-how-to-measure.html">ROIの測り方</a></td></tr>
+<tr><td>試行の後</td><td>効果は見えた。他部署へ広げたい</td><td>展開の順番と標準</td><td><a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>、<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a></td></tr>
+</tbody></table></div>
+<p>表の最初の列で自社が当てはまる行を探し、右端の記事から読み始めてください。複数の行にまたがる場合は、止まっている原因に近い行を優先します。たとえば試行は進んでいても稟議が止まっているなら、試行の最中ではなく「社内承認」の行から読むほうが前に進みます。</p>
+
+<h2>判断フロー：5つの質問に答えて次の一手を決める</h2>
+<p>表で決めにくい場合は、次の5つの質問に順に答えてください。上から順に確認し、最初に「いいえ」になった項目が、いま優先して解消する課題です。</p>
+<ol>
+<li><strong>対象とする業務を1つ言えますか。</strong>言えない場合は、導入の議論の前に業務の棚卸しが必要です。「<a href="2026-08-01-claude-code-onboarding.html">導入初期の3つの壁</a>」で、対象を絞る考え方を確認できます。</li>
+<li><strong>費用の全体像を説明できますか。</strong>ライセンス費だけでなく、研修、伴走、社内工数まで含めて説明できない場合は、「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a>」で項目を洗い出します。</li>
+<li><strong>入力してよい情報の線引きがありますか。</strong>なければ、「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルールの作り方</a>」から始めます。ルールのない状態で利用者を増やすのは避けてください。</li>
+<li><strong>成功と失敗を、始める前に決めていますか。</strong>決めていない場合は、「<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>」で、期間・対象・撤退条件を先に書きます。</li>
+<li><strong>決裁者に必要な情報が揃っていますか。</strong>揃っていなければ、「<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a>」の7項目で不足を確認します。</li>
+</ol>
+<p>5つすべてに「はい」と答えられるなら、試行を始める準備は整っています。答えに自信がない項目が複数ある場合は、一人で抱え込むより、第三者に状況を話して整理するほうが早く進みます。</p>
+
+<div class="post-tldr"><strong>状況別の次の一手（ここから問い合わせにつなげる場合）</strong><ul><li>項目1・2が曖昧な人：<a href="../../contact.html#form">無料相談</a>で、対象業務の候補と費用の枠を一緒に整理する</li><li>項目3・5が曖昧な人：<a href="../../service.html#governance">ガバナンス設計</a>の内容を確認し、資料請求で社内共有用の資料を入手する</li><li>項目4が曖昧な人：<a href="../../service.html#consulting">導入伴走コンサルティング</a>の進め方を確認する</li></ul></div>
+
+<h2>状況別に起きがちな行き詰まりと、先に解消する順番</h2>
+<h3>情報収集段階：全部を同時に調べてしまう</h3>
+<p>費用、研修、助成金、セキュリティ、プラン、外注先を同時に調べると、論点が増えるばかりで結論が出ません。順番を決めるのが現実的です。目安は、(1)対象業務を決める、(2)利用ルールの骨格を決める、(3)費用の枠を決める、(4)研修・伴走の要否を決める、(5)プランと契約を決める、です。契約を最後に回す理由は、対象業務と利用人数が決まらないとプランの比較軸が定まらないためです。</p>
+<h3>社内承認段階：決裁者が見る項目を知らずに書き始める</h3>
+<p>稟議が止まる典型は、効果の期待だけを書き、費用、リスク、体制、撤退条件が欠けているケースです。決裁者は「失敗したときに止められるか」を見ます。<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の記事</a>では、決裁者が確認する7項目を整理しています。あわせて、<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>を稟議に添えると、「何をもって続けるか止めるか」が伝わります。</p>
+<h3>契約選び段階：製品比較から入ってしまう</h3>
+<p>既存のAIツールとの比較は、機能表の優劣ではなく「どの業務をどのツールに任せるか」で考えるほうが結論に近づきます。詳しくは<a href="2026-10-09-claude-code-chatgpt-copilot-heiyo.html">併用か乗り換えか</a>の記事にあります。プランは<a href="2026-10-09-claude-team-enterprise-erabikata.html">TeamとEnterpriseの違い</a>で、管理機能の観点から確認できます。料金や仕様は変わるため、契約前には必ず公式ページで最新の内容を確認してください。</p>
+<h3>少人数・非エンジニアの会社：大企業向けの話をそのまま当てはめる</h3>
+<p>ガバナンスや展開の議論は、大企業向けに書かれたものが多く、少人数の会社にそのまま当てはめると過剰になります。少人数の会社は<a href="2026-10-13-claude-code-chusho-kigyo-shounin-dounyu.html">中小企業の導入記事</a>、エンジニアがいない部署は<a href="2026-10-13-claude-code-hi-engineer-kenshu-hitsuyo.html">非エンジニアと研修の記事</a>から読むと、規模に合った進め方が分かります。</p>
+<h3>試行後：うまくいった理由を共有できていない</h3>
+<p>試行がうまくいっても、特定の担当者の工夫に依存していると、他部署へ広げたときに再現しません。<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>では、展開の順番と標準の整え方を段階別に整理しています。経理のような統制の強い部署は、<a href="2026-10-09-keiri-claude-code-dounyu-chuiten.html">経理部門の注意点</a>を先に確認してください。</p>
+
+<h2>自社で進めるか、外部の支援を使うか</h2>
+<p>最後の分かれ目は、社内だけで進めるか、外部の支援を使うかです。判断の目安を表にします。外部を使うこと自体が目的ではなく、止まっている原因を解消できる手段を選ぶことが重要です。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>止まっている原因</th><th>社内で解消しやすいか</th><th>外部支援が向く場面</th></tr></thead><tbody>
+<tr><td>対象業務が決まらない</td><td>業務を知る担当者がいれば可能</td><td>候補を客観的に洗い出したいとき</td></tr>
+<tr><td>利用ルールがない</td><td>情報システム部門があれば可能</td><td>ひな形から作り、公式設定と対応づけたいとき</td></tr>
+<tr><td>操作に慣れた人がいない</td><td>独学は時間がかかる</td><td>研修で基本と承認の画面を短期間に押さえたいとき</td></tr>
+<tr><td>業務に合わせた仕組みが要る</td><td>開発体制が必要</td><td>業務エージェントの開発を依頼するとき</td></tr>
+</tbody></table></div>
+<p>外部の支援先を選ぶ際は「<a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">導入支援会社の選び方</a>」、開発を依頼する場合は「<a href="2026-10-02-gyomu-agent-gaichu-junbi.html">外注前に決める8項目</a>」が役立ちます。研修費用を抑える制度は「<a href="2026-10-02-claude-code-kenshu-joseikin.html">人材開発支援助成金は使えるか</a>」で確認できますが、申請は研修の開始前に行う必要があるなど条件があるため、公式情報と管轄窓口で確認してください。</p>
+
+<h2>読む順番の例：3つのパターン</h2>
+<p>どの行にも当てはまりにくい方のために、よくある立場別に、読む順番の例を示します。あくまで一例です。自社の状況に合わせて入れ替えてください。</p>
+<h3>パターンA：経営者・事業責任者が、自分で導入を判断する</h3>
+<p>判断に必要なのは、費用の全体像、リスク、撤退の条件です。<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a>で金額の枠を持ち、<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>で続ける条件とやめる条件を書き、<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルール</a>で情報面のリスクを確認する順です。少人数の会社であれば、<a href="2026-10-13-claude-code-chusho-kigyo-shounin-dounyu.html">中小企業の導入記事</a>を先頭に置くほうが、規模に合った手順がつかめます。</p>
+<h3>パターンB：現場の担当者が、上司を説得する資料を作る</h3>
+<p>最初に<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a>で、上司が確認する項目を把握します。次に<a href="2026-07-05-roi-how-to-measure.html">ROIの測り方</a>で、効果をどう数字にするかを決め、最後に<a href="2026-10-13-claude-code-mu-ryo-soudan-junbi.html">無料相談の準備</a>の項目に沿って情報を整理すると、社内資料と外部への相談内容を同時に整えられます。</p>
+<h3>パターンC：情報システム・セキュリティ担当が、利用を許可してよいか判断する</h3>
+<p>まず<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルールの記事</a>で、入力情報、権限、出力の確認、ログ、事故対応という論点を一通り確認します。そのうえで<a href="2026-10-09-claude-team-enterprise-erabikata.html">TeamとEnterpriseの違い</a>で管理機能の観点を確認し、<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a>で抜けを点検します。</p>
+
+<h2>記事を読み始める前に手元に用意するもの</h2>
+<p>どの記事から入る場合でも、次の4点をメモしてから読むと、読んだ内容を自社に当てはめやすくなります。数分で書ける内容で構いません。</p>
+<ul>
+<li><strong>対象にしたい業務の候補：</strong>毎週・毎月繰り返す作業を、思いつく範囲で挙げる</li>
+<li><strong>利用を想定する人数と部署：</strong>最初の試行は何人か、将来は何人か</li>
+<li><strong>すでに使っているAIツールや契約：</strong>併用の判断材料になる</li>
+<li><strong>承認が必要な相手：</strong>経営層、情報システム、法務、現場の責任者など</li>
+</ul>
+<p>この4点が書けると、「対象業務が決まっていない」「承認者が誰か不明」といった課題が、読む前に見えてきます。課題が見えた時点で該当する記事を読めば、遠回りになりません。</p>
+
+<h2>導入が止まる4つの典型パターンと、次に読む記事</h2>
+<p>状況別の表で段階を決めても、止まっている理由が複数重なっていると、どこから手をつけるかが決まりません。ここでは、止まる理由を4つの典型に分け、それぞれに「いま確認すること」と「次に読む記事」を対応づけます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>止まる理由</th><th>いま確認すること</th><th>次に読む記事</th></tr></thead><tbody>
+<tr><td>お金の根拠が示せない</td><td>費用の項目に抜けがないか。効果をどの指標で説明するか</td><td><a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a>、<a href="2026-07-05-roi-how-to-measure.html">ROIの測り方</a></td></tr>
+<tr><td>リスクの説明ができない</td><td>入力してよい情報の線引き、出力の確認、事故対応</td><td><a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルール</a>、<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a></td></tr>
+<tr><td>誰が進めるのかが決まらない</td><td>担当者の時間、外部支援の要否</td><td><a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">導入支援会社の選び方</a>、<a href="2026-10-13-claude-code-mu-ryo-soudan-junbi.html">無料相談の準備</a></td></tr>
+<tr><td>やめどきが分からず踏み出せない</td><td>期間、成功基準、撤退条件</td><td><a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a></td></tr>
+</tbody></table></div>
+<p>どの理由でも共通するのは、「何を決めれば先に進めるのか」が分かれば、動き出せるということです。足りない情報を一覧にして、一つずつ解消していきます。一度に全部を解消しようとせず、止まっている理由のうち最も大きなものを1つ選んでください。</p>
+
+<p>なお、この記事のリンク先は、いずれも一般的な考え方の整理です。公式の料金や仕様、法令・制度に関わる部分は変更されることがあるため、実際の判断の前に、必ず各公式ページと所管の窓口で最新の内容を確認してください。社内の規程や契約と食い違う場合は、社内の規程と契約を優先します。</p>
+
+<h2>よくある質問</h2>
+<h3>Q. どの記事から読めばよいか分かりません</h3>
+<p>まず上の「試行の前か後か」の表で自社の段階を決め、右端の記事から読んでください。それでも迷う場合は、「止まっている原因」から選びます。稟議が原因なら稟議書の記事、セキュリティが原因なら社内ルールの記事です。</p>
+<h3>Q. 全部の記事を読まないと導入できませんか</h3>
+<p>全部を読む必要はありません。止まっている課題に近い記事だけで十分です。この記事は、必要な記事だけを選ぶための索引として使ってください。</p>
+<h3>Q. 少人数でも法人向けの準備は必要ですか</h3>
+<p>規模に応じて簡素化できますが、入力してよい情報の線引きと、成功・撤退の基準は、人数にかかわらず先に決めておく価値があります。詳しくは中小企業の導入記事で整理しています。</p>
+<h3>Q. 相談する前に何を準備すればよいですか</h3>
+<p>対象業務の候補、利用予定人数、既存のAIツール、確認が必要な社内部門の4点があると、相談が具体的になります。詳しくは無料相談の準備の記事にまとめています。</p>
+
+<div class="post-tldr"><strong>状況の整理から一緒に始めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、導入伴走コンサルティング、Claude Code実務研修、業務エージェント開発、ガバナンス設計を提供しています。どこから始めるべきか分からない段階でも、ご相談いただけます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">状況別の進め方を無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>まず自社が「試行の前・最中・後」のどこにいるかを決め、その段階の記事から読む</li>
+<li>5つの質問（対象業務・費用・情報の線引き・成功基準・決裁情報）で、止まっている原因を特定する</li>
+<li>契約やプランの選択は、対象業務と利用人数が決まってから行う</li>
+<li>止まっている原因が社内で解消しにくい場合に限り、外部の支援を使う</li>
+</ul>
+<p>導入の進め方を整理したい場合は、<a href="../../contact.html#form">お問い合わせフォーム</a>からご連絡ください。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

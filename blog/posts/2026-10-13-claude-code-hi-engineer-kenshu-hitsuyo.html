@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>非エンジニアにClaude Code研修は必要か｜判断基準｜凪AI ブログ</title>
+<meta name="description" content="営業・総務・経理などの非エンジニアにClaude Codeを使わせる前に、向く業務、研修が必要なケースと不要なケース、研修で押さえる内容を整理しました。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hi-engineer-kenshu-hitsuyo.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="非エンジニアにClaude Code研修は必要か｜判断基準｜凪AI ブログ">
+<meta property="og:description" content="営業・総務・経理などの非エンジニアにClaude Codeを使わせる前に、向く業務、研修が必要なケースと不要なケース、研修で押さえる内容を整理しました。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hi-engineer-kenshu-hitsuyo.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "非エンジニアにClaude Code研修は必要か｜判断基準",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "description": "営業・総務・経理などの非エンジニアにClaude Codeを使わせる前に、向く業務、研修が必要なケースと不要なケース、研修で押さえる内容を整理しました。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-hi-engineer-kenshu-hitsuyo.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "プログラミングを知らない人でも使えますか", "acceptedAnswer": {"@type": "Answer", "text": "日本語で指示できるため、プログラミングの知識がなくても使い始められます。ただし、承認の画面の意味や、出力の確認の観点は、知っておく必要があります。最初の数時間でも、基本を押さえる機会があると安心です。"}}, {"@type": "Question", "name": "研修を受けた後、すぐに業務で使えますか", "acceptedAnswer": {"@type": "Answer", "text": "対象業務を絞り、小さく始めれば使えます。研修の直後に複数の業務へ広げると、確認が追いつきません。まず1業務で試し、結果を見て広げてください。"}}, {"@type": "Question", "name": "研修費は助成金で賄えますか", "acceptedAnswer": {"@type": "Answer", "text": "対象になるかどうかは、雇用保険の適用状況、研修の時間数、申請のタイミングなどによります。申請の前に研修を始めると対象外になる場合があるため、研修を申し込む前に必ず公式情報と管轄の窓口で確認してください。"}}, {"@type": "Question", "name": "非エンジニアが使うときの最大のリスクは何ですか", "acceptedAnswer": {"@type": "Answer", "text": "入力してはいけない情報を入れてしまうこと、および出力の誤りを見落とすことです。入力の線引きと確認の手順は、利用開始の前に決めてください。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.13</span><span class="tag">研修</span></div>
+    <h1>非エンジニアにClaude Code研修は必要か｜判断基準</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年10月13日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeは、もともとコードを書く作業を支援するツールとして知られています。そのため、営業、総務、経理、企画といった非エンジニアの部署に導入する場面で、「専門の知識がない人に研修は必要なのか」「そもそも非エンジニアに向く道具なのか」という疑問が出ます。研修を受けさせるべきかどうかは、費用にも導入の成否にも関わる判断です。</p>
+<p>この記事では、非エンジニアの部署にClaude Codeを使わせる前に、(1)向く業務と向かない業務、(2)研修が必要になる場合と不要な場合、(3)研修で押さえる内容、(4)研修以外の選択肢を整理します。仕様や料金は変わるため、導入前には<a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code公式ドキュメント</a>で最新の内容を確認してください。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>研修が要る：ターミナル（文字入力の画面）に触れたことがない人が複数いる、承認操作の意味が分からない</li><li>研修は不要なことが多い：利用者が少数で、公式ドキュメントを読みながら試す時間がある</li><li>どちらか迷う：まず2〜3人が1業務で試し、つまずいた点を見てから研修範囲を決める</li></ul><p style="margin:10px 0 0;"><strong>状況別：</strong>研修の内容を知りたい人は<a href="../../service.html#training">Claude Code実務研修</a>、費用面が気になる人は<a href="2026-10-02-claude-code-kenshu-joseikin.html">助成金の記事</a>から。</p></div>
+
+<h2>非エンジニアに向く業務と、向かない業務</h2>
+<p>研修の要否を考える前に、そもそも何を任せるのかを決めます。非エンジニアの業務の中にも、Claude Codeに向く作業と向かない作業があります。判断の軸は、「作業の手順が決まっているか」「出力を人が確認できるか」「間違えたときの影響が小さいか」の3つです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>部署の例</th><th>向く可能性がある作業</th><th>最初は避けたい作業</th></tr></thead><tbody>
+<tr><td>営業・企画</td><td>表計算データの集計と整形、提案資料の構成案の下書き</td><td>顧客情報をそのまま入力する作業</td></tr>
+<tr><td>総務</td><td>社内マニュアルの更新案、定型文書のひな形づくり</td><td>個人情報を含む名簿の処理</td></tr>
+<tr><td>経理</td><td>データの形式変換、照合作業の補助</td><td>会計判断、支払の実行</td></tr>
+<tr><td>人事</td><td>募集要項の下書き、研修資料の構成案</td><td>個別の評価や処遇に関わる判断</td></tr>
+</tbody></table></div>
+<p>経理のように統制が強い部署の考え方は「<a href="2026-10-09-keiri-claude-code-dounyu-chuiten.html">経理部門にClaude Codeを導入する前に決めること</a>」で整理しています。いずれの部署でも、会計・人事・契約に関わる最終判断は、人が持つ前提で設計してください。</p>
+
+<h2>研修が必要になるケース</h2>
+<p>研修が必要かどうかは、利用者の経験と、会社が許容できるつまずきの量で決まります。次のような状況では、研修を検討する価値があります。</p>
+<h3>ターミナルの操作に慣れた人がいない</h3>
+<p>Claude Codeは、文字を入力して操作する画面を使う形が基本です。キーボードだけで操作する画面に抵抗がある人が複数いる場合、最初の操作でつまずき、使う前に諦めてしまうことがあります。画面の見方と基本の入力を、最初の数時間で押さえるだけでも、立ち上がりは安定します。</p>
+<h3>承認の画面で判断できない</h3>
+<p>Claude Codeは、ファイルの変更やコマンドの実行の前に、利用者に承認を求めることがあります。承認の意味が分からないまま「はい」を押し続けると、意図しない変更が起きる可能性があります。何を承認しているのかを理解することは、研修で最も優先度の高い内容です。</p>
+<h3>部署をまたいで同じ使い方を揃えたい</h3>
+<p>利用者が複数の部署に広がる場合、指示の書き方や設定がばらつくと、品質も安全性も揃いません。標準の作法を共有するために、研修の場を使う意義があります。展開の考え方は「<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>」にあります。</p>
+<h3>社内に教えられる人がいない</h3>
+<p>独学が得意な人が1人いても、その人に質問が集中すると、本人の業務が止まります。教える役を社内で担えない場合は、外部の研修で土台を作る選択肢があります。</p>
+
+<h2>研修が不要、または後回しでよいケース</h2>
+<ul>
+<li><strong>利用者が少数で、時間に余裕がある：</strong>公式ドキュメントを読みながら、1業務で試す余地がある。</li>
+<li><strong>扱う情報が一般的で、影響が小さい：</strong>誤りが出ても、社外に出る前に必ず人が確認できる。</li>
+<li><strong>すでに他のAIツールを業務で使いこなしている人がいる：</strong>指示の書き方の感覚が共有できる。</li>
+</ul>
+<p>この場合は、先に小さく試し、つまずいた点を記録してから、研修の要否を判断するほうが無駄がありません。試行の進め方は「<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準の決め方</a>」を参照してください。</p>
+
+<div class="post-tldr"><strong>研修を受けさせるか迷っている場合</strong><ul><li>つまずく箇所を見てから決めたい人：まず2〜3人で1業務を試し、結果を持って<a href="../../contact.html#form">無料相談</a>へ</li><li>最初から全員の土台を揃えたい人：<a href="../../service.html#training">実務研修</a>の内容と対象人数を確認する</li><li>費用の負担が懸念の人：助成金の条件を<a href="2026-10-02-claude-code-kenshu-joseikin.html">こちらの記事</a>で確認する</li></ul></div>
+
+<h2>非エンジニア向け研修で押さえる内容</h2>
+<p>研修を受ける場合、内容が自社の課題に合っているかを事前に確認してください。非エンジニア向けでは、コードの書き方より、次の内容のほうが重要です。</p>
+<ol>
+<li><strong>画面と基本操作：</strong>起動、入力、終了。迷ったときに戻る方法。</li>
+<li><strong>承認の意味：</strong>どの操作で承認を求められ、何を許可することになるのか。</li>
+<li><strong>指示の書き方：</strong>目的、前提、制約、期待する出力を分けて伝える方法。</li>
+<li><strong>出力の確認：</strong>誤りを見つける観点。特に数値、固有名詞、引用元の確認。</li>
+<li><strong>入れてはいけない情報：</strong>個人情報、認証情報、契約書の原本など。</li>
+<li><strong>つまずいたときの相談先：</strong>社内の窓口と、外部の連絡先。</li>
+</ol>
+<p>研修の時間数や形式は、事業者によって異なります。助成金の対象になるかどうかは、研修の時間数や計画の届出といった条件によるため、先に公式情報と管轄窓口で確認してください。事業者を選ぶ際に聞くべき質問は「<a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">導入支援会社の選び方</a>」に12項目あります。</p>
+
+<h2>研修以外の選択肢</h2>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>選択肢</th><th>向く場合</th><th>注意点</th></tr></thead><tbody>
+<tr><td>公式ドキュメントでの自習</td><td>利用者が少数で時間がある</td><td>つまずいたときに相談先がない</td></tr>
+<tr><td>社内の勉強会</td><td>すでに使える人が社内にいる</td><td>教える人の負担が大きくなる</td></tr>
+<tr><td>外部の実務研修</td><td>複数人の土台を短期間で揃えたい</td><td>自社の業務に合わせた内容か確認が必要</td></tr>
+<tr><td>伴走型の支援</td><td>導入から定着まで一緒に進めたい</td><td>期間と範囲を事前に決める</td></tr>
+</tbody></table></div>
+<p>研修後に現場で使い続けられるかは、研修の質より、研修後の仕組みに左右されます。相談窓口、共有メモ、確認のルールを整えて初めて、研修の内容が定着します。ルールの整え方は「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">社内ルールの作り方</a>」を参照してください。</p>
+
+<h2>研修の効果をどう確認するか</h2>
+<p>研修は受けさせて終わりではなく、効果を確認して初めて意味を持ちます。効果の確認には、数字と観察の2つを組み合わせます。</p>
+<ul>
+<li><strong>数字：</strong>対象業務の作業時間、手戻りの回数、利用者のうち継続して使っている人の数</li>
+<li><strong>観察：</strong>承認の画面で迷う回数、質問の内容が基本操作から業務の工夫へ移っているか</li>
+</ul>
+<p>測り方の考え方は「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」にまとまっています。研修の直後ではなく、数週間後に確認するほうが、実際に使われているかどうかが分かります。</p>
+
+<h2>非エンジニアが最初につまずきやすい場面</h2>
+<p>研修の内容を決めるときは、つまずきやすい場面を先に想定しておくと、時間の使い方が具体的になります。次の場面は、非エンジニアが最初に直面しやすいものです。実際に起きる内容は人によって異なるため、試行で記録して見直してください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>場面</th><th>起きやすいこと</th><th>手当ての例</th></tr></thead><tbody>
+<tr><td>起動と終了</td><td>どの画面で何を入力すればよいか分からない</td><td>手順を一枚のメモにまとめる</td></tr>
+<tr><td>指示の書き方</td><td>曖昧な指示で、期待と違う出力になる</td><td>目的・前提・制約・出力形式の4点に分けて書く型を共有する</td></tr>
+<tr><td>承認の画面</td><td>内容を読まずに許可してしまう</td><td>承認してよいもの・相談するものの例を掲示する</td></tr>
+<tr><td>出力の確認</td><td>もっともらしい文章を、そのまま信じてしまう</td><td>数値・固有名詞・引用元を必ず原典と照合する</td></tr>
+<tr><td>情報の入力</td><td>うっかり機密情報を貼り付ける</td><td>入れてはいけない情報のリストを手元に置く</td></tr>
+</tbody></table></div>
+<p>これらは、操作の知識というより、確認の習慣の問題です。研修を受ける・受けないにかかわらず、習慣化のための手当てを用意することが、定着の鍵になります。</p>
+
+<h2>非エンジニアの部署での、立ち上げの進め方</h2>
+<p>研修の要否にかかわらず、非エンジニアの部署で立ち上げる場合の流れを、一例として示します。期間や人数は、会社の状況に合わせて調整してください。</p>
+<ol>
+<li><strong>対象業務を1つ決める：</strong>手順が決まっていて、出力を確認できる作業から選びます。</li>
+<li><strong>試す人を2〜3人に絞る：</strong>操作に前向きな人と、業務を深く知る人を組み合わせます。</li>
+<li><strong>入力の線引きを共有する：</strong>始める前に、入れてよい情報と入れてはいけない情報を伝えます。</li>
+<li><strong>つまずきを記録する：</strong>どの場面で止まったかを、共有メモに書き足します。</li>
+<li><strong>記録を見て研修の範囲を決める：</strong>つまずきが多い場面に絞って、研修の内容を決めます。</li>
+</ol>
+<p>この順番にすると、研修を「何となく受けさせる」のではなく、実際のつまずきに合わせて設計できます。外部の研修を使う場合でも、記録を事前に共有すると、自社の業務に合った内容に調整してもらいやすくなります。</p>
+
+<h2>部署別に見る、研修で扱う題材の選び方</h2>
+<p>研修の題材は、受講者が実際に行っている業務から選ぶと、定着しやすくなります。一般的な例題だけでは、研修後に自分の業務へ置き換えられないことがあります。部署ごとに、次のような題材を候補にできます。実際の題材は、事前に業務を聞き取って決めてください。</p>
+<ul>
+<li><strong>営業・企画：</strong>手元の表計算データの集計、提案書の構成の整理、議事メモからの要点の抜き出し。</li>
+<li><strong>総務：</strong>社内手順書の見直し案づくり、定型連絡文の下書き、規程の改定箇所の洗い出し。</li>
+<li><strong>経理：</strong>仕訳候補の形式変換、データの突き合わせの補助。会計処理の判断は人が行う。</li>
+<li><strong>人事：</strong>求人票の下書き、研修資料の構成案づくり。個別の評価は対象外とする。</li>
+</ul>
+<p>題材を持ち込む際は、実際の機密データを使わず、ダミーのデータに置き換える運用を勧めます。研修の場で扱う情報も、入力してよい情報の線引きの対象です。この線引きの考え方は「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策と社内ルール</a>」にあります。研修は、操作を学ぶ場であると同時に、線引きを体験する場でもあります。</p>
+
+<h2>研修を受けた後に、使われなくなる理由</h2>
+<p>研修後に利用が減る場合、その原因は多くの場合、研修の内容ではなく、研修後の環境にあります。想定される理由と、対策の方向を整理します。</p>
+<ul>
+<li><strong>使う業務が決まっていない：</strong>研修で操作を覚えても、日常業務のどこで使うかが決まっていないと、使う機会がありません。研修の前に、対象業務を決めておきます。</li>
+<li><strong>質問できる相手がいない：</strong>つまずいたときに聞ける人がいないと、そのまま使わなくなります。社内の窓口と外部の連絡先を、研修の終わりに共有します。</li>
+<li><strong>確認が負担になる：</strong>出力の確認に時間がかかりすぎると、手作業のほうが早く感じられます。確認の観点をチェックリストにして、負担を減らします。</li>
+<li><strong>上長の理解が得られない：</strong>業務時間を使うことへの理解がないと、継続が難しくなります。上長にも、目的と基準を共有します。</li>
+</ul>
+
+<p>研修の事業者を比較する際は、受講者の経験に合わせて内容を調整してもらえるか、研修後の質問に対応してもらえるか、自社の業務の題材を扱えるかを確認してください。これらは、費用の差よりも、研修後の定着に影響しやすい点です。</p>
+
+<h2>よくある質問</h2>
+<h3>Q. プログラミングを知らない人でも使えますか</h3>
+<p>日本語で指示できるため、プログラミングの知識がなくても使い始められます。ただし、承認の画面の意味や、出力の確認の観点は、知っておく必要があります。最初の数時間でも、基本を押さえる機会があると安心です。</p>
+<h3>Q. 研修を受けた後、すぐに業務で使えますか</h3>
+<p>対象業務を絞り、小さく始めれば使えます。研修の直後に複数の業務へ広げると、確認が追いつきません。まず1業務で試し、結果を見て広げてください。</p>
+<h3>Q. 研修費は助成金で賄えますか</h3>
+<p>対象になるかどうかは、雇用保険の適用状況、研修の時間数、申請のタイミングなどによります。申請の前に研修を始めると対象外になる場合があるため、研修を申し込む前に必ず公式情報と管轄の窓口で確認してください。</p>
+<h3>Q. 非エンジニアが使うときの最大のリスクは何ですか</h3>
+<p>入力してはいけない情報を入れてしまうこと、および出力の誤りを見落とすことです。入力の線引きと確認の手順は、利用開始の前に決めてください。</p>
+
+<div class="post-tldr"><strong>部署に合わせた研修の範囲を相談したい場合</strong><p style="margin:8px 0 12px;">凪AIのClaude Code実務研修は、利用者の経験や対象業務に合わせて内容を調整します。導入伴走コンサルティングとの組み合わせもご相談いただけます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">研修の内容と範囲を無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>非エンジニアでも、手順が決まり、出力を人が確認できる業務なら向く可能性がある</li>
+<li>研修が必要になるのは、操作に不慣れな人が複数いる、承認の意味が不明、標準を揃えたい場合</li>
+<li>少数で時間がある場合は、先に1業務で試してから研修の要否を判断してよい</li>
+<li>研修で最優先なのは、承認の意味、指示の書き方、出力の確認、入れてはいけない情報</li>
+</ul>
+<p>全体の進め方は「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。研修のご相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

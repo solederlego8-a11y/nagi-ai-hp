@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code PoCの成功基準の決め方｜期間・対象業務・撤退条件｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeの試行（PoC）を始める前に決める6項目と、成功基準・撤退条件の書き方、PoC計画書のひな形を整理しました。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-poc-seikou-kijun.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code PoCの成功基準の決め方｜期間・対象業務・撤退条件｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeの試行（PoC）を始める前に決める6項目と、成功基準・撤退条件の書き方、PoC計画書のひな形を整理しました。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-poc-seikou-kijun.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Claude Code PoCの成功基準の決め方｜期間・対象業務・撤退条件",
+  "datePublished": "2026-10-13",
+  "dateModified": "2026-10-13",
+  "description": "Claude Codeの試行（PoC）を始める前に決める6項目と、成功基準・撤退条件の書き方、PoC計画書のひな形を整理しました。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-10-13-claude-code-poc-seikou-kijun.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PoCの期間は何週間がよいですか", "acceptedAnswer": {"@type": "Answer", "text": "一律の正解はありません。対象業務の発生頻度から逆算し、測れる回数が確保できる期間に設定してください。発生頻度が低い業務では、測定回数が足りず、結論が出にくい点に注意が必要です。"}}, {"@type": "Question", "name": "成功基準の数字は、どう決めればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "追加費用を回収できる水準や、現状の作業時間から逆算して決めます。根拠のない数字を置くより、基準を決めた理由を一緒に書いておくことが重要です。"}}, {"@type": "Question", "name": "少人数でもPoC計画書は必要ですか", "acceptedAnswer": {"@type": "Answer", "text": "必要です。1ページで構いません。基準と撤退条件を書いておくだけで、判断の質が変わります。少人数の会社の進め方は「中小企業の導入記事」を参照してください。"}}, {"@type": "Question", "name": "外部に依頼する場合、PoC計画書は誰が作りますか", "acceptedAnswer": {"@type": "Answer", "text": "最終的な基準は自社で決めるのが望ましく、作成の補助を外部に依頼する形が一般的です。対象業務や成功の定義を自社が把握していないと、外部も適切な設計ができません。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.10.13</span><span class="tag">PoC</span></div>
+    <h1>Claude Code PoCの成功基準の決め方｜期間・対象業務・撤退条件</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年10月13日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeの試行（PoC：概念実証）を始めるとき、多くの会社が「まず使ってみよう」と動き出します。ところが、成功の基準を決めないまま数週間が過ぎると、「便利そうだが、続けるべきか分からない」「効果があったのか、気のせいなのか判断できない」という状態になりがちです。基準がないと、続ける理由も止める理由も説明できず、稟議や追加予算の場面で行き詰まります。</p>
+<p>この記事では、Claude CodeのPoCを始める前に決める項目として、(1)期間、(2)対象業務、(3)測る指標、(4)成功基準、(5)撤退条件、(6)体制と記録の6点を整理します。数字の例は「型」を示すためのもので、自社の実績や一般的な水準を示すものではありません。具体的な数値は、自社の業務を前提に決めてください。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>PoCは「期間・対象業務・指標・成功基準・撤退条件・体制」の6点を、始める前に書き出す</li><li>成功基準は「作業時間」「手戻り」「継続して使う人」の3軸で置くと説明しやすい</li><li>撤退条件を先に決めておくと、稟議が通りやすく、失敗時の損失も限定できる</li></ul><p style="margin:10px 0 0;"><strong>状況別：</strong>稟議に使う人は<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a>、基準の設計から相談したい人は<a href="../../contact.html#form">無料相談</a>へ。</p></div>
+
+<h2>基準なしのPoCで起きること</h2>
+<p>PoCに明確な基準がないと、次のような状態に陥りやすくなります。いずれも、技術の問題ではなく、設計の問題です。</p>
+<ul>
+<li><strong>評価が感覚になる：</strong>「速くなった気がする」「思ったほどでもない」と、人によって評価が割れる。</li>
+<li><strong>終わらない：</strong>やめる条件がないため、試行が惰性で続き、費用と工数が積み上がる。</li>
+<li><strong>承認が得られない：</strong>稟議で「何をもって成功とするのか」を問われ、答えられない。</li>
+<li><strong>対象が広がる：</strong>うまくいかない業務を残したまま、別の業務にも手を出して、検証が散漫になる。</li>
+</ul>
+<p>これらを防ぐには、PoCを始める前に、1枚の「PoC計画書」を作ります。分量は1ページで構いません。次の6つの項目に沿って書き出してください。</p>
+
+<h2>PoC計画書に書く6項目</h2>
+<h3>1. 期間を決める</h3>
+<p>期間は、短く区切って決めます。目安は、操作に慣れる期間と、実際の業務で測る期間の合計です。長すぎると惰性になり、短すぎると結果にばらつきが残ります。「何週間が適切か」は業務の頻度に依存します。毎日発生する業務なら短くても測れますが、月1回しか発生しない業務は、期間中に測れる回数が限られます。したがって、<strong>対象業務の発生頻度から逆算</strong>して期間を決めるのが基本です。</p>
+<h3>2. 対象業務を1つに絞る</h3>
+<p>PoCの対象は、原則として1業務です。選ぶ基準は次のとおりです。</p>
+<ul>
+<li>繰り返し発生する（測る回数を確保できる）</li>
+<li>現状の作業時間や手戻りを、導入前に測れる</li>
+<li>出力を人が確認できる</li>
+<li>機密性の高い情報を含まない、または含まない形に整えられる</li>
+</ul>
+<p>対象業務の選び方は「<a href="2026-08-01-claude-code-onboarding.html">導入初期の3つの壁</a>」でも触れています。</p>
+<h3>3. 測る指標を決める</h3>
+<p>指標は、少なく、測りやすいものにします。次の3軸が基本です。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>軸</th><th>指標の例</th><th>測り方の例</th></tr></thead><tbody>
+<tr><td>効率</td><td>1件あたりの作業時間</td><td>導入前の数回分と、PoC期間中の記録を比べる</td></tr>
+<tr><td>品質</td><td>手戻り・修正の回数、確認で見つかった誤りの数</td><td>確認者が記録する</td></tr>
+<tr><td>定着</td><td>期間中に継続して使った人の数、自発的に使った回数</td><td>利用者への聞き取り、管理画面の利用状況</td></tr>
+</tbody></table></div>
+<p>導入前の数字（ベースライン）を先に取らないと、比較ができません。「始める前に3回、いつもどおりの作業時間を測る」だけでも、PoCの評価の質が変わります。効果の数字への換算は、「<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIをどう測るか</a>」を参照してください。</p>
+<h3>4. 成功基準を書く</h3>
+<p>成功基準は、指標ごとに「どうなれば成功か」を書きます。たとえば次のような「型」です（数値はあくまで例で、自社の状況で決めます）。</p>
+<ul>
+<li>効率：対象業務の1件あたりの作業時間が、導入前の記録より短くなっている。</li>
+<li>品質：確認で見つかった重大な誤りが、期間中に外部へ出ていない。</li>
+<li>定着：試行した人の過半数が、期間の終盤も自発的に使っている。</li>
+</ul>
+<p>「何割短縮」のように割合で書く場合は、その数字を選んだ理由（たとえば、追加費用を回収できる水準）を一言添えると、決裁者に説明しやすくなります。根拠のない数字を置くのは避けてください。</p>
+<h3>5. 撤退条件を書く</h3>
+<p>撤退条件は、成功基準と同じ重さで先に書きます。やめる条件を決めておくことで、失敗のコストを限定でき、承認を得やすくなります。撤退条件の例は次のとおりです。</p>
+<ul>
+<li>入力してはいけない情報が入力された事故が起きた（原因の調査と再発防止まで一時停止）</li>
+<li>期間の中間時点で、品質の指標が基準に届かず、改善策も見つからない</li>
+<li>確認の負担が大きく、作業時間がかえって増えている</li>
+</ul>
+<p>事故時の対応は、「<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策と社内ルール</a>」に論点を整理しています。</p>
+<h3>6. 体制と記録を決める</h3>
+<p>最後に、誰が何をするかを決めます。最低限、次の役割を置きます。</p>
+<ul>
+<li><strong>実施者：</strong>実際に業務で使う人</li>
+<li><strong>確認者：</strong>出力を確認し、誤りを記録する人（実施者と別の人が望ましい）</li>
+<li><strong>判断者：</strong>期間の終わりに続けるか止めるかを決める人</li>
+</ul>
+<p>記録は、複雑にしないことが続けるコツです。作業時間と誤りの記録を、同じ表計算ファイルに書き足していく形で足ります。</p>
+
+<div class="post-tldr"><strong>PoC計画書の作り方で迷う場合</strong><ul><li>対象業務の候補を整理したい人：<a href="../../contact.html#form">無料相談</a>で業務を洗い出す</li><li>社内の承認に使う資料にしたい人：<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の7項目</a>とあわせて作る</li><li>伴走して進めたい人：<a href="../../service.html#consulting">導入伴走コンサルティング</a>の進め方を確認する</li></ul></div>
+
+<h2>PoC計画書のひな形</h2>
+<p>次の表を、そのまま社内の文書にコピーして使えます。空欄を埋めるだけで、決裁者に説明できる材料になります。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>記入内容</th></tr></thead><tbody>
+<tr><td>目的</td><td>（例）対象業務の作業時間を減らせるかを確認する</td></tr>
+<tr><td>期間</td><td>開始日〜終了日／中間確認日</td></tr>
+<tr><td>対象業務</td><td>業務名、発生頻度、現状の担当者</td></tr>
+<tr><td>実施者・確認者・判断者</td><td>氏名または役職</td></tr>
+<tr><td>導入前の数字</td><td>作業時間（複数回の平均）、手戻りの回数</td></tr>
+<tr><td>成功基準</td><td>効率・品質・定着の各基準</td></tr>
+<tr><td>撤退条件</td><td>事故、品質未達、確認負担の増加など</td></tr>
+<tr><td>入力してよい情報</td><td>三区分（入れてよい・相談してから・入れない）</td></tr>
+<tr><td>費用の上限</td><td>利用料、研修、社内工数の枠</td></tr>
+<tr><td>終了後の判断</td><td>続ける・広げる・止めるの条件</td></tr>
+</tbody></table></div>
+<p>費用の上限は、「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">法人導入にかかる費用の内訳</a>」を見ながら、項目の抜けがないように決めてください。</p>
+
+<h2>PoCの結果を、次の判断につなげる</h2>
+<h3>成功基準を満たした場合</h3>
+<p>すぐに全社へ広げるのではなく、同じ業務で再現するかを確認し、次の対象を選んで拡大します。広げる順番は「<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>」にまとめています。</p>
+<h3>一部だけ満たした場合</h3>
+<p>満たした指標と満たさなかった指標を分けて、原因を調べます。指示の書き方の問題なのか、対象業務の選択の問題なのか、確認体制の問題なのかで、次の一手が変わります。対象業務を変えて、期間を限って再度試す選択肢もあります。</p>
+<h3>撤退条件に当たった場合</h3>
+<p>撤退は失敗ではありません。小さな費用で「この業務には向かない」と分かったことが成果です。記録を残し、別の業務で試すか、時期を改めて再検討します。</p>
+
+<h2>PoCでよくある設計の失敗</h2>
+<h3>対象業務が複数になる</h3>
+<p>複数の業務を同時に試すと、どの業務で何が起きたのかが混ざり、評価が曖昧になります。最初は1業務に絞り、結果が出てから次を選びます。</p>
+<h3>導入前の数字を測らない</h3>
+<p>「以前はどのくらいかかっていたか」が記録されていないと、比べる対象がなく、効果が説明できません。始める前に、いつもの作業を数回、時間を測りながら行ってください。測定は面倒に見えますが、後の稟議や追加投資の判断を支える最も重要な材料です。</p>
+<h3>確認者が実施者と同じ</h3>
+<p>作った人が確認すると、見落としが起きやすくなります。可能であれば別の人が確認し、見つけた誤りを記録します。難しい場合は、チェック項目を事前に書いて機械的に確認します。</p>
+<h3>得意な人だけで試す</h3>
+<p>AIの扱いに慣れた人だけで試すと、結果が実際の利用者像から離れます。展開を見据えるなら、慣れた人と、そうでない人の両方を含めてください。非エンジニアが含まれる場合の考え方は「<a href="2026-10-13-claude-code-hi-engineer-kenshu-hitsuyo.html">非エンジニアに研修は必要か</a>」にあります。</p>
+<h3>途中経過を見ない</h3>
+<p>期間の最後にだけ確認すると、早い段階で気づけた問題を見逃します。中間確認日を決め、その時点で撤退条件に当たっていないかを確認します。</p>
+
+<h2>PoC後に社内へ説明するときの構成</h2>
+<p>PoCの結果を経営層や関係部署へ説明するときは、次の順に並べると、判断に必要な情報が揃います。</p>
+<ol>
+<li>目的と期間（何を確認するために、いつからいつまで行ったか）</li>
+<li>対象業務と体制（誰が何をしたか）</li>
+<li>導入前後の数字（効率・品質・定着の各指標）</li>
+<li>事前に決めた基準との比較（満たした項目、満たさなかった項目）</li>
+<li>起きた問題と、その対応（事故やヒヤリとしたことを含む）</li>
+<li>次の提案（続ける・広げる・止める、その理由と必要な費用）</li>
+</ol>
+<p>うまくいかなかった点を隠さず含めることが、決裁者の信頼につながります。広げる提案をする場合は、費用の見積もりを「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">費用の内訳</a>」の項目に沿って作ると、抜けを防げます。</p>
+
+<h2>業務の種類別に見る、指標の置き方</h2>
+<p>指標は、業務の種類によって置き方を変えると測りやすくなります。次の表は、置き方の方向性の例です。実際に使う指標は、対象業務の性質に合わせて決めてください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>業務の種類</th><th>効率の指標の例</th><th>品質の指標の例</th></tr></thead><tbody>
+<tr><td>文書の下書き</td><td>初稿ができるまでの時間</td><td>修正の回数、確認者の指摘数</td></tr>
+<tr><td>データの集計・整形</td><td>1回の処理にかかる時間</td><td>数値の不一致の件数</td></tr>
+<tr><td>手順書・マニュアルの更新</td><td>改訂案ができるまでの時間</td><td>実際の手順との相違点の件数</td></tr>
+<tr><td>調査・情報整理</td><td>要点の整理までの時間</td><td>出典の確認で見つかった誤りの数</td></tr>
+</tbody></table></div>
+<p>どの業務でも、「早くなったが、誤りが増えて確認に時間がかかる」という結果はあり得ます。効率だけでなく、品質と確認の負担を合わせて見ることが重要です。確認にかかる時間も、作業時間に含めて記録してください。</p>
+
+<h2>PoCの途中で基準を変えたくなったとき</h2>
+<p>PoCを進めると、最初に置いた基準が、実態に合っていないと気づくことがあります。基準を変えること自体が悪いわけではありませんが、変え方には注意が必要です。</p>
+<ul>
+<li>変える理由と日付を、記録に残す。</li>
+<li>都合のよい結論に近づける目的で、基準を緩めない。</li>
+<li>変更は、判断者の了承を得てから行う。</li>
+<li>基準を変えた場合は、変更前の基準での結果も併記する。</li>
+</ul>
+<p>変更の記録が残っていれば、後から経緯を説明できます。基準を動かせないと考えて無理に続けるより、記録を残して変えるほうが、結果として信頼性が保たれます。</p>
+
+<h2>PoCの記録を残す具体的な方法</h2>
+<p>記録は、複雑な仕組みを作らず、1つの表計算ファイルで足ります。列は、日付、実施者、作業内容、作業時間、確認者、見つかった誤り、気づいたこと、の7つがあれば最低限の振り返りができます。毎回の記録は短くて構いません。特に「気づいたこと」の欄は、指示の書き方の工夫や、うまくいかなかった原因を書き留める場所として役立ちます。この欄の記録が、PoC後に標準の指示文や注意点としてまとまり、展開の際の土台になります。</p>
+
+<h2>よくある質問</h2>
+<h3>Q. PoCの期間は何週間がよいですか</h3>
+<p>一律の正解はありません。対象業務の発生頻度から逆算し、測れる回数が確保できる期間に設定してください。発生頻度が低い業務では、測定回数が足りず、結論が出にくい点に注意が必要です。</p>
+<h3>Q. 成功基準の数字は、どう決めればよいですか</h3>
+<p>追加費用を回収できる水準や、現状の作業時間から逆算して決めます。根拠のない数字を置くより、基準を決めた理由を一緒に書いておくことが重要です。</p>
+<h3>Q. 少人数でもPoC計画書は必要ですか</h3>
+<p>必要です。1ページで構いません。基準と撤退条件を書いておくだけで、判断の質が変わります。少人数の会社の進め方は「<a href="2026-10-13-claude-code-chusho-kigyo-shounin-dounyu.html">中小企業の導入記事</a>」を参照してください。</p>
+<h3>Q. 外部に依頼する場合、PoC計画書は誰が作りますか</h3>
+<p>最終的な基準は自社で決めるのが望ましく、作成の補助を外部に依頼する形が一般的です。対象業務や成功の定義を自社が把握していないと、外部も適切な設計ができません。</p>
+
+<div class="post-tldr"><strong>PoCの設計から一緒に整えたい場合</strong><p style="margin:8px 0 12px;">凪AIの導入伴走コンサルティングでは、業務の棚卸しから、PoC計画、試行、判断までを段階を追って支援しています。基準の作り方だけのご相談も可能です。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">PoCの進め方を無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>PoCは、期間・対象業務・指標・成功基準・撤退条件・体制の6点を、始める前に書く</li>
+<li>指標は、効率・品質・定着の3軸で、導入前の数字と比べる</li>
+<li>撤退条件を先に決めると、失敗時の損失が限定でき、承認も得やすい</li>
+<li>結果は、続ける・広げる・止めるの3つに分けて判断する</li>
+</ul>
+<p>全体の位置づけは「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
