@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 法人利用で入力データは学習される？保持期間は何日？｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeに入力したコードやプロンプトは学習に使われるのか、何日保存されるのか。公式ドキュメントの記載を契約種別ごとの表に整理しました（確認日2026-11-03）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-houjin-data-gakushu-hoji.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code 法人利用で入力データは学習される？保持期間は何日？｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeに入力したコードやプロンプトは学習に使われるのか、何日保存されるのか。公式ドキュメントの記載を契約種別ごとの表に整理しました（確認日2026-11-03）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-houjin-data-gakushu-hoji.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code 法人利用で入力データは学習される？保持期間は何日？",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "description": "Claude Codeに入力したコードやプロンプトは学習に使われるのか、何日保存されるのか。公式ドキュメントの記載を契約種別ごとの表に整理しました（確認日2026-11-03）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-houjin-data-gakushu-hoji.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "法人でClaude Codeを使うと、入力したコードはAIの学習に使われますか", "acceptedAnswer": {"@type": "Answer", "text": "Anthropicの公式ドキュメント（確認日：2026-11-03）では、Team・Enterprise・APIなどの商用利用で、顧客が自らデータ提供を選んだ場合を除き、Claude Codeに送られたコードやプロンプトで生成モデルを学習しない、と記載されています。契約書の条文は、法務部門が別途確認してください。"}}, {"@type": "Question", "name": "Claude Codeに入力した内容は、何日間保存されますか", "acceptedAnswer": {"@type": "Answer", "text": "商用プラン（Team・Enterprise・API）の標準の保持期間は30日です。個人向けプランは、学習に使われることを許可した場合は5年、許可しない場合は30日です。ゼロデータ保持は、適格な組織のみが対象です。"}}, {"@type": "Question", "name": "Enterpriseプランにすれば、ゼロデータ保持になりますか", "acceptedAnswer": {"@type": "Answer", "text": "なりません。公式ドキュメントでは、ゼロデータ保持は標準のEnterpriseプランには含まれず、アカウント担当が適格性を確認したうえで、組織ごとに有効化される、と記載されています。"}}, {"@type": "Question", "name": "テレメトリを止めたい場合、どうすればよいですか", "acceptedAnswer": {"@type": "Answer", "text": "環境変数 DISABLE_TELEMETRY=1 で利用メトリクス、DISABLE_ERROR_REPORTING=1 でエラーレポートを止められます。CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC を設定すると、非必須の通信をまとめて止められます。管理者が配る設定ファイルに入れると、全員に一括で適用できます。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.03</span><span class="tag">セキュリティ</span></div>
+    <h1>Claude Code 法人利用で入力データは学習される？保持期間は何日？</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月3日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeに入力したコードや指示文は、Anthropicのモデル学習に使われるのか。どのくらいの期間、保存されるのか。社内で導入を検討すると、情シスや法務から最初に聞かれる質問です。この記事では、Anthropic公式ドキュメント「Data usage」（確認日：2026-11-03）に書かれている内容だけを使い、契約の種類ごとの扱いを1つの表にまとめます。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>Team・Enterprise・APIなどの商用利用では、Anthropicは、顧客が自らデータ提供を選んだ場合を除き、Claude Codeに送られたコードやプロンプトで生成モデルを学習しない、と公式に記載されている</li><li>Free・Pro・Max・Ultraの個人プランは、設定がオンの場合に学習に使われる。業務利用は商用プランで契約するのが前提になる</li><li>商用プランの標準保持期間は30日。ゼロデータ保持（ZDR）は標準のEnterpriseには含まれず、組織ごとに別途の確認が必要</li></ul><p style="margin:10px 0 0;"><strong>状況別：</strong>社内ルールの作り方は<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策と社内ルール</a>、プラン選びは<a href="2026-10-09-claude-team-enterprise-erabikata.html">Team・Enterpriseの選び方</a>へ。</p></div>
+
+<h2>Claude Codeに入力したデータは、モデル学習に使われますか？</h2>
+<p>契約の種類によって異なります。Anthropic公式ドキュメント（確認日：2026-11-03）では、商用利用（Team・Enterprise・API・サードパーティのクラウド基盤経由・Claude Gov）と個人向けプラン（Free・Pro・Max・Ultra）で、扱いが分かれています。</p>
+<ul>
+<li><strong>商用利用：</strong>Anthropicは、商用規約のもとでClaude Codeに送られたコードやプロンプトを使って生成モデルを学習しない。ただし、顧客が自らデータ提供を選んだ場合（例：Development Partner Program）は除く。</li>
+<li><strong>個人向けプラン：</strong>将来のモデル改善にデータを使うかどうかを利用者が選べる。設定がオンのときは、Claude Codeの利用データも学習に使われる。</li>
+</ul>
+<p>Development Partner Programは、組織の管理者が明示的に参加を選ぶ仕組みで、公式ドキュメントによると、Anthropicのファーストパーティ API向けのみで、Amazon BedrockやGoogle Cloudの利用者には提供されません。つまり、参加を選ばない限り、商用プランで入力内容が学習に回ることは、公式の記載上はありません。ただし、これはAnthropicの公式な方針の記載であり、貴社が結ぶ契約書の条文が優先します。契約前に、商用規約の該当条項を法務部門が確認してください。</p>
+
+<h2>入力したデータは、何日間保存されますか？</h2>
+<p>商用プラン（Team・Enterprise・API）の標準の保持期間は30日です（確認日：2026-11-03）。個人向けプランは、学習への利用を許可した場合は5年、許可しない場合は30日と記載されています。次の表は、公式の記載を契約の種類ごとに並べ直したものです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>契約の種類</th><th>学習への利用</th><th>Anthropic側の保持期間</th></tr></thead><tbody>
+<tr><td>Team・Enterprise・API（商用）</td><td>顧客が提供を選んだ場合を除き、しない</td><td>標準30日</td></tr>
+<tr><td>Enterprise（ZDR適用の組織）</td><td>同上</td><td>ゼロデータ保持。適格な組織のみ。標準のEnterpriseには含まれず、アカウント担当が適格性を確認して組織ごとに有効化</td></tr>
+<tr><td>Free・Pro・Max・Ultra（個人）で学習を許可</td><td>設定がオンのときは使う</td><td>5年</td></tr>
+<tr><td>Free・Pro・Max・Ultra（個人）で学習を許可しない</td><td>しない</td><td>30日</td></tr>
+</tbody></table></div>
+<p>出典：Anthropic「Data usage」（code.claude.com/docs/en/data-usage）、確認日 2026-11-03。保持期間や条件は変更される可能性があるため、導入の直前に公式ページで再確認してください。</p>
+<p>この表から分かる実務上のポイントは、<strong>同じClaude Codeでも、どの契約で使うかによって、保持期間が30日にも5年にもなる</strong>ことです。社員が個人の契約アカウントで業務のコードを扱うと、会社が想定している扱いと異なる条件でデータが保存される可能性があります。社内ルールでは、業務利用は会社が契約した商用プランに限る、という線引きが必要です。</p>
+
+<h2>ゼロデータ保持（ZDR）とは何ですか？</h2>
+<p>ゼロデータ保持（ZDR）とは、公式ドキュメントでは、Anthropic側のサーバーにデータを残さない運用を指し、Claude for Enterpriseのうち適格なアカウントのClaude Codeに提供される、と記載されています。標準のEnterpriseプランには含まれておらず、アカウント担当が適格性を確認したうえで、組織ごとに有効化されます。</p>
+<p>したがって、「Enterpriseにすれば自動的にZDRになる」と考えるのは誤りです。ZDRが必要な場合は、契約前に、自社の用途が適格となるか、いつ有効になるかを、Anthropicの営業窓口に確認する必要があります。ここで確認が取れない限り、貴社の社内文書には「標準の30日保持を前提とする」と書いておくのが安全です。</p>
+
+<h2>自分のPCに残る記録は、どう扱えばよいですか？</h2>
+<p>Anthropic側とは別に、利用者のPC内にも記録が残ります。公式ドキュメント（確認日：2026-11-03）によると、Claude Codeは、セッションの記録を、平文で、ホームフォルダ内の「.claude/projects/」の下に、既定で30日間保存します。保存の期間は、設定項目「cleanupPeriodDays」で変更できます。</p>
+<ul>
+<li>PCが紛失・盗難にあった場合、この記録に入力内容が含まれている可能性がある。</li>
+<li>共有PCや退職者のPCを再利用する場合は、この保存先の削除を手順に含める。</li>
+<li>入力してはいけない情報の区分は、「入れてよい・相談してから・入れない」の三つに分けて、周知する。</li>
+</ul>
+<p>つまり、クラウド側の保持だけでなく、端末側の保存も、社内ルールの対象にする必要があります。</p>
+
+<h2>テレメトリや「/feedback」で、意図せず情報が送られることはありますか？</h2>
+<p>送られる経路はありますが、無効にする設定が用意されています（確認日：2026-11-03）。次の表に、公式ドキュメントの記載を整理します。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>送られる内容</th><th>止める方法</th></tr></thead><tbody>
+<tr><td>利用メトリクス</td><td>遅延・信頼性・利用傾向。コード・プロンプト・ファイルパスは含まれない、と記載</td><td>環境変数 DISABLE_TELEMETRY=1</td></tr>
+<tr><td>エラーレポート</td><td>Claude Code内部のエラーメッセージとスタックトレース。既知の秘密情報のパターンなどは送信前に除去される、と記載</td><td>環境変数 DISABLE_ERROR_REPORTING=1</td></tr>
+<tr><td>/feedback コマンド</td><td>会話履歴（コードを含む）をAnthropicに送る。公式の記載では、/feedback等で共有された会話は5年間保持</td><td>環境変数 DISABLE_FEEDBACK_COMMAND=1</td></tr>
+<tr><td>セッション品質アンケート</td><td>評価のみ。続く質問で「はい」を選んだ場合だけ会話記録がアップロードされ、最大6か月保持</td><td>環境変数 CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1</td></tr>
+<tr><td>上記すべて（不要な通信）</td><td>非必須の通信全般</td><td>環境変数 CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</td></tr>
+</tbody></table></div>
+<p>なお、Amazon Bedrock・Google Cloud・Microsoft Foundry経由で使う場合、メトリクス・エラーレポート・/feedbackは、既定でオフと記載されています。一方、アンケートとWebFetchのドメイン安全確認（取得先のホスト名のみをAnthropicに送る）は、提供元にかかわらず動作します。止めたい場合は、前者は上記の環境変数、後者は設定項目「skipWebFetchPreflight」で切り替えます。</p>
+<p>これらの環境変数は、管理者が配布する設定ファイル（managed settings）に入れて、全員に一括で適用できます。利用者任せにせず、導入時に標準設定として配ることが、実務では重要です。</p>
+
+<div class="post-tldr"><strong>情シス・法務への説明資料にまとめたい場合</strong><ul><li>契約種別ごとの扱いを整理したい人：<a href="2026-10-09-claude-team-enterprise-erabikata.html">Team・Enterpriseの選び方</a></li><li>導入経路（直接契約かクラウド経由か）で迷う人：<a href="2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html">導入経路の比較</a></li><li>稟議に載せる項目を知りたい人：<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a></li></ul></div>
+
+<h2>導入前に確認するチェックリスト</h2>
+<p>ここまでの内容を、導入前の確認項目として整理します。「確認先」の列に書かれた窓口で、書面の回答を取っておくと、稟議や監査で説明できます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>確認項目</th><th>確認先</th><th>貴社の判断</th></tr></thead><tbody>
+<tr><td>業務利用は商用プランに限る、と社内で決めたか</td><td>情シス・経営層</td><td>（記入）</td></tr>
+<tr><td>商用規約の学習利用・保持に関する条項を法務が確認したか</td><td>法務</td><td>（記入）</td></tr>
+<tr><td>標準30日の保持で足りるか。ZDRが必要か</td><td>情シス、Anthropic営業窓口</td><td>（記入）</td></tr>
+<tr><td>PC内の記録の保存期間と削除手順を決めたか</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>テレメトリ等の環境変数を、標準設定として配布するか</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>入力してはいけない情報の区分を周知したか</td><td>情シス・各部門長</td><td>（記入）</td></tr>
+</tbody></table></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 法人でClaude Codeを使うと、入力したコードはAIの学習に使われますか</h3>
+<p>Anthropicの公式ドキュメント（確認日：2026-11-03）では、Team・Enterprise・APIなどの商用利用で、顧客が自らデータ提供を選んだ場合を除き、Claude Codeに送られたコードやプロンプトで生成モデルを学習しない、と記載されています。契約書の条文は、法務部門が別途確認してください。</p>
+<h3>Q. Claude Codeに入力した内容は、何日間保存されますか</h3>
+<p>商用プラン（Team・Enterprise・API）の標準の保持期間は30日です。個人向けプランは、学習に使われることを許可した場合は5年、許可しない場合は30日です。ゼロデータ保持は、適格な組織のみが対象です。</p>
+<h3>Q. Enterpriseプランにすれば、ゼロデータ保持になりますか</h3>
+<p>なりません。公式ドキュメントでは、ゼロデータ保持は標準のEnterpriseプランには含まれず、アカウント担当が適格性を確認したうえで、組織ごとに有効化される、と記載されています。</p>
+<h3>Q. テレメトリを止めたい場合、どうすればよいですか</h3>
+<p>環境変数 DISABLE_TELEMETRY=1 で利用メトリクス、DISABLE_ERROR_REPORTING=1 でエラーレポートを止められます。CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC を設定すると、非必須の通信をまとめて止められます。管理者が配る設定ファイルに入れると、全員に一括で適用できます。</p>
+
+<div class="post-tldr"><strong>社内説明用の資料づくりを一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、データの扱いを含む導入前の確認項目の整理や、社内ルールの作成を支援しています。公式情報の確認方法の相談だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">データの扱いについて無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>商用プランでは、顧客が選んだ場合を除き、入力内容で生成モデルを学習しない、と公式に記載されている。個人向けプランは扱いが異なる</li>
+<li>標準の保持期間は、商用プランが30日。ゼロデータ保持は標準のEnterpriseに含まれない</li>
+<li>PC内の記録、テレメトリ、/feedbackも、社内ルールと標準設定の対象にする</li>
+<li>最終的な判断は、契約書の条文と公式ページの最新版で行う</li>
+</ul>
+<p>導入全体の流れは「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

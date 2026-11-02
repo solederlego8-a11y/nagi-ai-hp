@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code の導入経路比較｜Teams・Enterprise・Bedrock・Google Cloud・Foundry｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeを会社で使うとき、直接契約とクラウド経由で請求・認証・監査がどう違うか。公式の比較表をもとに、自社の状況別の判断表にまとめました（確認日2026-11-03）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code の導入経路比較｜Teams・Enterprise・Bedrock・Google Cloud・Foundry｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeを会社で使うとき、直接契約とクラウド経由で請求・認証・監査がどう違うか。公式の比較表をもとに、自社の状況別の判断表にまとめました（確認日2026-11-03）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code の導入経路比較｜Teams・Enterprise・Bedrock・Google Cloud・Foundry",
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "description": "Claude Codeを会社で使うとき、直接契約とクラウド経由で請求・認証・監査がどう違うか。公式の比較表をもとに、自社の状況別の判断表にまとめました（確認日2026-11-03）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Claude Codeは、Amazon Bedrock経由でも使えますか", "acceptedAnswer": {"@type": "Answer", "text": "使えます。Anthropic公式ドキュメント（確認日：2026-11-03）に、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS経由のセットアップ手順が掲載されています。認証はAPIキーまたはAWSの認証情報で、費用はAWS Cost Explorerで確認できます。"}}, {"@type": "Question", "name": "TeamsやEnterpriseと、Bedrock経由では何が違いますか", "acceptedAnswer": {"@type": "Answer", "text": "Teams／Enterpriseは、Claude CodeとWeb版のClaudeを1つの契約で使え、SSOと利用状況ダッシュボードが付きます。Bedrock経由は、請求・権限・監査をAWSの仕組みで管理できる一方、Web版のClaudeは含まれません。"}}, {"@type": "Question", "name": "大企業はEnterpriseを選ぶべきですか", "acceptedAnswer": {"@type": "Answer", "text": "一概には言えません。公式ドキュメントでは、Enterpriseはドメイン管理、ロールベースの権限、コンプライアンスAPIが付き、セキュリティ要件が厳しい大規模組織向けと位置づけられています。クラウドで統制を一元化している会社は、クラウド経由が合う場合もあります。"}}, {"@type": "Question", "name": "クラウド経由で導入するとき、最初にやることは何ですか", "acceptedAnswer": {"@type": "Answer", "text": "モデルのバージョン固定、セキュリティ方針の配布、利用できる経路の制限の3つを、管理者が決めます。これらは、利用者の手元の設定で上書きされない形で配布するのが前提です。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.03</span><span class="tag">導入経路</span></div>
+    <h1>Claude Code の導入経路比較｜Teams・Enterprise・Bedrock・Google Cloud・Foundry</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月3日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeを会社で使うとき、Anthropicと直接契約する方法のほかに、Amazon Bedrock、Google Cloud、Microsoft Foundryといった、すでに契約しているクラウド経由で使う方法があります。どれを選ぶかで、請求の窓口、認証、費用の確認方法、監査ログの出どころが変わります。この記事では、Anthropic公式ドキュメント「Enterprise deployment overview」（確認日：2026-11-03）の比較表をもとに、自社の状況から経路を選ぶ判断表を作りました。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>公式ドキュメントは、ほとんどの組織にはClaude for TeamsまたはEnterpriseが最適、と案内している。セットアップが少なく、Web版のClaudeも同じ契約で使える</li><li>すでにAWS・Google Cloud・Azureで認証・請求・監査を一元管理している会社は、そのクラウド経由（Bedrock・Google Cloud・Foundry）が候補になる</li><li>クラウド経由ではWeb版のClaudeは含まれない。モデルのバージョン固定など、管理者側の作業も増える</li></ul><p style="margin:10px 0 0;"><strong>状況別：</strong>データの扱いは<a href="2026-11-03-claude-code-houjin-data-gakushu-hoji.html">学習・保持期間の記事</a>、プランの違いは<a href="2026-10-09-claude-team-enterprise-erabikata.html">Team・Enterpriseの選び方</a>へ。</p></div>
+
+<h2>Claude Codeの導入経路には、どんな種類がありますか？</h2>
+<p>Claude Codeの導入経路とは、モデルの推論を、どの契約・どの基盤で動かすかの選択肢のことです。公式ドキュメント（確認日：2026-11-03）には、次の6種類が並んでいます。</p>
+<ul>
+<li>Claude for Teams／Enterprise（Anthropicと直接契約）</li>
+<li>Anthropic Console（API従量課金）</li>
+<li>Amazon Bedrock</li>
+<li>Claude Platform on AWS（AWS Marketplace経由の請求）</li>
+<li>Google CloudのAgent Platform（旧称Vertex AI）</li>
+<li>Microsoft Foundry</li>
+</ul>
+<p>Anthropic Consoleは、公式の比較表で「個人開発者向け」と位置づけられています。そのため、組織での導入は、残りの5つが主な比較対象になります。</p>
+
+<h2>経路ごとに、請求・認証・監査は何が違いますか？</h2>
+<p>違いは、請求の窓口、認証の方式、費用の確認画面、管理機能の4点に出ます。次の表は、公式の比較表から、組織導入で比べる行を抜き出したものです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>項目</th><th>Teams／Enterprise</th><th>Amazon Bedrock</th><th>Claude Platform on AWS</th><th>Google Cloud（旧Vertex AI）</th><th>Microsoft Foundry</th></tr></thead><tbody>
+<tr><td>位置づけ</td><td>ほとんどの組織に推奨</td><td>AWS中心の構成向け</td><td>AWS Marketplace請求でClaude APIの機能を使いたい場合</td><td>Google Cloud中心の構成向け</td><td>Azure中心の構成向け</td></tr>
+<tr><td>請求</td><td>Teams：1人あたりの月額＋従量課金も可。Enterprise：営業に問い合わせ</td><td>AWS経由の従量課金</td><td>AWS Marketplace経由の従量課金</td><td>Google Cloud経由の従量課金</td><td>Azure経由の従量課金</td></tr>
+<tr><td>認証</td><td>claude.aiのSSOまたはメール</td><td>APIキーまたはAWS認証情報</td><td>APIキーまたはAWS認証情報</td><td>Google Cloudの認証情報</td><td>APIキーまたはMicrosoft Entra ID</td></tr>
+<tr><td>費用の確認</td><td>利用状況ダッシュボード</td><td>AWS Cost Explorer</td><td>AWS Cost Explorer</td><td>Google Cloud Billing</td><td>Azure Cost Management</td></tr>
+<tr><td>Web版のClaude</td><td>含む</td><td>含まない</td><td>含まない</td><td>含まない</td><td>含まない</td></tr>
+<tr><td>管理機能</td><td>チーム管理・SSO・利用状況の監視</td><td>IAMポリシー・CloudTrail</td><td>IAMポリシー・CloudTrail</td><td>IAMロール・Cloud Audit Logs</td><td>RBACポリシー・Azure Monitor</td></tr>
+</tbody></table></div>
+<p>出典：Anthropic「Enterprise deployment overview」（code.claude.com/docs/en/third-party-integrations）、確認日 2026-11-03。料金額・提供リージョンは各社の公式ページで確認してください（本記事では金額を扱っていません）。</p>
+<p>この表から読み取れる実務上の違いは、<strong>「誰が費用と監査の窓口になるか」</strong>です。直接契約ならAnthropicの管理画面が窓口です。クラウド経由なら、貴社がすでに使っているクラウドの請求・権限管理・監査ログの仕組みにそのまま載ります。</p>
+
+<h2>自社はどの経路を選べばよいですか？（判断表）</h2>
+<p>次の表は、自社の状況から、候補となる経路を絞るための判断表です。公式ドキュメントの記載をもとにした整理であり、最終的な選択は、費用の見積もりと社内の規程に照らして行ってください。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>自社の状況</th><th>候補になる経路</th><th>理由（公式の記載ベース）</th></tr></thead><tbody>
+<tr><td>クラウド基盤の契約が特にない／少人数で早く始めたい</td><td>Claude for Teams</td><td>セルフサービスで、管理ツール・SSO・請求管理・サーバー管理型の設定が付く。インフラ構築が不要</td></tr>
+<tr><td>全社展開で、権限・コンプライアンス要件が厳しい</td><td>Claude for Enterprise</td><td>Teamsの機能に加えて、ドメイン管理・ロールベースの権限・コンプライアンスAPIが付く</td></tr>
+<tr><td>AWSで認証・請求・監査を一元管理している</td><td>Amazon Bedrock</td><td>IAMポリシーとCloudTrailで管理でき、費用はCost Explorerで見られる</td></tr>
+<tr><td>AWS Marketplaceでの請求にまとめたい</td><td>Claude Platform on AWS</td><td>AWS Marketplace経由の従量課金で、Claude APIの機能を使える</td></tr>
+<tr><td>Google Cloudで権限・請求を管理している</td><td>Google Cloud（旧Vertex AI）</td><td>IAMロールとCloud Audit Logsで管理でき、費用はGoogle Cloud Billingで見られる</td></tr>
+<tr><td>Azure／Entra IDで統制している</td><td>Microsoft Foundry</td><td>Microsoft Entra IDで認証でき、RBACとAzure Monitorで管理できる</td></tr>
+<tr><td>社内の既存SSO（IdP）でサインインさせたい</td><td>Claude apps gateway（自社運用のゲートウェイ）</td><td>Bedrock・Google Cloud・Foundry・Anthropic APIの前段に、IdPによるサインインを追加する仕組み、と記載されている</td></tr>
+</tbody></table></div>
+
+<div class="post-tldr"><strong>経路の選び方で迷う場合</strong><ul><li>社内の費用負担・権限の整理から始めたい人：<a href="../../contact.html#form">無料相談</a>で現状を整理する</li><li>稟議に載せる比較表を作りたい人：<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の7項目</a>とあわせて作る</li><li>支援会社も比較したい人：<a href="2026-10-02-claude-code-dounyu-shien-erabikata.html">導入支援の選び方</a></li></ul></div>
+
+<h2>クラウド経由で導入するとき、管理者がやることは何ですか？</h2>
+<p>公式ドキュメント（確認日：2026-11-03）では、クラウド経由（Bedrock・Google Cloud・Foundry・Claude Platform on AWS）で導入する場合のベストプラクティスとして、次の点が挙げられています。</p>
+<ul>
+<li><strong>モデルのバージョンを固定する：</strong>固定しない場合、モデルの別名は、Claude Codeが持つ既定値に解決される。その既定値は最新リリースより遅れることがあり、自社のアカウントでまだ有効になっていないモデルを指す可能性がある。固定すれば、利用者が新しいモデルへ移るタイミングを管理者が決められる。</li>
+<li><strong>セキュリティ方針を配布する：</strong>Claude Codeに許可する操作・許可しない操作を、管理者が設定でき、ローカルの設定で上書きできない。</li>
+<li><strong>利用できる経路を制限する：</strong>管理対象のPCでは、設定項目「allowedProviders」で使える経路を限定できる（Claude Code v2.1.285以降）。</li>
+<li><strong>プロキシやゲートウェイを使う場合：</strong>全社の利用量の集計、予算の上限、認証の一元化が必要なときは、LLMゲートウェイを前段に置く方法がある。ただし、顧客管理の暗号化キー（CMEK）を使っている場合、ゲートウェイ経由ではClaude Codeの運用テレメトリにCMEKが適用されない、と記載されている。</li>
+</ul>
+<p>つまり、クラウド経由は、請求や監査を既存の仕組みに載せられる一方で、モデルの管理や設定の配布を、貴社の管理者が担う範囲が広がります。この運用負担を、費用の見積もりに含めてください。見積もりの項目は「<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">法人導入にかかる費用の内訳</a>」を参照してください。</p>
+
+<h2>経路を選ぶときの落とし穴は何ですか？</h2>
+<h3>「クラウド契約があるから」だけで決める</h3>
+<p>すでにクラウドを契約していても、全員にWeb版のClaudeも使わせたい場合は、クラウド経由ではWeb版が含まれない点が、条件に合わない可能性があります。利用者に何を提供したいかを先に決めてください。</p>
+<h3>データの扱いの違いを確認しない</h3>
+<p>経路によって、暗号化の方式やテレメトリの既定値が異なります。たとえば、Bedrock・Google Cloud・Foundry経由では、メトリクス・エラーレポート・/feedbackが既定でオフと記載されています。詳細は「<a href="2026-11-03-claude-code-houjin-data-gakushu-hoji.html">学習・保持期間の記事</a>」にまとめています。</p>
+<h3>導入後の経路変更を考えない</h3>
+<p>最初に小さく試す段階と、全社展開の段階で、適した経路が変わることがあります。試行の段階では、手続きの少ない経路で基準を作り、展開の段階で見直す進め方もあります。試行の設計は「<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a>」を参照してください。</p>
+
+<h2>よくある質問</h2>
+<h3>Q. Claude Codeは、Amazon Bedrock経由でも使えますか</h3>
+<p>使えます。Anthropic公式ドキュメント（確認日：2026-11-03）に、Amazon Bedrock、Google Cloud、Microsoft Foundry、Claude Platform on AWS経由のセットアップ手順が掲載されています。認証はAPIキーまたはAWSの認証情報で、費用はAWS Cost Explorerで確認できます。</p>
+<h3>Q. TeamsやEnterpriseと、Bedrock経由では何が違いますか</h3>
+<p>Teams／Enterpriseは、Claude CodeとWeb版のClaudeを1つの契約で使え、SSOと利用状況ダッシュボードが付きます。Bedrock経由は、請求・権限・監査をAWSの仕組みで管理できる一方、Web版のClaudeは含まれません。</p>
+<h3>Q. 大企業はEnterpriseを選ぶべきですか</h3>
+<p>一概には言えません。公式ドキュメントでは、Enterpriseはドメイン管理、ロールベースの権限、コンプライアンスAPIが付き、セキュリティ要件が厳しい大規模組織向けと位置づけられています。クラウドで統制を一元化している会社は、クラウド経由が合う場合もあります。</p>
+<h3>Q. クラウド経由で導入するとき、最初にやることは何ですか</h3>
+<p>モデルのバージョン固定、セキュリティ方針の配布、利用できる経路の制限の3つを、管理者が決めます。これらは、利用者の手元の設定で上書きされない形で配布するのが前提です。</p>
+
+<div class="post-tldr"><strong>導入経路の整理から一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、自社のクラウド契約・SSO・請求の状況を整理し、経路の候補と確認項目を一覧にする支援を行っています。比較表の作成だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">導入経路について無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>公式ドキュメントは、ほとんどの組織にはClaude for TeamsまたはEnterpriseが最適、と案内している</li>
+<li>クラウド経由は、請求・認証・監査を既存の仕組みに載せられるが、Web版のClaudeは含まれず、管理者の作業が増える</li>
+<li>選ぶ前に、請求の窓口、認証の方式、監査ログの出どころ、Web版の要否の4点を決める</li>
+<li>料金・リージョン・最新の仕様は、導入の直前に各社の公式ページで確認する</li>
+</ul>
+<p>導入全体の流れは「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
