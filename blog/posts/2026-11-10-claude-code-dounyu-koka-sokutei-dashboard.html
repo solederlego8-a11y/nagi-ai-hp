@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code の導入効果は何で測る？管理者ダッシュボードで見える指標と見えない指標｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeの導入効果を数字で説明したいときに、契約の種類ごとに何が見えて何が見えないのか。Teams・Enterprise、Claude Console、クラウド経由、OpenTelemetryの違いを公式ドキュメントから整理しました（確認日2026-11-10）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-dounyu-koka-sokutei-dashboard.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code の導入効果は何で測る？管理者ダッシュボードで見える指標と見えない指標｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeの導入効果を数字で説明したいときに、契約の種類ごとに何が見えて何が見えないのか。Teams・Enterprise、Claude Console、クラウド経由、OpenTelemetryの違いを公式ドキュメントから整理しました（確認日2026-11-10）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-dounyu-koka-sokutei-dashboard.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code の導入効果は何で測る？管理者ダッシュボードで見える指標と見えない指標",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "description": "Claude Codeの導入効果を数字で説明したいときに、契約の種類ごとに何が見えて何が見えないのか。Teams・Enterprise、Claude Console、クラウド経由、OpenTelemetryの違いを公式ドキュメントから整理しました（確認日2026-11-10）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-dounyu-koka-sokutei-dashboard.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Claude Codeの導入効果は、どこで確認できますか", "acceptedAnswer": {"@type": "Answer", "text": "Teams・Enterpriseは claude.ai/analytics/claude-code、Claude Console（API）は platform.claude.com/claude-code のダッシュボードで確認できます。クラウド経由の場合は、OpenTelemetryで自社の監視基盤に送る必要があります。公式ドキュメント（確認日：2026-11-10）の記載です。"}}, {"@type": "Question", "name": "PR数やコミット数は、すべての契約で見られますか", "acceptedAnswer": {"@type": "Answer", "text": "見られません。管理画面の貢献指標は、Teams・Enterpriseで、GitHub連携を設定した場合のみです。API契約は対象外で、GitHub Enterprise ServerとZDRの組織では、貢献指標が出ません。"}}, {"@type": "Question", "name": "OpenTelemetryで、従業員のプロンプトの内容は見えますか", "acceptedAnswer": {"@type": "Answer", "text": "既定では見えません。プロンプトの内容は収集されず、長さのみが記録されます。環境変数「OTEL_LOG_USER_PROMPTS=1」を設定した場合のみ、内容が含まれます。導入する場合は、社内の同意と規程を先に整えてください。"}}, {"@type": "Question", "name": "承認された行数が多ければ、効果が大きいと言えますか", "acceptedAnswer": {"@type": "Answer", "text": "言えるとは限りません。承認された行数は、利用者が承認した編集の行数の合計で、品質や成果を直接示す数字ではありません。導入前の基準値や、既存の開発指標と組み合わせて判断してください。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.10</span><span class="tag">効果測定</span></div>
+    <h1>Claude Code の導入効果は何で測る？管理者ダッシュボードで見える指標と見えない指標</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月10日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeを導入して数か月たつと、経営層から「効果はあったのか」と聞かれます。このとき、管理者が使える画面は契約の種類によって違い、見えない指標もあります。この記事では、Anthropic公式ドキュメント「Track team usage with analytics」と「Monitoring with OpenTelemetry」（確認日：2026-11-10）に書かれている内容だけを使い、契約ごとに「何が見えるか・見えないか」を1つの表にまとめます。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>Teams・Enterpriseは、管理画面のダッシュボードで、利用者数・セッション数・承認された行数が見える。PR（プルリクエスト）数などの貢献指標は、GitHub連携の追加設定が必要</li><li>Claude Console（API）は、利用者数・支出・承認された行数が見える。GitHub連携による貢献指標は、公式の記載上、現時点では対象外</li><li>Bedrock等のクラウド経由は、Anthropic側のダッシュボードの対象外。OpenTelemetryで自社の監視基盤に送る必要がある</li></ul><p style="margin:10px 0 0;"><strong>関連：</strong>料金の管理は<a href="2026-11-10-claude-code-houjin-riyo-ryokin-jougen-kanri.html">利用料金の上限と管理</a>、考え方は<a href="2026-07-05-roi-how-to-measure.html">業務自動化のROIの測り方</a></p></div>
+
+<h2>管理者は、Claude Codeの利用状況をどこで見られますか？</h2>
+<p>公式ドキュメント（確認日：2026-11-10）では、Claude Code用の分析画面が2種類あります。Claude for Teams・Enterpriseの契約は「claude.ai/analytics/claude-code」、API（Claude Console）の契約は「platform.claude.com/claude-code」です。Teams・Enterpriseの画面は、管理者（Admin）とオーナー（Owner）が見られます。Claude Consoleの画面は、閲覧権限（UsageView）が必要で、Developer・Billing・Admin・Owner・Primary Ownerの各ロールが持っています。</p>
+<p>Amazon Bedrock、Google Cloud、Microsoft Foundry経由の場合、公式は、Claude Codeがこれらのクラウドの利用状況をAnthropicに送らないため、分析画面とAnalytics APIの対象外と説明しています。次の表は、契約ごとの違いです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>契約の種類</th><th>見える指標</th><th>見えない（対象外の）もの</th><th>追加の取得手段</th></tr></thead><tbody>
+<tr><td>Teams・Enterprise</td><td>承認された行数、提案の承認率、日次の利用者数とセッション数、利用者ランキング、CSV出力</td><td>貢献指標（PR数など）は、GitHub連携を設定するまで見えない。ZDR（ゼロデータ保持）の組織は貢献指標が使えない</td><td>支出レポート（CSV）。Enterpriseは「Enterprise Analytics API」（Teamsでは使えない）</td></tr>
+<tr><td>Claude Console（API）</td><td>承認された行数、提案の承認率、利用者数、セッション数、支出（日次）、メンバー別の支出と承認行数</td><td>GitHub連携による貢献指標。支出は分析用の推定値で、実際の費用はCostページで確認する</td><td>Claude Code Analytics API（Admin APIキーが必要）</td></tr>
+<tr><td>Bedrock・Google Cloud・Foundry</td><td>Anthropic側の分析画面では見えない</td><td>分析画面・Analytics APIの全指標</td><td>OpenTelemetry、またはゲートウェイ</td></tr>
+</tbody></table></div>
+<p>出典：Anthropic「Track team usage with analytics」（code.claude.com/docs/en/analytics）、「Manage costs effectively」（code.claude.com/docs/en/costs）、確認日 2026-11-10。画面や機能は変更される可能性があるため、利用前に公式ページで再確認してください。</p>
+
+<h2>貢献指標（PR数など）を見るには、何が必要ですか？</h2>
+<p>貢献指標（contribution metrics）とは、公式ドキュメントでは、Claude Codeの支援を受けて提出されたPR数やコード行数を、GitHub連携によって集計する指標を指します。公開ベータ版の機能として案内されており、Claude for TeamsとEnterpriseで使えます（確認日：2026-11-10）。設定には、次の4つの手順と条件があります。</p>
+<ol>
+<li>GitHubの管理者が、組織のGitHubアカウントにClaude GitHubアプリ（github.com/apps/claude）をインストールする</li>
+<li>Claudeのオーナーが、管理設定のClaude Codeのページ（claude.ai/admin-settings/claude-code）で、Claude Codeの分析機能をオンにする</li>
+<li>同じページで「GitHub analytics」のトグルをオンにする</li>
+<li>GitHubの認証を完了し、集計対象のGitHub組織を選ぶ</li>
+</ol>
+<p>設定にはオーナーのロールが必要です。データは、有効化から通常24時間以内に表示されます。次の条件にも注意が必要です。</p>
+<ul>
+<li>集計対象は、github.com上のリポジトリ。GitHub Enterprise Serverのリポジトリは、利用状況の指標のみで、貢献指標は出ない</li>
+<li>集計対象は、claude.aiの組織内のユーザーのみ。Claude Console（API）やサードパーティ経由の利用は含まれない</li>
+<li>ゼロデータ保持（ZDR）が有効な組織では、貢献指標が使えず、利用状況の指標のみ表示される</li>
+</ul>
+<p>つまり、自社が社内でGitHub Enterprise Serverを使っている場合や、API契約で使っている場合は、PR数による効果測定が、公式の画面では取れません。その場合は、既存の開発管理の数字（後述）と組み合わせる必要があります。ZDRについては<a href="2026-11-03-claude-code-houjin-data-gakushu-hoji.html">入力データの学習と保持期間</a>で整理しています。</p>
+
+<h2>OpenTelemetryでは、何が測れて、何が含まれませんか？</h2>
+<p>OpenTelemetry（オープンテレメトリ）とは、アプリの利用状況を、標準の形式で自社の監視基盤へ送る仕組みです。Claude Codeは、公式ドキュメント（確認日：2026-11-10）によると、環境変数「CLAUDE_CODE_ENABLE_TELEMETRY=1」で有効にします。自社の明示的な設定が必要な選択式の機能で、送り先は自社が設定した窓口のみです。どの契約でも使え、公式は、利用者別のトークン数と費用の指標を、ほぼリアルタイムで自社の監視基盤に流せる、唯一の方法としています。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>指標（公式の名称）</th><th>測れる内容</th></tr></thead><tbody>
+<tr><td>claude_code.session.count</td><td>開始したセッション数</td></tr>
+<tr><td>claude_code.token.usage</td><td>使用したトークン数（利用者・チーム・モデル別に分解可能）</td></tr>
+<tr><td>claude_code.cost.usage</td><td>セッションの費用（近似値）</td></tr>
+<tr><td>claude_code.lines_of_code.count</td><td>変更されたコード行数</td></tr>
+<tr><td>claude_code.commit.count / pull_request.count</td><td>作成されたコミット数、PR数</td></tr>
+<tr><td>claude_code.active_time.total</td><td>稼働時間（秒）</td></tr>
+</tbody></table></div>
+<p>プライバシーに関する公式の記載は、次のとおりです。ファイルの中身やコードの断片は、指標にもイベントにも含まれません。プロンプトの内容は既定では収集されず、長さのみが記録されます。内容を含めるには、「OTEL_LOG_USER_PROMPTS=1」を設定する必要があります。また、OAuth認証の場合、メールアドレス（user.email）が計測データの属性に含まれ、自社が設定した送り先にのみ送られます。社内で従業員の利用を測る場合は、このメールアドレスの扱いを、法務や人事と事前に確認してください。</p>
+<p>費用の指標は、公式が「近似値であり、正式な請求データは別に確認する」と注記しています。設定は、管理者が配る設定ファイル（managed settings）に入れて、全員に一括で適用できます。</p>
+
+<h2>どの数字を「導入効果」として使えますか？</h2>
+<p>公式ドキュメントは、貢献指標の使い方として、導入が進むにつれて利用者1人あたりのPR数がどう変わるかを追うこと、そして、DORA指標やスプリントの速度など、すでに使っている開発の指標と併用することを案内しています。この記事の観点からは、使える数字は3つの層に分けられます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>測りたいこと</th><th>使える数字</th><th>この数字だけでは言えないこと</th></tr></thead><tbody>
+<tr><td>使われているか（定着）</td><td>日次の利用者数、セッション数、利用者ランキング</td><td>業務の成果が上がったかどうかは分からない</td></tr>
+<tr><td>どれだけ使ったか（コスト）</td><td>トークン数、費用の推定値、利用者別の支出</td><td>費用に見合う成果が出たかどうかは分からない</td></tr>
+<tr><td>成果につながったか（効果）</td><td>PR数・コミット数の推移、自社で既に測っている開発指標（DORA指標、スプリント速度など）</td><td>Claude Code以外の要因（人員、案件の難しさ）の影響は分けられない</td></tr>
+</tbody></table></div>
+<p>なお、「承認された行数」は、公式の定義では、Claude Codeの編集ツールが追加または削除した行のうち、利用者が承認したものの合計で、却下された提案は含まれず、後から削除された行も合計から引かれません。行数が多いほど成果が大きい、とは限らないため、この数字だけで効果を判断しない運用が安全です（これは公式の記載ではなく、当社の見解です）。</p>
+<p>導入前の数字（基準値）がなければ、導入後の変化は説明できません。試行の開始前に、既存の指標を記録しておくことが重要です。試行の設計は<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準の決め方</a>で整理しています。</p>
+
+<h2>どの契約なら、どの測り方を選べばよいですか？</h2>
+<p>契約の種類と、自社の開発環境の組み合わせで、選ぶ測り方が変わります。次の表は、判断の起点として使えます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>自社の状況</th><th>最初に使う測り方</th><th>補う手段</th></tr></thead><tbody>
+<tr><td>Teams・Enterpriseで、GitHub（github.com）を使っている</td><td>管理画面のダッシュボード（利用状況＋貢献指標）</td><td>支出レポート（CSV）で費用を確認</td></tr>
+<tr><td>Teams・Enterpriseで、GitHub Enterprise Serverを使っている、またはZDRが有効</td><td>管理画面のダッシュボード（利用状況のみ）</td><td>OpenTelemetryでコミット数・PR数を取得</td></tr>
+<tr><td>Claude Console（API）</td><td>Consoleのダッシュボード（利用者数・支出・承認行数）</td><td>Analytics API、OpenTelemetry</td></tr>
+<tr><td>Bedrock・Google Cloud・Foundry</td><td>OpenTelemetry（自社の監視基盤）</td><td>クラウドの請求コンソール（費用）</td></tr>
+</tbody></table></div>
+<p>表のうち、「OpenTelemetryでコミット数・PR数を取得」は、公式の指標一覧にコミット数とPR数の指標があることからの整理です。自社のGitHub Enterprise Server環境で期待どおりに数字が出るかは、記事執筆時点では確認していません。試行の段階で必ず確認してください。</p>
+
+<div class="post-tldr"><strong>費用と効果を、セットで説明したい場合</strong><ul><li>費用の上限・見る場所：<a href="2026-11-10-claude-code-houjin-riyo-ryokin-jougen-kanri.html">利用料金の上限と管理</a></li><li>試行後に社内展開する判断：<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a></li><li>稟議書に効果の根拠を書く：<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a></li></ul></div>
+
+<h2>導入前に決めておく効果測定のチェックリスト</h2>
+<p>測る手段は、導入後ではなく、導入前に決めます。「決める人」の列にある担当者で合意しておくと、数字が取れなかったという事態を避けられます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>決める項目</th><th>決める人</th><th>貴社の判断</th></tr></thead><tbody>
+<tr><td>契約の種類と、使える分析画面の確認</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>貢献指標を使う場合、GitHubの種類（github.com／Enterprise Server）とZDRの有無</td><td>情シス・開発責任者</td><td>（記入）</td></tr>
+<tr><td>導入前の基準値（既存の開発指標）をいつ、誰が記録するか</td><td>開発責任者</td><td>（記入）</td></tr>
+<tr><td>OpenTelemetryを使う場合の送り先と、メールアドレスの扱い</td><td>情シス・法務・人事</td><td>（記入）</td></tr>
+<tr><td>効果の報告先と、報告の頻度</td><td>経営層・部門長</td><td>（記入）</td></tr>
+</tbody></table></div>
+
+<h2>よくある質問</h2>
+<h3>Q. Claude Codeの導入効果は、どこで確認できますか</h3>
+<p>Teams・Enterpriseは claude.ai/analytics/claude-code、Claude Console（API）は platform.claude.com/claude-code のダッシュボードで確認できます。クラウド経由の場合は、OpenTelemetryで自社の監視基盤に送る必要があります。公式ドキュメント（確認日：2026-11-10）の記載です。</p>
+<h3>Q. PR数やコミット数は、すべての契約で見られますか</h3>
+<p>見られません。管理画面の貢献指標は、Teams・Enterpriseで、GitHub連携を設定した場合のみです。API契約は対象外で、GitHub Enterprise ServerとZDRの組織では、貢献指標が出ません。</p>
+<h3>Q. OpenTelemetryで、従業員のプロンプトの内容は見えますか</h3>
+<p>既定では見えません。プロンプトの内容は収集されず、長さのみが記録されます。環境変数「OTEL_LOG_USER_PROMPTS=1」を設定した場合のみ、内容が含まれます。導入する場合は、社内の同意と規程を先に整えてください。</p>
+<h3>Q. 承認された行数が多ければ、効果が大きいと言えますか</h3>
+<p>言えるとは限りません。承認された行数は、利用者が承認した編集の行数の合計で、品質や成果を直接示す数字ではありません。導入前の基準値や、既存の開発指標と組み合わせて判断してください。</p>
+
+<div class="post-tldr"><strong>効果測定の設計を一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、試行期間の測り方の設計や、基準値の整理を支援しています。公式情報の確認方法の相談だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">効果測定の設計について無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>契約の種類によって、見える指標が違う。Teams・Enterpriseは管理画面、Claude Consoleは別のダッシュボード、クラウド経由はOpenTelemetryが前提になる</li>
+<li>PR数などの貢献指標は、Teams・EnterpriseでGitHub連携を設定した場合のみ。GitHub Enterprise ServerとZDRの組織は対象外</li>
+<li>利用状況・費用・成果は別の層の数字。導入前の基準値を記録してから比較する</li>
+<li>画面や仕様は変わり得るため、導入の直前に公式ページで再確認する</li>
+</ul>
+<p>導入全体の流れは「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

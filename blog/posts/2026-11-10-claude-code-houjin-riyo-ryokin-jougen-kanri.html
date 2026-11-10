@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code の法人利用料金に上限は設けられる？管理者が見る場所と止める場所｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeの利用料金を会社として管理できるのか。Teams・Enterprise、Claude Console、クラウド経由の3つの契約で、見る場所・上限を決める場所・利用者別の数字の取り方を公式ドキュメントから整理しました（確認日2026-11-10）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-houjin-riyo-ryokin-jougen-kanri.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code の法人利用料金に上限は設けられる？管理者が見る場所と止める場所｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeの利用料金を会社として管理できるのか。Teams・Enterprise、Claude Console、クラウド経由の3つの契約で、見る場所・上限を決める場所・利用者別の数字の取り方を公式ドキュメントから整理しました（確認日2026-11-10）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-houjin-riyo-ryokin-jougen-kanri.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code の法人利用料金に上限は設けられる？管理者が見る場所と止める場所",
+  "datePublished": "2026-11-10",
+  "dateModified": "2026-11-10",
+  "description": "Claude Codeの利用料金を会社として管理できるのか。Teams・Enterprise、Claude Console、クラウド経由の3つの契約で、見る場所・上限を決める場所・利用者別の数字の取り方を公式ドキュメントから整理しました（確認日2026-11-10）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-10-claude-code-houjin-riyo-ryokin-jougen-kanri.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Claude Codeの法人利用に、月額の上限は設けられますか", "acceptedAnswer": {"@type": "Answer", "text": "設けられます。Teams・Enterpriseは管理画面で組織・グループ・個人の単位の支出上限、Claude ConsoleはWorkspaceの支出上限、Amazon Bedrock等のクラウド経由は各クラウドの予算機能が上限の置き場です。公式ドキュメント（確認日：2026-11-10）の記載です。"}}, {"@type": "Question", "name": "1人あたりの費用は、どのくらいを見込めばよいですか", "acceptedAnswer": {"@type": "Answer", "text": "公式は、企業導入全体の平均として、開発者1人あたり月150〜250ドル程度と記載しています。ただし平均値のため、少人数の試行で実測し、基準値を作ってから展開するよう案内されています。"}}, {"@type": "Question", "name": "利用者ごとの費用は分かりますか", "acceptedAnswer": {"@type": "Answer", "text": "分かります。Teams・Enterpriseは支出レポートのCSV、Claude ConsoleはConsoleのダッシュボードとAnalytics API、クラウド経由はOpenTelemetryやLLMゲートウェイで取得します。"}}, {"@type": "Question", "name": "画面の金額は、請求額と同じですか", "acceptedAnswer": {"@type": "Answer", "text": "同じとは限りません。画面の金額は、既定では定価で計算した推定値です。契約単価を反映するには、管理設定のmodelPricingを使います。確定額は請求書で確認してください。"}}]}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.10</span><span class="tag">費用管理</span></div>
+    <h1>Claude Code の法人利用料金に上限は設けられる？管理者が見る場所と止める場所</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body">
+<p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月10日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeを社員に配ると、「月にいくらかかるのか」「使いすぎる人が出たら止められるのか」を経営層や経理から聞かれます。この記事では、Anthropic公式ドキュメント「Manage costs effectively」（確認日：2026-11-10）に書かれている内容だけを使い、契約の種類ごとに、料金を見る場所・上限を決める場所・利用者別の数字を取る方法を1つの表にまとめます。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>上限は設けられる。ただし場所が契約ごとに違う。Teams・Enterpriseは管理画面の支出上限、Claude ConsoleはWorkspaceの支出上限、Amazon Bedrock等のクラウド経由は各クラウドの予算機能が上限の置き場になる</li><li>料金の目安は、公式が「企業導入全体の平均で、開発者1人あたり月150〜250ドル程度」と記載している。ただし平均値であり、自社の数字は少人数の試行で測ってから決める、とも書かれている</li><li>画面に出る金額は、会社の契約単価ではなく定価で計算した推定値が既定。請求書の代わりにはならない</li></ul><p style="margin:10px 0 0;"><strong>関連：</strong>費用の内訳は<a href="2026-10-02-claude-code-houjin-hiyou-uchiwake.html">法人導入の費用内訳</a>、契約の選び方は<a href="2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html">導入経路の比較</a></p></div>
+
+<h2>Claude Codeの料金は、どのような仕組みで決まりますか？</h2>
+<p>Claude Codeの料金は、公式ドキュメント（確認日：2026-11-10）によると、APIのトークン消費量に応じて課金される仕組みが基本です。Pro・Max・Ultra・Team・Enterpriseなどのサブスクリプションプランの価格は、別途Anthropicの料金ページ（claude.com/pricing）に掲載されている、と案内されています。この記事では料金ページの金額は確認していないため、座席単価は書きません。</p>
+<p>利用者ごとの費用は、使うモデル、コードベースの大きさ、同時に動かす数、自動化の有無で大きく変わります。公式の記載は次のとおりです。</p>
+<ul>
+<li>企業導入全体の平均は、開発者1人・稼働日1日あたり約13ドル、1人・1か月あたり150〜250ドル程度</li>
+<li>稼働日1日あたり30ドル未満に収まる利用者が、全体の90%</li>
+<li>自社の費用を見積もるには、小さな試行グループで始め、下記の追跡手段で基準値を作ってから展開する</li>
+</ul>
+<p>つまり、公式の平均値は「予算の出発点」にはなりますが、「自社の予算そのもの」ではありません。人数が10人なら、平均値を単純に掛けて月1,500〜2,500ドルが一つの目安になります（これは公式の範囲に人数を掛けただけの計算で、公式が示した予算ではありません）。実際の予算は、試行の実測値で置き換えます。</p>
+
+<h2>契約の種類ごとに、料金を見る場所と上限を決める場所はどこですか？</h2>
+<p>公式ドキュメントでは、Claude Codeの使い方を「Claude for TeamsまたはEnterprise」「Claude Console（API）」「Amazon Bedrock・Google Cloud・Microsoft Foundry」の3つに分け、見る場所と上限の置き場を整理しています。次の表は、その記載を管理者の視点で並べ直したものです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>契約の種類</th><th>料金の見る場所</th><th>上限を決める場所</th><th>利用者別の数字</th></tr></thead><tbody>
+<tr><td>Claude for Teams・Enterprise</td><td>組織の分析画面にある「支出レポート」</td><td>管理画面の支出上限（組織・グループ・個人の単位）</td><td>支出レポートのCSV。Enterpriseは「Enterprise Analytics API」でも取得可</td></tr>
+<tr><td>Claude Console（API）</td><td>Console の「Cost」ページ</td><td>Workspaceの支出上限</td><td>Consoleのダッシュボード、「Claude Code Analytics API」（Admin APIキーが必要）</td></tr>
+<tr><td>Amazon Bedrock・Google Cloud・Microsoft Foundry</td><td>各クラウドの請求コンソール</td><td>各クラウドの予算機能</td><td>OpenTelemetry、またはLLMゲートウェイ（Anthropic側の分析画面はこの利用を対象にしない）</td></tr>
+</tbody></table></div>
+<p>出典：Anthropic「Manage costs effectively」（code.claude.com/docs/en/costs）、確認日 2026-11-10。画面名や機能は変更される可能性があるため、設定の直前に公式ページで再確認してください。</p>
+<p>表のとおり、<strong>同じClaude Codeでも、どの契約で使うかによって、上限を設定する画面そのものが別物</strong>になります。契約を決める前に「上限を誰が、どの画面で設定するのか」を経理と情シスで決めておくと、導入後の運用が止まりません。契約の比較は<a href="2026-11-03-claude-code-dounyu-keiro-hikaku-bedrock-vertex.html">導入経路の比較</a>で整理しています。</p>
+
+<h2>Teams・Enterpriseでは、使い放題になりませんか？</h2>
+<p>Teams・Enterpriseでは、公式ドキュメント（確認日：2026-11-10）によると、各メンバーの利用は「座席ごとの利用枠」から差し引かれます。この枠は、5時間ごとに更新される枠と週ごとの枠の2段階で管理され、Claudeのチャットなど他の機能と共有されます。枠の大きさは、座席の種類（StandardまたはPremium）で決まります。</p>
+<ul>
+<li><strong>既定の上限：</strong>座席の利用枠そのものが既定の上限になる。枠内の利用はドル単位では計測されない</li>
+<li><strong>枠を超えて使わせたい場合：</strong>「使用量クレジット（usage credits）」をオンにして、組織・グループ・個人の単位で支出上限を設定する</li>
+<li><strong>利用者別の支出：</strong>支出レポートは、使用量クレジットをオンにした後に表示され、利用者別・モデル別の推定支出を1日1回の更新で確認できる</li>
+</ul>
+<p>したがって、Teams・Enterpriseは「枠の中は定額、枠を超える分だけ従量で上限付き」という二段構えで管理します。公式は、コーディング用の座席には、チャット用の座席より多めに予算を見るよう案内しています。コードの読み込みやツール呼び出しを含むため、1回のデバッグ作業が、チャットの1日分より多く消費することがあるためです。</p>
+
+<h2>Claude Console（API）の契約では、どこで上限をかけますか？</h2>
+<p>Claude Console（API）の契約では、公式ドキュメント（確認日：2026-11-10）上、「Workspace」という単位で支出上限を設定します。初めてClaude ConsoleのアカウントでClaude Codeを認証すると、「Claude Code」という名前のWorkspaceが自動で作成され、組織全体のClaude Code利用の費用が一か所に集まります。このWorkspaceにはAPIキーを作成できず、Claude Codeの認証と利用の集計専用です。</p>
+<p>利用者別の数字は、Consoleのダッシュボード（メンバーごとの支出と承認された行数）か、Admin APIキーで使うClaude Code Analytics APIで取得します。さらに公式は、チーム規模別の「1ユーザーあたりの推奨レート制限」を示しています。次の表は、その抜粋です。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>チーム規模</th><th>1ユーザーあたりTPM（1分あたりのトークン数）</th><th>1ユーザーあたりRPM（1分あたりのリクエスト数）</th></tr></thead><tbody>
+<tr><td>1〜5人</td><td>20万〜30万</td><td>5〜7</td></tr>
+<tr><td>5〜20人</td><td>10万〜15万</td><td>2.5〜3.5</td></tr>
+<tr><td>20〜50人</td><td>5万〜7.5万</td><td>1.25〜1.75</td></tr>
+<tr><td>50〜100人</td><td>2.5万〜3.5万</td><td>0.62〜0.87</td></tr>
+<tr><td>100〜500人</td><td>1.5万〜2万</td><td>0.37〜0.47</td></tr>
+<tr><td>500人以上</td><td>1万〜1.5万</td><td>0.25〜0.35</td></tr>
+</tbody></table></div>
+<p>この数値は、レート制限（短時間の処理量の上限）の申請の目安であり、月額の支出上限とは別の概念です。公式は、組織単位で適用されるため、他の人が使っていない時間帯は、個人が目安を超えて使えることもある、と説明しています。研修など、大人数が同時に使う日は、より多い枠が必要になる場合がある、とも記載されています。</p>
+
+<h2>クラウド経由（Bedrock・Google Cloud・Foundry）では、どう管理しますか？</h2>
+<p>Amazon Bedrock、Google Cloud、Microsoft Foundry経由の場合、公式ドキュメント（確認日：2026-11-10）では、料金はクラウドの請求先に従量で請求され、支出の管理は各クラウドの請求コンソールで行う、と説明されています。Claude Codeは、これらのクラウドの利用状況をAnthropicに送らないため、Anthropic側の分析画面とAnalytics APIは、この利用を対象にしません。</p>
+<p>利用者別に費用を分けたい場合の方法として、公式は次の3つを挙げています。</p>
+<ul>
+<li><strong>OpenTelemetry：</strong>各開発者のPCから、自社の監視基盤へ指標を送る。利用者別のトークン数・費用・ツール利用を取得できる</li>
+<li><strong>Claude appsゲートウェイ：</strong>自社で運用するゲートウェイで、利用者別の利用集計と、利用者別の支出上限を設定できる</li>
+<li><strong>LLMゲートウェイ：</strong>すべての通信をプロキシ経由にして、キーごとに支出を追跡する。公式は、オープンソースの「LiteLLM」を使う大企業の例を挙げているが、同ツールはAnthropicの提供ではなく、セキュリティ監査も受けていない、と明記している</li>
+</ul>
+<p>なお、OpenTelemetryで利用状況を測る方法は、<a href="2026-11-10-claude-code-dounyu-koka-sokutei-dashboard.html">導入効果の測り方</a>の記事で、ダッシュボードとの違いを整理しています。</p>
+
+<h2>画面に出る金額は、請求額と一致しますか？</h2>
+<p>一致するとは限りません。公式ドキュメント（確認日：2026-11-10）では、Claude Codeが画面（/usage、ステータスライン、OpenTelemetry）に出す金額は、トークン数から手元で計算した推定値で、既定では定価（list price）で計算される、と説明されています。会社が割引単価で契約している場合、画面の金額と請求書は一致しません。</p>
+<p>これを揃えたい場合は、管理者が管理設定（managed settings）の「modelPricing」に、契約書の単価を入力します。この設定は、Claude Codeが表示する金額を変えるだけで、Anthropicの請求額を変えるものではありません。バージョン2.1.242以降が必要で、利用者側の設定ファイルやコマンドライン指定では効かず、管理設定として配布した場合のみ有効、と記載されています。確定した金額は、必ず請求書で確認してください。</p>
+
+<h2>「上限に達した」と言われたとき、管理者は何を確認しますか？</h2>
+<p>利用者から「止まった」と連絡が来たとき、公式ドキュメント（確認日：2026-11-10）は、メッセージの種類によって原因と対処が違うと整理しています。次の表は、判断の起点として使えます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>利用者に出る表示</th><th>意味</th><th>管理者の対処</th></tr></thead><tbody>
+<tr><td>「session limit」「weekly limit」に達した</td><td>座席の利用枠（5時間・週）の上限。モデルを切り替えても回復しない（モデル別の上限表示のときは別モデルに切り替えられる）</td><td>使用量クレジットをオンにしていれば、利用者が追加利用を申請できる。リセット時刻を待つ方法もある</td></tr>
+<tr><td>「individual spend limit」「org's monthly spend limit」などに達した</td><td>使用量クレジットの支出上限に達した</td><td>管理画面の「Organization settings &gt; Usage」で、表示されている上限を引き上げる</td></tr>
+<tr><td>自社運用のゲートウェイからの支出上限メッセージ</td><td>ゲートウェイで設定した上限に達した</td><td>ゲートウェイ側で上限を引き上げる、またはリセットを待つ</td></tr>
+<tr><td>コンテキストや自動圧縮に関する警告</td><td>使用量の上限ではなく、会話が長くなったことの警告</td><td>会話を整理する運用を案内する</td></tr>
+</tbody></table></div>
+<p>また、API契約やクラウド契約で費用が想定より増えた場合、公式は、典型的な原因として、長いセッションを区切らずに使い続けていること、既定のモデルが高価格帯のモデルのままになっていることを挙げています。対策は、無関係な作業の間で会話を消去すること、作業に合わせてモデルを選ぶことです。</p>
+
+<div class="post-tldr"><strong>自社の契約でどれを見ればよいか迷う場合</strong><ul><li>試行の進め方・成功基準：<a href="2026-10-13-claude-code-poc-seikou-kijun.html">PoCの成功基準</a></li><li>プラン選び（管理機能の違い）：<a href="2026-10-09-claude-team-enterprise-erabikata.html">TeamとEnterpriseの違い</a></li><li>稟議書に費用の根拠を書く：<a href="2026-10-02-claude-code-ringi-kakikata.html">稟議書の書き方</a></li></ul></div>
+
+<h2>導入前に決めておく料金管理のチェックリスト</h2>
+<p>ここまでの内容を、導入前に決める項目としてまとめます。「決める人」の列にある担当者で合意しておくと、導入後に「誰が上限を引き上げるのか」で止まることを避けられます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>決める項目</th><th>決める人</th><th>貴社の判断</th></tr></thead><tbody>
+<tr><td>契約の種類（Teams・Enterprise／Console／クラウド経由）</td><td>情シス・経理</td><td>（記入）</td></tr>
+<tr><td>月額の予算枠と、枠を超えた場合の上限の置き方</td><td>経理・部門長</td><td>（記入）</td></tr>
+<tr><td>試行グループで実測する期間と、見る指標（利用者別の支出）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>上限に達した場合に、誰が引き上げを承認するか</td><td>部門長・情シス</td><td>（記入）</td></tr>
+<tr><td>契約単価を画面に反映するか（modelPricing）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>消費の多い使い方（長いセッション・高価格モデル）の周知</td><td>情シス・各部門長</td><td>（記入）</td></tr>
+</tbody></table></div>
+
+<h2>よくある質問</h2>
+<h3>Q. Claude Codeの法人利用に、月額の上限は設けられますか</h3>
+<p>設けられます。Teams・Enterpriseは管理画面で組織・グループ・個人の単位の支出上限、Claude ConsoleはWorkspaceの支出上限、Amazon Bedrock等のクラウド経由は各クラウドの予算機能が上限の置き場です。公式ドキュメント（確認日：2026-11-10）の記載です。</p>
+<h3>Q. 1人あたりの費用は、どのくらいを見込めばよいですか</h3>
+<p>公式は、企業導入全体の平均として、開発者1人あたり月150〜250ドル程度と記載しています。ただし平均値のため、少人数の試行で実測し、基準値を作ってから展開するよう案内されています。</p>
+<h3>Q. 利用者ごとの費用は分かりますか</h3>
+<p>分かります。Teams・Enterpriseは支出レポートのCSV、Claude ConsoleはConsoleのダッシュボードとAnalytics API、クラウド経由はOpenTelemetryやLLMゲートウェイで取得します。</p>
+<h3>Q. 画面の金額は、請求額と同じですか</h3>
+<p>同じとは限りません。画面の金額は、既定では定価で計算した推定値です。契約単価を反映するには、管理設定のmodelPricingを使います。確定額は請求書で確認してください。</p>
+
+<div class="post-tldr"><strong>料金管理の設計を一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、契約の種類ごとの確認項目の整理や、試行期間の見方の設計を支援しています。公式情報の確認方法の相談だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">料金管理について無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>上限は設けられるが、契約ごとに設定する画面が違う。契約を決める前に、誰がどこで設定するかを決める</li>
+<li>公式の平均値（開発者1人あたり月150〜250ドル程度）は予算の出発点。自社の数字は少人数の試行で測る</li>
+<li>画面の金額は定価ベースの推定値が既定。確定額は請求書で確認する</li>
+<li>設定画面や数値は変わり得るため、導入の直前に公式ページで再確認する</li>
+</ul>
+<p>導入全体の流れは「<a href="2026-10-13-claude-code-hojin-dounyu-jotai-betsu-flow.html">状況別の判断フロー</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
