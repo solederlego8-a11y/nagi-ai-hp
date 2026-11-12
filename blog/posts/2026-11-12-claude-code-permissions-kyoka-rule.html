@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code の権限設定（permissions）の決め方｜許可・確認・拒否とモードの社内ルール｜凪AI ブログ</title>
+<meta name="description" content="Claude Codeの権限設定はどこまで細かく決められるのか。許可・確認・拒否の3種類のルールと評価の順序、6つの権限モード、管理設定で固定できる範囲を、Anthropic公式ドキュメント「Configure permissions」から整理しました（確認日2026-11-12）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-12-claude-code-permissions-kyoka-rule.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code の権限設定（permissions）の決め方｜許可・確認・拒否とモードの社内ルール｜凪AI ブログ">
+<meta property="og:description" content="Claude Codeの権限設定はどこまで細かく決められるのか。許可・確認・拒否の3種類のルールと評価の順序、6つの権限モード、管理設定で固定できる範囲を、Anthropic公式ドキュメント「Configure permissions」から整理しました（確認日2026-11-12）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-12-claude-code-permissions-kyoka-rule.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code の権限設定（permissions）の決め方｜許可・確認・拒否とモードの社内ルール",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12",
+  "description": "Claude Codeの権限設定はどこまで細かく決められるのか。許可・確認・拒否の3種類のルールと評価の順序、6つの権限モード、管理設定で固定できる範囲を、Anthropic公式ドキュメント「Configure permissions」から整理しました（確認日2026-11-12）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-12-claude-code-permissions-kyoka-rule.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "権限・確認・拒否のルールは、どれが優先されますか", "acceptedAnswer": {"@type": "Answer", "text": "deny、ask、allow の順に評価され、最初に一致したルールが結果を決めます。広い deny ルールに一致する操作は、それより狭い allow ルールでは例外化できません。公式ドキュメント（確認日：2026-11-12）の記載です。"}}, {"@type": "Question", "name": "「今後確認しない」を選ぶと、どこまで効きますか", "acceptedAnswer": {"@type": "Answer", "text": "ツールの種類で異なります。Bashコマンドはリポジトリとコマンドの単位で恒久的に保存され、Webフェッチはドメインの単位で恒久的に保存されます。ファイル変更の承認はセッションが終わるまでです。恒久ルールは .claude/settings.local.json に保存されます。"}}, {"@type": "Question", "name": "bypassPermissionsモードを社内で禁止できますか", "acceptedAnswer": {"@type": "Answer", "text": "できます。管理設定で permissions.disableBypassPermissionsMode を \"disable\" に設定します。autoモードも permissions.disableAutoMode で同様に無効化できます。"}}, {"@type": "Question", "name": "現在効いているルールは、どこで確認できますか", "acceptedAnswer": {"@type": "Answer", "text": "/permissions コマンドの画面で、すべての権限ルールと、それぞれのルールが由来する設定ファイルを一覧できます。ルールの追加・削除は、その場で次のツール呼び出しから反映されます。"}}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.12</span><span class="tag">ガバナンス</span></div>
+    <h1>Claude Code の権限設定（permissions）の決め方｜許可・確認・拒否とモードの社内ルール</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body"><p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月12日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeを社員に配るとき、情シスや管理者から必ず出るのが「どこまで勝手に実行させてよいのか」という質問です。ファイルの書き換えやコマンドの実行を毎回止めていては生産性が上がらず、逆にすべて自動で通せば事故のもとになります。この記事では、Anthropic公式ドキュメント「Configure permissions」（確認日：2026-11-12）の記載だけを使い、権限ルールの3種類と評価順序、6つの権限モード、管理設定で固定できる範囲を整理します。入力してよい情報の線引きは<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策の社内ルール</a>の記事で扱っているため、本記事は「実行の可否をどう制御するか」に絞ります。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>権限ルールは許可（allow）・確認（ask）・拒否（deny）の3種類。評価は deny → ask → allow の順で、最初に一致したものが決める。広い deny は狭い allow では例外化できない</li><li>権限モードは6種類（default、acceptEdits、plan、auto、dontAsk、bypassPermissions）。既定は設定ファイルの defaultMode で決められる</li><li>bypassPermissions と auto は、管理設定で利用者側から有効化できないよう固定できる。社内ルールは「モードの既定」と「deny の初期セット」を先に決めるのが要点</li></ul><p style="margin:10px 0 0;"><strong>関連：</strong>入力情報のルールは<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策の社内ルール</a>、全体の統制項目は<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a></p></div>
+
+<h2>Claude Codeの権限は、そもそも何を決める仕組みですか？</h2>
+<p>公式ドキュメント（確認日：2026-11-12）によると、Claude Codeはツール（読み取り、コマンド実行、ファイル変更など）の種類ごとに、実行前に利用者の承認が要るかどうかを分ける段階的な権限の仕組みを持っています。権限設定はバージョン管理に登録して組織内の開発者全員で共有でき、各開発者が自分の分をカスタマイズすることもできます。既定のモード（Manual）で、ツールの種類ごとに承認がどうなるかは次のとおりです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>ツールの種類</th><th>例</th><th>既定で承認が要るか</th><th>「今後確認しない」を選んだ場合</th></tr></thead><tbody>
+<tr><td>読み取り専用</td><td>ファイルの読み取り、検索</td><td>作業ディレクトリと追加ディレクトリの範囲内では不要</td><td>対象外</td></tr>
+<tr><td>Bashコマンド</td><td>シェルの実行</td><td>必要（読み取り専用の組み込みコマンド群を除く）</td><td>リポジトリとコマンドの単位で恒久的に保存される</td></tr>
+<tr><td>ファイルの変更</td><td>ファイルの編集・作成</td><td>必要</td><td>セッションが終わるまで有効</td></tr>
+<tr><td>Webフェッチ</td><td>WebFetch</td><td>必要（事前承認済みのドキュメントのドメインを除く）</td><td>リポジトリとドメインの単位で恒久的に保存される</td></tr>
+<tr><td>Web検索</td><td>WebSearch</td><td>必要</td><td>リポジトリの単位で恒久的に保存される</td></tr>
+</tbody></table></div>
+<p>出典：Anthropic「Configure permissions」（code.claude.com/docs/en/permissions）、確認日 2026-11-12。恒久的に保存される承認は、リポジトリ直下の <code>.claude/settings.local.json</code> にルールとして書き込まれ、同じリポジトリの今後のセッションに効きます。つまり、「現場が日々の承認で育てたルール」と「情シスが配るルール」が、同じ設定の仕組みの上で積み重なっていく構造です。</p>
+
+<h2>許可・確認・拒否の3種類のルールと、評価の順序</h2>
+<p>権限ルールは、<code>/permissions</code> コマンドの画面で一覧でき、どの設定ファイルに由来するルールかもあわせて表示されます。ルールは次の3種類です。</p>
+<ul>
+<li><strong>allow（許可）：</strong>指定したツールを、手動の承認なしに使えるようにする</li><li><strong>ask（確認）：</strong>指定したツールを使おうとするたびに、確認のプロンプトを出す</li><li><strong>deny（拒否）：</strong>指定したツールの使用そのものを防ぐ</li>
+</ul>
+<p>ルールの書き方は <code>Tool</code> または <code>Tool(specifier)</code> の形式で、公式ドキュメントには次のような例が挙げられています。</p>
+<ul>
+<li><code>Bash(npm run build)</code>：コマンド <code>npm run build</code> そのものに一致</li>
+<li><code>Read(./.env)</code>：カレントディレクトリの <code>.env</code> ファイルの読み取りに一致</li>
+<li><code>WebFetch(domain:example.com)</code>：example.com へのフェッチに一致</li>
+</ul>
+<p>管理上いちばん重要なのは評価の順序です。公式ドキュメントでは、ルールは <strong>deny → ask → allow の順に評価され、最初に一致したものが結果を決める</strong>、と説明されています。たとえば広い deny ルール <code>Bash(aws *)</code> は、それより狭い allow ルール <code>Bash(aws s3 ls)</code> に一致する呼び出しも含めてすべてを止めます。<strong>allow で deny の例外を切り出すことはできません</strong>。「禁止を土台にして、許可で穴を開ける」という設計はできないため、社内ルールでは、まず deny で止める範囲を決め、その内側で allow と ask を配る順序で考える必要があります。なお、<code>Bash</code> のようにツール名だけの deny ルールは、そのツールをClaudeの文脈から取り除き、そもそも見えなくします。</p>
+
+<h2>権限モードは6種類。既定をどれにするか</h2>
+<p>個別のルールとは別に、承認の進め方全体を切り替える「権限モード」があります。公式ドキュメント（確認日：2026-11-12）に挙げられているのは次の6種類です。新しいセッションの既定のモードは、設定ファイルの <code>defaultMode</code> で決められます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>モード</th><th>動き</th></tr></thead><tbody>
+<tr><td>default（Manual）</td><td>各ツールを初めて使うときに権限を確認する。CLIや各種エディタ拡張では「Manual」と表示される</td></tr>
+<tr><td>acceptEdits</td><td>ファイルの編集と、作業ディレクトリ内の一般的なファイル操作コマンド（mkdir、touch、mv、cp など）を自動で承認する</td></tr>
+<tr><td>plan</td><td>ファイルの読み取りと読み取り専用コマンドで調査だけを行い、ソースファイルは編集しない</td></tr>
+<tr><td>auto</td><td>通常の確認は出さず、シェルコマンドやネットワーク要求の前に、背景の分類器が要求に沿った操作かどうかを検査する</td></tr>
+<tr><td>dontAsk</td><td>通常なら確認が出る呼び出しを自動で拒否する。事前に許可されたツールや、確認不要の操作はそのまま動く</td></tr>
+<tr><td>bypassPermissions</td><td>権限の確認を省略する（一部の操作はどのモードでも自動承認されない）</td></tr>
+</tbody></table></div>
+<p>現場の体感としては、default は安全だが承認の回数が多く、acceptEdits は編集作業の速度が上がる一方でコマンド実行の確認は残る、という位置づけです。どのモードを既定にするかは、扱うコードベースの性質（本番に近いデータや認証情報を含むか）で決めるのが現実的です。研修や検証のように「まず触らせる」場面では plan や default、定型の編集作業が中心の部門では acceptEdits、という使い分けが考えられます。社内展開の順番そのものは<a href="2026-10-09-claude-code-shanai-tenkai-tejun.html">社内展開の手順</a>の記事で整理しています。</p>
+
+<h2>管理者は、利用者側で変えられない形で固定できますか？</h2>
+<p>できます。公式ドキュメント（確認日：2026-11-12）では、<code>permissions.disableBypassPermissionsMode</code> または <code>permissions.disableAutoMode</code> を <code>"disable"</code> に設定すると、bypassPermissions モードや auto モードを使えなくできる、と説明されています。そして、こうした設定は、上書きできない管理設定（managed settings）に置いたときに最も有効である、と明記されています。</p>
+<p>つまり統制の設計は、次の2層で考えます。</p>
+<ul>
+<li><strong>管理設定で固定する層：</strong>bypassPermissions・auto の可否など、利用者に委ねない項目</li>
+<li><strong>共有設定と現場に任せる層：</strong>プロジェクト共有の allow リスト、日々の承認で <code>settings.local.json</code> に貯まるルール</li>
+</ul>
+<p>すべてを管理設定で固めると、現場の承認ルールが育たず、かえって申請と例外対応が増えます。逆に固定する層が空だと、モードの選択が利用者任せになり、部門ごとに実態がばらけます。「禁止モードの固定」と「deny の初期セット」だけを管理側で持ち、残りは共有設定として配って育てる、という配分が公式の仕組みに沿った形です。</p>
+
+<h2>社内ルールとして決める項目のチェックリスト</h2>
+<p>ここまでの内容を、導入前に決める項目としてまとめます。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>決める項目</th><th>決める人</th><th>貴社の判断</th></tr></thead><tbody>
+<tr><td>既定の権限モード（default か acceptEdits か、部門で分けるか）</td><td>情シス・部門長</td><td>（記入）</td></tr>
+<tr><td>bypassPermissions・auto モードの可否（管理設定で無効化するか）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>deny ルールの初期セット（秘密ファイルの読み取り、破壊的なコマンドなど）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>共有設定に置く allow ルールと、個人に任せる範囲の線引き</td><td>情シス・開発リーダー</td><td>（記入）</td></tr>
+<tr><td><code>settings.local.json</code> に貯まった恒久ルールの棚卸しの頻度と担当</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>止められた操作の例外申請の窓口と判断者</td><td>情シス・部門長</td><td>（記入）</td></tr>
+</tbody></table></div>
+
+<h2>よくある質問</h2>
+<h3>Q. 許可・確認・拒否のルールは、どれが優先されますか</h3>
+<p>deny、ask、allow の順に評価され、最初に一致したルールが結果を決めます。広い deny ルールに一致する操作は、それより狭い allow ルールでは例外化できません。公式ドキュメント（確認日：2026-11-12）の記載です。</p>
+<h3>Q. 「今後確認しない」を選ぶと、どこまで効きますか</h3>
+<p>ツールの種類で異なります。Bashコマンドはリポジトリとコマンドの単位で恒久的に保存され、Webフェッチはドメインの単位で恒久的に保存されます。ファイル変更の承認はセッションが終わるまでです。恒久ルールは <code>.claude/settings.local.json</code> に保存されます。</p>
+<h3>Q. bypassPermissionsモードを社内で禁止できますか</h3>
+<p>できます。管理設定で <code>permissions.disableBypassPermissionsMode</code> を <code>"disable"</code> に設定します。autoモードも <code>permissions.disableAutoMode</code> で同様に無効化できます。</p>
+<h3>Q. 現在効いているルールは、どこで確認できますか</h3>
+<p><code>/permissions</code> コマンドの画面で、すべての権限ルールと、それぞれのルールが由来する設定ファイルを一覧できます。ルールの追加・削除は、その場で次のツール呼び出しから反映されます。</p>
+
+<div class="post-tldr"><strong>権限ルールの設計を一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、既定モードの選定や deny ルールの初期セット、管理設定と共有設定の配分など、運用ルールの設計を支援しています。公式情報の確認方法の相談だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">権限設定について無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>権限ルールは allow・ask・deny の3種類で、評価は deny → ask → allow の順。allow で deny の例外は作れない</li>
+<li>権限モードは6種類。既定は設定ファイルの defaultMode で決め、部門の作業内容で使い分ける</li>
+<li>bypassPermissions と auto は管理設定で固定して禁止できる。「固定する層」と「現場に任せる層」の配分が設計の要点</li>
+<li>恒久的な承認ルールは settings.local.json に貯まるため、棚卸しの担当と頻度まで決めておく</li>
+</ul>
+<p>統制項目の全体像は「<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+<p style="margin-top:48px;"><a href="../index.html" class="btn btn-ghost">← ブログ一覧に戻る</a></p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
