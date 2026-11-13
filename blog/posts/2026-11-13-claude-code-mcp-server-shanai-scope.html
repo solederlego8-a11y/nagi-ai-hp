@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- ga4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DFRJWXV6KL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-DFRJWXV6KL', { anonymize_ip: true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code のMCPサーバー接続を社内で決める方法｜3つのスコープと承認のルール｜凪AI ブログ</title>
+<meta name="description" content="Claude CodeのMCPサーバー接続を社内でどう管理するか。3つのスコープ（local・project・user）の置き場所と共有範囲、projectスコープの承認の仕組み、管理側で配布・制限できる範囲を、Anthropic公式ドキュメント「Connect Claude Code to tools via MCP」から整理しました（確認日2026-11-13）。">
+<link rel="canonical" href="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-13-claude-code-mcp-server-shanai-scope.html">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="凪AI（NAGI AI Consulting）">
+<meta property="og:title" content="Claude Code のMCPサーバー接続を社内で決める方法｜3つのスコープと承認のルール｜凪AI ブログ">
+<meta property="og:description" content="Claude CodeのMCPサーバー接続を社内でどう管理するか。3つのスコープ（local・project・user）の置き場所と共有範囲、projectスコープの承認の仕組み、管理側で配布・制限できる範囲を、Anthropic公式ドキュメント「Connect Claude Code to tools via MCP」から整理しました（確認日2026-11-13）。">
+<meta property="og:url" content="https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-13-claude-code-mcp-server-shanai-scope.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting","image":"https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png",
+  "headline": "Claude Code のMCPサーバー接続を社内で決める方法｜3つのスコープと承認のルール",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-13",
+  "description": "Claude CodeのMCPサーバー接続を社内でどう管理するか。3つのスコープ（local・project・user）の置き場所と共有範囲、projectスコープの承認の仕組み、管理側で配布・制限できる範囲を、Anthropic公式ドキュメント「Connect Claude Code to tools via MCP」から整理しました（確認日2026-11-13）。",
+  "mainEntityOfPage": "https://solederlego8-a11y.github.io/nagi-ai-hp/blog/posts/2026-11-13-claude-code-mcp-server-shanai-scope.html",
+  "author": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "凪AI（NAGI AI Consulting）"
+  }
+}
+</script>
+<!-- ga4-cv -->
+<script>
+if(typeof gtag==='function'){document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||a.hasAttribute('data-cv-tracked'))return;var h=a.href||'';var has=function(s){return h.indexOf(s)>-1;};var asp=has('a8.net')?'a8':(has('rakuten.co.jp')||has('r10.to'))?'rakuten':(has('amazon.co.jp')||has('amzn.'))?'amazon':'';if(asp){gtag('event','affiliate_click',{asp:asp,link_url:h,link_text:(a.innerText||'').trim().slice(0,80),page_path:location.pathname});}else if(has('buy.stripe.com')){gtag('event','begin_checkout',{link_url:h,page_path:location.pathname});}},true);document.addEventListener('submit',function(e){var f=e.target;gtag('event','generate_lead',{form_id:f.id||f.getAttribute('data-subject')||f.action||'',page_path:location.pathname});},true);}
+</script>
+<meta property="og:image" content="https://solederlego8-a11y.github.io/nagi-ai-hp/assets/og-default.png">
+<!-- faq-schema -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "projectスコープで共有すれば、チーム全員がそのまま使えますか", "acceptedAnswer": {"@type": "Answer", "text": "いいえ。projectスコープのサーバーは、対話セッションで使う前に承認の確認が表示されます。クローンしたリポジトリ自身がそのサーバーを承認することはできず、承認は利用者側や管理設定など、リポジトリ外の設定から行われます。公式ドキュメント（確認日：2026-11-13）の記載です。"}}, {"@type": "Question", "name": "APIキーなどの認証情報を、.mcp.json に書いて共有してよいですか", "acceptedAnswer": {"@type": "Answer", "text": "推奨しません。.mcp.json はバージョン管理に登録して共有するファイルです。公式ドキュメントでも、バージョン管理に入れたくない認証情報を使うサーバーは、個人の local スコープで追加することが案内されています。"}}, {"@type": "Question", "name": "同じ名前のサーバーを複数のスコープで定義したら、どうなりますか", "acceptedAnswer": {"@type": "Answer", "text": "local、project、user の順に優先され、最も優先されるスコープの定義だけが丸ごと使われます。項目ごとに混ざることはありません。同名の定義が残っていると、意図しない接続先につながるため、棚卸しでは同名の重複も確認します。"}}, {"@type": "Question", "name": "管理者は、利用者が接続できるMCPサーバーを制限できますか", "acceptedAnswer": {"@type": "Answer", "text": "管理用のMCP設定で、組織の全利用者向けにサーバーを配布したり、ポリシーでサーバーを制限したりできます。ポリシーでブロックされたサーバーは、接続状態の確認画面でその旨が表示されます。詳細は公式ドキュメントの managed MCP configuration の説明を確認してください。"}}]}</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../../index.html" class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>凪AI<small>NAGI AI CONSULTING</small></span>
+    </a>
+    <nav class="nav-primary" aria-label="グローバルナビゲーション">
+      <a href="../../company.html">会社概要</a>
+      <a href="../../service.html">サービス</a>
+      <a href="../../blog/index.html" class="is-active">ブログ</a>
+      <a href="../../contact.html">お問い合わせ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../../contact.html#form" class="btn btn-ghost btn-sm">資料請求</a>
+      <a href="../../contact.html#form" class="btn btn-primary btn-sm">無料相談</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+
+<div class="post-hero">
+  <div class="container">
+    <div class="post-meta"><span>2026.11.13</span><span class="tag">ガバナンス</span></div>
+    <h1>Claude Code のMCPサーバー接続を社内で決める方法｜3つのスコープと承認のルール</h1>
+  </div>
+</div>
+<section>
+  <div class="container">
+    <div class="post-body"><p class="post-updated" style="font-size:13px;color:#667;">更新日：2026年11月13日｜執筆：凪AI（運営：フォローズ）編集部</p>
+<p>Claude Codeを社内に広げると、次に出てくるのが「外部ツールとつないでよいのか」という質問です。課題管理や監視ダッシュボードの情報を毎回チャットに貼り付ける代わりに、MCP（Model Context Protocol）のサーバーを接続すると、Claude Codeからその仕組みを直接読み書きできます。便利な反面、接続先ごとに「誰が・どのプロジェクトで・何に触れるか」が増えるため、個人の判断で増やし続けると実態が見えなくなります。この記事では、Anthropic公式ドキュメント「<a href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Connect Claude Code to tools via MCP</a>」（確認日：2026-11-13）の記載だけを使い、接続の置き場所を決める3つのスコープ、projectスコープの承認、管理側でできる配布と制限を整理します。実行そのものの可否は<a href="2026-11-12-claude-code-permissions-kyoka-rule.html">権限設定（permissions）の決め方</a>の記事で扱っているため、本記事は「接続先をどう管理するか」に絞ります。</p>
+<div class="post-tldr"><strong>30秒で判断</strong><ul><li>MCPサーバーの置き場所は3つのスコープ。local（既定・そのプロジェクトだけ・非共有）、project（.mcp.json でチーム共有）、user（自分の全プロジェクト・非共有）</li><li>projectスコープは使う前に承認の確認があり、クローンしたリポジトリ自身は承認できない。認証情報を含むサーバーは、バージョン管理に入らない local が公式の案内</li><li>同名のサーバーは local → project → user の順に優先され、定義は丸ごと1つだけが使われる。管理側は管理用設定で配布と制限ができる</li></ul><p style="margin:10px 0 0;"><strong>関連：</strong>実行の可否は<a href="2026-11-12-claude-code-permissions-kyoka-rule.html">権限設定の決め方</a>、入力情報のルールは<a href="2026-10-09-claude-code-joho-rouei-shanai-rule.html">情報漏えい対策の社内ルール</a></p></div>
+
+<h2>MCPサーバーを接続すると、何ができるようになりますか？</h2>
+<p>公式ドキュメント（確認日：2026-11-13）によると、MCPはAIと外部ツールを連携させるためのオープンな標準で、接続したサーバーを通じて、Claude Codeが課題管理・データベース・APIなどの外部の仕組みにアクセスできます。公式の例としては、課題トラッカーの内容から機能を実装する、監視データを確認する、データベースに問い合わせる、といった使い方が挙げられています。</p>
+<p>接続の方式（トランスポート）は、リモートのHTTP（推奨）、SSE、自分のマシンでプロセスとして動く stdio、WebSocket の4種類が案内されています。追加は <code>claude mcp add</code> コマンドで行い、リモートは <code>--transport http</code> とURL、stdio は起動コマンドを指定します。方式の違いよりも社内管理で重要なのは、次の「どこに設定を置くか」です。接続先が社内システムに触れる以上、設定の置き場所が、そのまま共有範囲と責任の範囲になります。</p>
+<p>出典：Anthropic「Connect Claude Code to tools via MCP」（code.claude.com/docs/en/mcp）、確認日 2026-11-13。</p>
+
+<h2>3つのスコープ ― 置き場所が共有範囲を決める</h2>
+<p>公式ドキュメントでは、MCPサーバーの設定スコープは次の3つです。</p>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>スコープ</th><th>読み込まれる範囲</th><th>チーム共有</th><th>保存先</th><th>向いている用途（公式の案内）</th></tr></thead><tbody>
+<tr><td>local（既定）</td><td>追加したプロジェクトだけ</td><td>されない</td><td><code>~/.claude.json</code>（そのプロジェクトの配下）</td><td>個人の開発用サーバー、試行中の設定、バージョン管理に入れたくない認証情報を使うサーバー</td></tr>
+<tr><td>project</td><td>そのプロジェクト</td><td>される</td><td>プロジェクト直下の <code>.mcp.json</code></td><td>チーム全員で同じ接続先を使う場合。<code>.mcp.json</code> をバージョン管理に登録して共有する</td></tr>
+<tr><td>user</td><td>自分の全プロジェクト</td><td>されない</td><td><code>~/.claude.json</code></td><td>プロジェクトをまたいで頻繁に使う、個人用のユーティリティや開発ツール</td></tr>
+</tbody></table></div>
+<p>社内ルールへの落とし込みはシンプルです。<strong>チームで使うと決めたものだけを project に置き、試行中・個人用・認証情報を伴うものは local に置く</strong>。user は「個人の道具箱」として、業務システムへの接続には使わない、と決めておくと、棚卸しのときに迷いません。</p>
+
+<h2>projectスコープには承認の仕組みがあります</h2>
+<p><code>.mcp.json</code> はリポジトリに入るファイルなので、受け取る側の安全のために承認の仕組みが用意されています。公式ドキュメントの要点は次のとおりです。</p>
+<ul>
+<li>projectスコープのサーバーは、対話セッションで使う前に、承認の確認が表示される</li>
+<li>クローンしたリポジトリ自身が、そのリポジトリのサーバーを承認することはできない。リポジトリに登録された設定による自動承認は、未信頼のフォルダでは無視される</li>
+<li>承認の選択は <code>claude mcp reset-project-choices</code> でリセットできる</li>
+<li>接続状態は <code>claude mcp list</code> や <code>/mcp</code> で確認でき、「承認待ち（Pending approval）」「企業ポリシーでブロック」といった状態も表示される</li>
+</ul>
+<p>つまり、<code>.mcp.json</code> をマージする行為は「接続先の候補を配る」までで、実際に使うかどうかは各利用者の承認が別に要ります。コードレビューでは <code>.mcp.json</code> の差分もレビュー対象に含める、という運用を合わせて決めておくと、候補の入口と承認の出口の両方が管理できます。</p>
+
+<h2>同名のサーバーと、認証情報の置き場所</h2>
+<p>同じ名前のサーバーが複数のスコープで定義されている場合、優先順位は <strong>local → project → user</strong> で、最も優先される定義だけが丸ごと使われ、項目ごとに混ざることはありません。便利な上書きの仕組みですが、裏返すと「チームの定義を使っているつもりで、個人の local 定義につながっていた」という事故が起き得ます。棚卸しでは、サーバーの一覧だけでなく、同名の重複がないかも確認項目に入れてください。</p>
+<p>認証情報については、公式ドキュメントが用途の目安として、バージョン管理に入れたくない認証情報を使うサーバーは local スコープを使うことを案内しています。<code>.mcp.json</code> は共有が前提のファイルなので、キーやトークンの実値を書く場所ではありません。共有したい場合は、認証は各利用者が自分の側で行う形にし、ファイルには接続先の定義だけを置くのが原則です。</p>
+
+<h2>管理者は、配布と制限ができますか？</h2>
+<p>できます。公式ドキュメントでは、管理者が管理用のMCP設定で、組織の全利用者向けにサーバーを配布できること、そしてポリシーでサーバーを制限できることが説明されています。ポリシーでブロックされたサーバーは、接続状態の確認でその旨が表示されます（ポリシーの種類によっては一覧自体に表示されません）。</p>
+<p>権限設定の記事で整理した「固定する層」と「現場に任せる層」の考え方は、MCPでも同じです。</p>
+<ul>
+<li><strong>管理側で決める層：</strong>接続してよい業務システムの範囲、管理用設定で配る標準のサーバー、禁止する接続先</li>
+<li><strong>プロジェクトで決める層：</strong><code>.mcp.json</code> に置くチーム共有のサーバーと、そのレビュー方法</li>
+<li><strong>個人に任せる層：</strong>local・user スコープの個人用サーバー。ただし業務システムへの接続は含めない</li>
+</ul>
+
+<h2>社内ルールとして決める項目のチェックリスト</h2>
+<div class="post-tablewrap"><table class="post-table"><thead><tr><th>決める項目</th><th>決める人</th><th>貴社の判断</th></tr></thead><tbody>
+<tr><td>projectスコープ（.mcp.json）へ置いてよいサーバーの基準と、レビュー担当</td><td>情シス・開発リーダー</td><td>（記入）</td></tr>
+<tr><td>接続してよい業務システムの範囲（課題管理・DB・監視など、対象と禁止対象）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>認証情報の置き場所（local に限る、.mcp.json への実値の記載禁止など）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>userスコープで業務システムへ接続することの可否</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>接続中サーバーの棚卸しの頻度と担当（同名の重複の確認を含む）</td><td>情シス</td><td>（記入）</td></tr>
+<tr><td>新しいサーバーの接続申請の窓口と判断者</td><td>情シス・部門長</td><td>（記入）</td></tr>
+</tbody></table></div>
+
+<h2>よくある質問</h2>
+<h3>Q. projectスコープで共有すれば、チーム全員がそのまま使えますか</h3>
+<p>いいえ。projectスコープのサーバーは、対話セッションで使う前に承認の確認が表示されます。クローンしたリポジトリ自身がそのサーバーを承認することはできず、承認は利用者側や管理設定など、リポジトリ外の設定から行われます。公式ドキュメント（確認日：2026-11-13）の記載です。</p>
+<h3>Q. APIキーなどの認証情報を、.mcp.json に書いて共有してよいですか</h3>
+<p>推奨しません。.mcp.json はバージョン管理に登録して共有するファイルです。公式ドキュメントでも、バージョン管理に入れたくない認証情報を使うサーバーは、個人の local スコープで追加することが案内されています。</p>
+<h3>Q. 同じ名前のサーバーを複数のスコープで定義したら、どうなりますか</h3>
+<p>local、project、user の順に優先され、最も優先されるスコープの定義だけが丸ごと使われます。項目ごとに混ざることはありません。同名の定義が残っていると、意図しない接続先につながるため、棚卸しでは同名の重複も確認します。</p>
+<h3>Q. 管理者は、利用者が接続できるMCPサーバーを制限できますか</h3>
+<p>管理用のMCP設定で、組織の全利用者向けにサーバーを配布したり、ポリシーでサーバーを制限したりできます。ポリシーでブロックされたサーバーは、接続状態の確認画面でその旨が表示されます。詳細は公式ドキュメントの managed MCP configuration の説明を確認してください。</p>
+
+<div class="post-tldr"><strong>MCP接続のルール設計を一緒に進めたい場合</strong><p style="margin:8px 0 12px;">凪AIでは、スコープの使い分けや .mcp.json のレビュー方法、管理用設定とプロジェクト設定の配分など、運用ルールの設計を支援しています。公式情報の確認方法の相談だけでも対応できます。ご相談は無料です。</p><a href="../../contact.html#form" class="btn btn-primary">MCP接続について無料で相談する →</a></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>MCPサーバーの置き場所は local・project・user の3スコープ。置き場所が、そのまま共有範囲になる</li>
+<li>projectスコープは承認の仕組みつき。リポジトリ自身は承認できず、.mcp.json の差分はレビュー対象にする</li>
+<li>同名は local → project → user の順に優先され、定義は丸ごと1つだけが使われる。重複は棚卸しで確認する</li>
+<li>認証情報の実値は共有ファイルに置かず、local で扱う。管理側は管理用設定で配布と制限ができる</li>
+</ul>
+<p>統制項目の全体像は「<a href="2026-07-18-ai-governance-checklist.html">ガバナンスチェックリスト</a>」で確認できます。相談は<a href="../../contact.html#form">お問い合わせフォーム</a>からどうぞ。</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="../../index.html" class="brand" style="color:#fff;">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>凪AI<small style="color:rgba(217,221,230,0.7)">NAGI AI CONSULTING</small></span>
+        </a>
+        <p style="font-size:13px;color:rgba(217,221,230,0.75);margin-top:16px;max-width:280px;">
+          Claude Codeの法人導入を、研修・伴走コンサルティング・業務エージェント開発から支援します。
+        </p>
+      </div>
+      <div>
+        <h4>サービス</h4>
+        <ul>
+          <li><a href="../../service.html#consulting">導入伴走コンサルティング</a></li>
+          <li><a href="../../service.html#training">Claude Code 実務研修</a></li>
+          <li><a href="../../service.html#agent">業務エージェント開発</a></li>
+          <li><a href="../../service.html#governance">ガバナンス設計</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>会社情報</h4>
+        <ul>
+          <li><a href="../../company.html">会社概要</a></li>
+          <li><a href="../../blog/index.html">ブログ</a></li>
+          <li><a href="../../contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <ul>
+          <li><a href="../../contact.html#form">無料相談を予約する</a></li>
+          <li><a href="../../contact.html#form">資料請求する</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 凪AI（運営：フォローズ）</span>
+      <span><a href="#">プライバシーポリシー</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
